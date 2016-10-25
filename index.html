@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>Iphone Case</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+    <link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body>
+		<!-- <div id="loader"><img src="img/loader.gif"></div> -->
+		<!-- <div class="navsidebar">
+				<ul>
+					<li><a href="#">ss</li>
+				</ul>
+		</div> -->
+		<header>
+			<!-- <div class="floatleft">
+					<div id="hamburger" class="nav-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+			</div> -->
+			<div id="logo" class="centeralign">
+				<img src="img/logo-w.png" alt="">
+			</div>
+			<div class="cart">
+				<div id="cartcount"></div>
+				<img src="img/cart-w.png" alt="">
+			</div>
+			<div class="clearfloats"></div>
+		</header>
+
+		<!--//load slides here --> 
+		<div id="pagecontent" class="wrapper"></div>
+
+  <script src="js/jquery.min.js"></script>
+  <script>
+  	$(document).ready(function(){
+			
+			// When you click the hamburger add the Class .ON
+			$('#hamburger').click(function () {
+		    $('.navsidebar, .nav-icon span:nth-of-type(2)').toggleClass('on');
+		    $('header, .wrapper').toggleClass('on');
+			});
+			
+      // load the default first few from the swiper page
+      $('#pagecontent').load('actions/swiper.php');
+
+		});
+  </script>
+   <script>
+		// Wait for window load
+		$(window).load(function() {
+			// Animate loader off screen
+			// $("#loader").css({"display":"none"});
+		});
+	</script>	
+	</body>
+</html>
