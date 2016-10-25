@@ -24,10 +24,7 @@
   <preference name="auto-hide-splash-screen" value="true"/>
   <preference name="disable-cursor" value="false"/>
   <preference name="android-minSdkVersion" value="7"/>
-  <preference name="android-installLocation" value="auto"/>
-  <gap:plugin name="org.apache.cordova.splashscreen"/>
-  <gap:plugin name="org.apache.cordova.vibration"/>
-  <gap:plugin name="org.apache.cordova.statusbar" />    
+  <preference name="android-installLocation" value="auto"/>   
 	 <!-- http://docs.phonegap.com/phonegap-build/configuring/icons-and-splash/#splashes -->
    <!-- default android and IOS splash -->
    <splash src="splash.png" />
@@ -72,6 +69,7 @@
    <gap:config-file platform="ios" parent="UIStatusBarHidden" overwrite="true"> <true/> </gap:config-file>
    <feature name="StatusBar"><param name="ios-package" value="CDVStatusBar" onload="true" /></feature>
 		  
+	<plugin name="cordova-plugin-whitelist" source="npm" />
 	<allow-navigation href="http://elbaga.net" />
 	<allow-navigation href="https://elbaga.net" />
 	<allow-navigation href="http://cordova.apache.org/" />
