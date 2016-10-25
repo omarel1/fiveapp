@@ -81,10 +81,6 @@
 		  
 	<plugin name="cordova-plugin-whitelist" source="npm" />
 	<allow-navigation href="http://elbaga.net" />
-	<allow-navigation href="http://sql9.freemysqlhosting.net" />
-	<allow-navigation href="http://freemysqlhosting.net" />
-	<allow-navigation href="http://hostedresource.com" />
-	<allow-navigation href="http://testing.newworldgroup.com/" />
 	<allow-navigation href="https://elbaga.net" />
 	<allow-navigation href="http://cordova.apache.org/" />
 	<allow-navigation href="https://slack.cordova.io" />
@@ -94,11 +90,7 @@
 	<allow-navigation href="https://*.twimg.com/" />
 	<allow-navigation href="http://cordovablogs.discus.com/" />
 	<allow-navigation href="*" />
-	
 	<access origin="*" />
-	<access origin="http://freemysqlhosting.net" />
-	<access origin="http://sql9.freemysqlhosting.net" />
-	<access origin="http://hostedresource.com" />
 	<access origin="http://elbaga.net/" />
-	<access origin="http://testing.newworldgroup.com/" />
+	<access origin="https://elbaga.net/" />
 </widget>
