@@ -219,6 +219,7 @@ table {
 	.wrapper {
 		width:100%;
 		left:0;
+		background-color: #000;
 		height:85vh;
 		position: relative;
 	}
