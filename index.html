@@ -32,29 +32,64 @@
 		</header>
 
 		<!--//load slides here --> 
-		<div id="pagecontent" class="wrapper"></div>
+		<div id="pagecontent" class="wrapper">
+		</div>
+		<a id="continue" class="continue" href="javascript:;">continue</a>
+		<div id="loadericon"><img src="loader.gif"></div>
 
   <script src="js/jquery.min.js"></script>
-  <script>
-  	$(document).ready(function(){
-			
-			// When you click the hamburger add the Class .ON
-			$('#hamburger').click(function () {
-		    $('.navsidebar, .nav-icon span:nth-of-type(2)').toggleClass('on');
-		    $('header, .wrapper').toggleClass('on');
-			});
-			
-      // load the default first few from the swiper page
-      $('#pagecontent').load('actions/swiper.php');
+	 <script type="text/javascript">
+			 // var url="http://localhost/phonegapdemo/actions/json.php";
+			 var url="../php/json.php";
+			 var domain="http://www.elbaga.net/fiveapp/";
+			 function getresult(url) {
+				 $.ajax({
+					 url: url,
+					 type: "GET",
+					 data:  {rowcount:$(".rowcount").val()},
+					 beforeSend: function(){
+					 	$('#loadericon').show();
+					 },
+					 complete: function(){
+					 	$('#loadericon').hide();
+					 },
+					 success: function(data){
+					 	$("#pagecontent").append(data);
+					 },
+					  error: function(){} 	        
+				 });
+			 	}
+			 	getresult(url);
+			  // $.getJSON(url,function(result){
+				 // $.each(result, function(i, field){
+					//  var cid=field.caseid;
+					//  var img=field.img;
+					//  $("#pagecontent").append("<div class='floatleft'><img src='" + domain + "img/" + img + ".jpg' /></div>");
+					//  });
+			  // });
 
-		});
-  </script>
-   <script>
-		// Wait for window load
-		$(window).load(function() {
-			// Animate loader off screen
-			// $("#loader").css({"display":"none"});
-		});
-	</script>	
+				 $('#hamburger').click(function () {
+			     $('.navsidebar, .nav-icon span:nth-of-type(2)').toggleClass('on');
+			     $('header, .wrapper').toggleClass('on');
+				 });
+		
+
+	// $(document).scroll(function(){
+	// 	var y = $(this).scrollTop();
+ //     if (y > 150) {
+	// 		if($(".pagenum:last").val() <= $(".rowcount").val()) {
+	// 			var pagenum = parseInt($(".pagenum:last").val()) + 1;
+	// 			getresult(url + '?page=' + pagenum);
+	// 		}
+	// 	}
+	// });
+			$('#continue').click(function () {
+		     if($(".pagenum:last").val() <= $(".rowcount").val()) {
+					var pagenum = parseInt($(".pagenum:last").val()) + 1;
+					getresult(url + '?page=' + pagenum);
+				}
+			});
+
+		</script>	
 	</body>
 </html>
