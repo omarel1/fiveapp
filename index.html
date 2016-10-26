@@ -5,6 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- <link rel="stylesheet" href="http://www.elbaga.net/fiveapp/fiveapp/css/styles.css"> -->
 	</head>
 	<body>
 		<!-- <div id="loader"><img src="img/loader.gif"></div> -->
@@ -31,11 +33,12 @@
 			<div class="clearfloats"></div>
 		</header>
 
-		<!--//load slides here --> 
+		<!--//load content here --> 
 		<div id="pagecontent" class="wrapper">
+			<div class="btnholder"><a id="continue" class="continue" href="javascript:;">get more</a></div>
 		</div>
-		<div class="btnholder"><a id="continue" class="continue" href="javascript:;">get more</a></div>
-		<div id="loadericon"><img src="loader.gif"></div>
+		
+		<div id="loadericon"><img src="img/loader.svg"></div>
 
   <script src="js/jquery.min.js"></script>
 	 <script type="text/javascript">
@@ -48,13 +51,14 @@
 					 type: "GET",
 					 data:  {rowcount:$(".rowcount").val()},
 					 beforeSend: function(){
-					 	$('#loadericon').show();
+					 	$('#loadericon').fadeIn();
 					 },
 					 complete: function(){
-					 	$('#loadericon').hide();
+					 	$('#loadericon').fadeOut();
 					 },
 					 success: function(data){
-					 	$("#pagecontent").append(data);
+					 	// $("#pagecontent").append(data);
+					 	$(".btnholder").before(data);
 					 },
 					  error: function(){} 	        
 				 });
@@ -83,6 +87,9 @@
 	// 		}
 	// 	}
 	// });
+			// $(document).ready(function(){
+			// 	$(".floatleft:last").append('<div class="btnholder"><a id="continue" class="continue" href="javascript:;">get more</a></div>');
+			// });
 			$('#continue').click(function () {
 		     if($(".pagenum:last").val() <= $(".rowcount").val()) {
 					var pagenum = parseInt($(".pagenum:last").val()) + 1;
@@ -91,5 +98,9 @@
 			});
 
 		</script>	
+		<script src="js/wow.min.js"></script>
+    <script>
+	 	 new WOW().init();
+	  </script>
 	</body>
 </html>
