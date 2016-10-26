@@ -20,7 +20,7 @@
   <preference name="StatusBarOverlaysWebView" value="true" />
   <preference name="StatusBarBackgroundColor" value="#000000" />
   <preference name="StatusBarStyle" value="lightcontent" />
-  <!-- <preference name="ios-statusbarstyle" value="black-opaque"/> -->
+  <preference name="ios-statusbarstyle" value="black-opaque"/>
   <preference name="detect-data-types" value="true"/>
   <preference name="exit-on-suspend" value="false"/>
   <preference name="show-splash-screen-spinner" value="true"/>
@@ -28,9 +28,9 @@
   <preference name="disable-cursor" value="false"/>
   <preference name="android-minSdkVersion" value="7"/>
   <preference name="android-installLocation" value="auto"/>
-  <!--<gap:plugin name="org.apache.cordova.splashscreen"/>
-   <gap:plugin name="org.apache.cordova.vibration"/>
-   <gap:plugin name="org.apache.cordova.statusbar" />  -->  
+  <gap:plugin name="org.apache.cordova.splashscreen"/>
+  <gap:plugin name="org.apache.cordova.vibration"/>
+  <gap:plugin name="org.apache.cordova.statusbar" /> <!-- -->  
 	 <!-- http://docs.phonegap.com/phonegap-build/configuring/icons-and-splash/#splashes -->
    <!-- default android and IOS splash -->
    <splash src="splash.png" />
