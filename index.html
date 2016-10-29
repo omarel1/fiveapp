@@ -10,20 +10,20 @@
 	</head>
 	<body>
 		<!-- <div id="loader"><img src="img/loader.gif"></div> -->
-		<!-- <div class="navsidebar">
+		<div class="navsidebar">
 				<ul>
-					<li><a href="#">ss</li>
+					<li><a href="#">Sign in</li>
 				</ul>
-		</div> -->
+		</div>
 		<header>
-			<!-- <div class="floatleft">
+			<div class="floatleft">
 					<div id="hamburger" class="nav-icon">
 						<span></span>
 						<span></span>
 						<span></span>
 					</div>
-			</div> -->
-			<div id="logo" class="centeralign">
+			</div>
+			<div id="logo" class="centeralign floatleft">
 				<img src="img/logo-g.png" alt="">
 			</div>
 			<div class="cart">
@@ -39,8 +39,31 @@
 		</div>
 		
 		<div id="loadericon"><img src="img/loader.svg"></div>
+		<div class="loginbox">
+			<div class="closex">X</div>
+			<div class="loginblock">
+				<input type="text" class="contactfields" placeholder="email"/>
+				<input type="text" class="contactfields" placeholder="password"/>
+				<a href="#" class="btn">Sign in</a>
+			</div>
 
-  <script src="js/jquery.min.js"></script>
+			<div class="centertext"><a id="createaccountlink" href="javascript:;">Create an account</a></div>
+			
+			<div class="signupblock">
+			<input type="text" class="contactfields" placeholder="email"/>
+			<input type="text" class="contactfields" placeholder="password"/>
+			<input type="text" class="contactfields" placeholder="password"/>
+			<a href="#" class="btn">Sign up</a>
+			<div class="centertext"><a id="backtologin" href="javascript:;">Back to sign in</a></div>
+			</div>
+		</div>
+		<div class="overlay"></div>
+		<script>
+				if (localStorage.login == "false") {
+					document.write("<div class='signupbar'><a href='#' class='signupbtn'>Sign up/Sign in</a></div>");
+				}
+			</script>
+   <script src="js/jquery.min.js"></script>
 	 <script type="text/javascript">
 			 // var url="http://localhost/phonegapdemo/actions/json.php";
 			 // var url="../php/json.php";
@@ -76,6 +99,19 @@
 			     $('.navsidebar, .nav-icon span:nth-of-type(2)').toggleClass('on');
 			     $('header, .wrapper').toggleClass('on');
 				 });
+
+				 $('#createaccountlink, #backtologin').click(function () {
+			     $('.signupblock').fadeToggle(00);
+			     $('.loginblock').fadeToggle(00);
+				 });
+				 $('.closex').click(function () {
+			     $('.loginbox').toggleClass("on");
+			     $('.overlay').fadeOut();
+				 });
+				 $('.signupbtn').click(function () {
+			     $('.loginbox').toggleClass("on");
+			     $('.overlay').fadeIn();
+				 });
 		
 
 	// $(document).scroll(function(){
@@ -109,5 +145,6 @@
       })
       wow.init();
 	  </script>
+	  <script src="js/cordova.js"></script>
 	</body>
 </html>

@@ -130,7 +130,7 @@ table {
 
 	}
 	header.on {
-		left:75%;
+		left:56%;
 	}
 	header #logo {
 		position:relative;
@@ -148,12 +148,12 @@ table {
 	}
 	header .floatleft:nth-of-type(1)  {
 		float: left;
-		width: 65%;
-		text-align: right;
+		width: 15%;
+		text-align: left;
 	}
 	header .floatleft:nth-of-type(2) {
 		float: left;
-		width: 30%;
+		width: 68%;
 	}
 	header .cart {
 		position: absolute;
@@ -179,7 +179,7 @@ table {
 	header .nav-icon span {
     width: 100%;
     height: 3px;
-    background: #271d1d;
+    background: rgb(93, 197, 31);
     position: absolute;
 	}
 	header .nav-icon {
@@ -196,7 +196,7 @@ table {
 		position: absolute;
 		top:0px;
 		left:0px;
-		width:0;
+		width: 56%;
 		height:100vh;
 		visibility: visible;
 		opacity:1;
@@ -204,7 +204,7 @@ table {
 	.navsidebar.on {
 		visibility: visible;
 		opacity:1;
-		width:75%;
+		width:56%;
 	}
 	.navsidebar ul li {	
 		background-color:#fff;
@@ -212,10 +212,14 @@ table {
 	.navsidebar ul>li>a {
 		line-height:150%;
 		width:100%;
-		background-color: rgba(94,3,163,.50);
+    font-size: 27px;
+    letter-spacing: -1px;
+		color:#000;
 		display: inline-block;
     padding: 9px 0px 10px 10px;
 	}
+  
+  
 	.wrapper {
 		width:100%;
 		left:0;
@@ -236,7 +240,7 @@ table {
     background-color: rgba(94,3,163,1);
 	}
 	.wrapper.on {
-		left:75%;
+		left:57%;
 	}
 	.wrapphone {
 		width:100%;
@@ -260,10 +264,9 @@ table {
 		padding-top:30px;
 	}
 	.floatleft {
-		border:1px solid #282828;
 		width:100%;
 		float:none;
-		margin-top:5px;
+		margin-top:0px;
 		padding-bottom:10px;
 	}
 	.floatleft:nth-child(odd) {
@@ -284,30 +287,31 @@ table {
 		display:none;
 	}
 	a.continue {
-		margin:20px auto 30px auto;
-		text-align:center;
-		padding: 15px 30px 15px 30px;
+		margin: 20px auto 30px auto;
+    text-align: center;
+    padding: 10px 40px 10px 40px;
     border: solid 1px black;
     display: inline-block;
+    font-size: 15px;
     text-decoration: none;
-    color: #fff;
-    background-color: #6496c8;
+    color: #000;
+    background-color: rgb(93, 197, 31);
     border: none;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
-    border-radius: 15px;
-    -webkit-box-shadow: 0 10px #27496d;
-    -moz-box-shadow: 0 10px #27496d;
-    box-shadow: 0 10px #27496d;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 10px #383838;
+    -moz-box-shadow: 0 10px #383838;
+    box-shadow: 0 2px 2px 3px #383838;
 	}
 	a.continue:hover {
-		background-color: #417cb8;
+		background-color: rgba(93, 197, 31, .9);
 	}
 	a.continue:active {
-    background-color: #417cb8;
-    -webkit-box-shadow: 0 5px #27496d;
-    -moz-box-shadow: 0 5px #27496d;
-    box-shadow: 0 5px #27496d;
+    background-color: rgba(93, 197, 31, .9);
+    -webkit-box-shadow: 0 5px #383838;
+    -moz-box-shadow: 0 5px #383838;
+    box-shadow: 0 5px #383838;
     -webkit-transform: translateY(5px);
     -moz-transform: translateY(5px);
     -ms-transform: translateY(5px);
@@ -316,8 +320,95 @@ table {
 	}
 	.btnholder {
 		width: 100%; margin: 0 auto;position: relative;text-align: center;
+		padding:11px 0px 36px 0px;
 	}
-
+	.signupbar {
+		position: fixed;
+		bottom:0;
+		width:100%;
+		margin: 0 auto;
+		background-color: #1C1B1B;
+		padding:15px;
+		text-align: center;
+		padding:15px 0px 15px 0px;
+	}
+	.signupbar a {
+		color:#5dc51f;
+		letter-spacing:-1px;
+	}
+	.loginbox {
+		width:90%;
+		border:2px solid #fff;
+		right:0;
+		left:0;
+		position: fixed;
+		padding:20px 0px;
+		top: 100%;
+  	margin:0 auto;
+  	text-align:center;
+  	background-color:#5dc51f;
+  	z-index:20;
+  	display: block;
+	}
+	.loginbox.on {
+		top: 50%;
+  	transform: translateY(-50%);
+  	-webkit-transform: translateY(-50%);
+	}
+	.overlay {
+		background-color: rgba(0, 0, 0, 0.8);
+		position:fixed;
+		top:0;
+		width:100%;
+		height:100vh;
+		z-index:15;
+		display: none;
+	}
+	.contactfields {
+    border-top: 0px;
+    margin:0 auto;
+    border-left: 0px;
+    border-right: 0px;
+    background: transparent;
+    border-bottom: 1px solid #000 !important;
+    letter-spacing: 1px;
+    display: block;
+    padding: 10px 0px 5px !important;
+    margin-bottom: 8px !important;
+    width: 80%;
+    text-transform: Capitalize;
+    color: #000;
+    outline: none;
+    font-size: 15px;
+    font-weight: 300;
+    border-radius: 0;
+    padding-bottom: 3px !important;
+  }
+  a.btn {
+  	border:2px solid #000;
+  	color:#000;
+  	padding:10px 30px;
+  	width:85%;
+  	display: inline-block;
+  	margin:10px auto;
+  }
+  .signup {
+  	display:none;
+  }
+  .closex {
+  	position: absolute;
+  	top:4px;
+  	right:4px;
+  	font-size:20px;
+  	cursor:pointer;
+  }
+  .centertext {
+  	text-align: center;
+  	padding:14px 0px;
+  }
+  .signupblock {
+  	display:none;
+  }
 /* ----------END MOBILE  ---------- */
 
 
@@ -345,6 +436,11 @@ table {
 		-webkit-font-smoothing: antialiased;
 	  -moz-osx-font-smoothing: grayscale;
 	}
+	.x {
+		font-family: 'gothaml';
+		-webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+	}
 
 /* ---------- GLOBAL VARS  ---------- */
 	header .centeralign {
@@ -356,18 +452,31 @@ table {
 	.x  {
 		color:#fff;
 	}
+	.centertext a {
+		color:#000;
+	}
 	.navsidebar,
+	.navsidebar ul>li>a {
+		background-color: #5dc51f;
+	}
 	header  {
 		background-color: #000
 	}
 	a.continue {
 		text-transform: uppercase;
 	}
+	.navsidebar ul>li>a,
+	.signupbar a,
+	.centertext a {
+		text-decoration: none;
+	}
 	header,
 	.navsidebar ul li a,
 	.navsidebar,
 	.swiper-container,
-	footer {
+	footer,
+	a.btn,
+	.loginbox {
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
@@ -377,7 +486,8 @@ table {
 	header .nav-icon span,
 	.wrapper,
 	.bgfill,
-	.addtocart {
+	.addtocart,
+	.loginbox {
 		-o-transition: .2s;
 	  -ms-transition: .2s;
 	  -moz-transition: .2s;
@@ -408,7 +518,9 @@ table {
     opacity: 1;
   }
 }
-
+.contactfields {
+	letter-spacing: 0px;
+}
 
 ::-webkit-input-placeholder {
 	   color: #000;
