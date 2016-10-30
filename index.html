@@ -64,7 +64,16 @@
    <script src="js/jquery.min.js"></script>
    <script src="js/wow.min.js"></script>
    <script src="js/cordova.js"></script>
-
+		<script>
+	 	 wow = new WOW({
+        boxClass:     'wow',      // default
+        animateClass: 'animated', // default
+        offset:       9,          // default
+        mobile:       true,       // default
+        live:         true        // default
+      })
+      wow.init();
+	  </script>
    <script>
 				//If not logged in show login button
 				if (localStorage.login != "true") {
@@ -103,17 +112,6 @@
 				}
 			});
 		</script>	
-		
-    <script>
-	 	 wow = new WOW({
-        boxClass:     'wow',      // default
-        animateClass: 'animated', // default
-        offset:       35,          // default
-        mobile:       true,       // default
-        live:         true        // default
-      })
-      wow.init();
-	  </script>
 
 	  <script>
 			 $('#hamburger').click(function () {
