@@ -420,6 +420,9 @@ table {
   .loginerror.on {
   	padding: 15px 0px;
   }
+  .heart {
+  	display:none;
+  }
 /* ----------END MOBILE  ---------- */
 
 

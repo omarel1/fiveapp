@@ -61,16 +61,16 @@
 		</div>
 		<div class="overlay"></div>	 
 
+   <script src="js/jquery.min.js"></script>
+   <script src="js/wow.min.js"></script>
+   <script src="js/cordova.js"></script>
+
    <script>
 				//If not logged in show login button
 				if (localStorage.login != "true") {
 					document.write("<div class='signupbar'><a href='#' class='signupbtn'>Sign up/Sign in</a></div>");
-				}
-			</script>
-
-	 <script src="js/jquery.min.js"></script>
-   <script src="js/wow.min.js"></script>
-   <script src="js/cordova.js"></script>
+				} 
+			</script> 
 
 	 <script type="text/javascript">
 			 // var url="http://localhost/phonegapdemo/actions/json.php";
@@ -108,7 +108,7 @@
 	 	 wow = new WOW({
         boxClass:     'wow',      // default
         animateClass: 'animated', // default
-        offset:       25,          // default
+        offset:       35,          // default
         mobile:       true,       // default
         live:         true        // default
       })
