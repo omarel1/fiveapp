@@ -423,6 +423,10 @@ table {
   .heart {
   	display:none;
   }
+  .casebox {
+  	border-radius: 10px;
+  	height:310px;
+  }
 /* ----------END MOBILE  ---------- */
 
 
