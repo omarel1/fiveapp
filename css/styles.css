@@ -412,6 +412,14 @@ table {
   .signupblock {
   	display:none;
   }
+  .loginerror {
+  	width:80%;
+  	margin:0 auto;
+    display: block;
+  }
+  .loginerror.on {
+  	padding: 15px 0px;
+  }
 /* ----------END MOBILE  ---------- */
 
 
@@ -490,13 +498,19 @@ table {
 	header .nav-icon span,
 	.wrapper,
 	.bgfill,
-	.addtocart,
-	.loginbox {
+	.addtocart {
 		-o-transition: .2s;
 	  -ms-transition: .2s;
 	  -moz-transition: .2s;
 	  -webkit-transition: .2s;
 	  transition: .2s;
+	}
+	.loginbox {
+		-o-transition: .1s;
+	  -ms-transition: .1s;
+	  -moz-transition: .1s;
+	  -webkit-transition: .1s;
+	  transition: .1s;
 	}
 	@keyframes cartbtnFade {
   0% {

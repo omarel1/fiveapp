@@ -42,9 +42,10 @@
 		<div class="loginbox">
 			<div class="closex">X</div>
 			<div class="loginblock">
+				<div class="centertext"></div>
 				<input id="signinemail" name="signinemail" type="text" class="contactfields" placeholder="email"/>
 				<input id="signinpwd" name="signinpwd"  type="password" class="contactfields" placeholder="password"/>
-				<span id="signinerrormsg"></span>
+				<span id="signinerrormsg" class="loginerror"></span>
 				<a id="signinbtn" href="javascript:;" class="btn">Sign in</a>
 			</div>
 
@@ -53,7 +54,7 @@
 				<input id="signupemail" name="signupemail"  type="text" class="contactfields" placeholder="email"/>
 				<input id="signuppwd" name="signuppwd" type="password" class="contactfields" placeholder="password"/>
 				<input id="signuppwd2" name="signuppwd2" type="password" class="contactfields" placeholder="re-enter password"/>
-				<span id="signuperrormsg"></span>
+				<span id="signuperrormsg" class="loginerror"></span>
 				<a id="signupbtn" href="javascript:;" class="btn">Sign up</a>
 				<div class="centertext"><a id="backtologin" href="javascript:;">Back to sign in</a></div>
 			</div>
@@ -164,6 +165,7 @@
 					     $('#signinerrormsg').html(data);
 					     $('#signinbtn').css('opacity','1');
 					     // alert(data);
+					     $('.loginerror').addClass("on");
 					     $("#signinbtn").html('Sign in');
 					     }
 				     }
@@ -215,6 +217,7 @@
 						     $('#signuperrormsg').html(data);
 						     $('#signupbtn').css('opacity','1');
 						     // alert(data);
+						     $('.loginerror').addClass("on");
 						     $("#signupbtn").html('Sign up');
 						     }
 					     }
