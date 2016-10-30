@@ -179,7 +179,8 @@ table {
 	header .nav-icon span {
     width: 100%;
     height: 3px;
-    background: rgb(93, 197, 31);
+    /*background: rgb(93, 197, 31);*/
+    background: #28e52c;
     position: absolute;
 	}
 	header .nav-icon {
@@ -253,7 +254,6 @@ table {
 		right:23px;
 		background-color: rgba(255, 35, 26, 1.0);
 		border-radius: 50%;
-		padding:3px;
 		color:#fff;
 		z-index:100;
 	}
@@ -296,7 +296,7 @@ table {
     font-size: 15px;
     text-decoration: none;
     color: #000;
-    background-color: rgb(93, 197, 31);
+    background-color: #28e52c;
     border: none;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -335,13 +335,13 @@ table {
 		padding:15px 0px 15px 0px;
 	}
 	.signupbar a {
-		color:#5dc51f;
+		color:#28e52c;
 		letter-spacing:-1px;
 	}
 	.loginbox {
 		width:90%;
-		border:1px solid #5dc51f;
-		color:#5dc51f;
+		border:1px solid #28e52c;
+		color:#28e52c;
 		right:0;
 		left:0;
 		position: fixed;
@@ -373,13 +373,13 @@ table {
     border-left: 0px;
     border-right: 0px;
     background: transparent;
-    border-bottom: 1px solid #5dc51f !important;
+    border-bottom: 1px solid #28e52c !important;
     letter-spacing: 1px;
     display: block;
     padding: 10px 0px 5px !important;
     margin-bottom: 8px !important;
     width: 80%;
-    color: #5dc51f;
+    color: #28e52c;
     outline: none;
     font-size: 15px;
     font-weight: 300;
@@ -389,7 +389,7 @@ table {
   a.btn {
   	border:2px solid #000;
   	color:#000;
-  	background-color: #5dc51f;
+  	background-color: #28e52c;
   	padding:10px 30px;
   	width:80%;
   	display: inline-block;
@@ -468,7 +468,7 @@ table {
 	}
 	.navsidebar,
 	.navsidebar ul>li>a {
-		background-color: #5dc51f;
+		background-color: #28e52c;
 	}
 	header  {
 		background-color: #000
@@ -582,7 +582,7 @@ a.btn span:nth-child(3) {
 }
 
 ::-webkit-input-placeholder {
-	   color: #5dc51f;
+	   color: #28e52c;
 	    opacity:1; 
 		-webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;
@@ -590,7 +590,7 @@ a.btn span:nth-child(3) {
 
 	}
 :-moz-placeholder { /* Firefox 18- */
-	    color: #5dc51f;  
+	    color: #28e52c;  
 	      opacity:1; 
 		  -webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;
@@ -598,14 +598,14 @@ a.btn span:nth-child(3) {
 
 	}
 	::-moz-placeholder {  /* Firefox 19+ */
-	   color: #5dc51f; 
+	   color: #28e52c; 
 	   opacity:1; 
 	   -webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;
 		 font-family: 'gothambook';
 	}
 	:-ms-input-placeholder {  
-	   color: #5dc51f; 
+	   color: #28e52c; 
 	      opacity:1; 
 		  -webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;
