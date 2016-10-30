@@ -54,8 +54,8 @@ table {
 	header {
 		width:100%;
 		padding:6px;
-    padding-top: 24px;
-    padding-bottom: 10px;
+    padding-top: 29px;
+    padding-bottom: 1px;
 		left:0px;
     position: fixed;
     z-index: 10;
@@ -157,8 +157,8 @@ table {
 	}
 	header .cart {
 		position: absolute;
-		top:27;
-		right:20px;
+		top: 30px;
+    right: 10px;
 	}
 	.clearfloats {
 		clear:both;
@@ -267,8 +267,8 @@ table {
 	.floatleft {
 		width:100%;
 		float:none;
-		margin-top:0px;
-		padding-bottom:10px;
+		margin-top: 3px;
+    padding-bottom: 6px;
 	}
 	.floatleft:nth-child(odd) {
 		margin-right:10px;
