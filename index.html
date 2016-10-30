@@ -59,11 +59,7 @@
 				<div class="centertext"><a id="backtologin" href="javascript:;">Back to sign in</a></div>
 			</div>
 		</div>
-		<div class="overlay"></div>
-
-	 <script src="js/jquery.min.js"></script>
-   <script src="js/wow.min.js"></script>
-   <script src="js/cordova.js"></script>
+		<div class="overlay"></div>	 
 
    <script>
 				//If not logged in show login button
@@ -72,11 +68,15 @@
 				}
 			</script>
 
+	 <script src="js/jquery.min.js"></script>
+   <script src="js/wow.min.js"></script>
+   <script src="js/cordova.js"></script>
+
 	 <script type="text/javascript">
 			 // var url="http://localhost/phonegapdemo/actions/json.php";
 			 // var url="../php/json.php";
 			 var url_pullrecords ="http://www.elbaga.net/fiveapp/php/json.php";
-			 function getresult(url) {
+			 function getresult(url_pullrecords) {
 				 $.ajax({
 					 url: url_pullrecords,
 					 type: "GET",
@@ -108,7 +108,7 @@
 	 	 wow = new WOW({
         boxClass:     'wow',      // default
         animateClass: 'animated', // default
-        offset:       45,          // default
+        offset:       5,          // default
         mobile:       true,       // default
         live:         true        // default
       })
