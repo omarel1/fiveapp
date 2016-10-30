@@ -340,7 +340,8 @@ table {
 	}
 	.loginbox {
 		width:90%;
-		border:2px solid #fff;
+		border:1px solid #5dc51f;
+		color:#5dc51f;
 		right:0;
 		left:0;
 		position: fixed;
@@ -348,7 +349,7 @@ table {
 		top: 100%;
   	margin:0 auto;
   	text-align:center;
-  	background-color:#5dc51f;
+  	background-color:#000;
   	z-index:20;
   	display: block;
 	}
@@ -372,14 +373,13 @@ table {
     border-left: 0px;
     border-right: 0px;
     background: transparent;
-    border-bottom: 1px solid #000 !important;
+    border-bottom: 1px solid #5dc51f !important;
     letter-spacing: 1px;
     display: block;
     padding: 10px 0px 5px !important;
     margin-bottom: 8px !important;
     width: 80%;
-    text-transform: Capitalize;
-    color: #000;
+    color: #5dc51f;
     outline: none;
     font-size: 15px;
     font-weight: 300;
@@ -389,8 +389,9 @@ table {
   a.btn {
   	border:2px solid #000;
   	color:#000;
+  	background-color: #5dc51f;
   	padding:10px 30px;
-  	width:85%;
+  	width:80%;
   	display: inline-block;
   	margin:10px auto;
   }
@@ -455,7 +456,7 @@ table {
 		color:#fff;
 	}
 	.centertext a {
-		color:#000;
+		color:#fff;
 	}
 	.navsidebar,
 	.navsidebar ul>li>a {
@@ -469,7 +470,8 @@ table {
 	}
 	.navsidebar ul>li>a,
 	.signupbar a,
-	.centertext a {
+	.centertext a,
+	a.btn {
 		text-decoration: none;
 	}
 	header,
@@ -520,12 +522,53 @@ table {
     opacity: 1;
   }
 }
+
+
+@keyframes blink {
+    /**
+     * At the start of the animation the dot
+     * has an opacity of .2
+     */
+    0% {
+      opacity: .2;
+    }
+    /**
+     * At 20% the dot is fully visible and
+     * then fades out slowly
+     */
+    20% {
+      opacity: 1;
+    }
+    /**
+     * Until it reaches an opacity of .2 and
+     * the animation can start again
+     */
+    100% {
+      opacity: .2;
+    }
+}
+
+a.btn span {
+    animation-name: blink;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+
+a.btn span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+a.btn span:nth-child(3) {
+    animation-delay: .4s;
+}
+
 .contactfields {
 	letter-spacing: 0px;
 }
 
 ::-webkit-input-placeholder {
-	   color: #000;
+	   color: #5dc51f;
 	    opacity:1; 
 		-webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;
@@ -533,7 +576,7 @@ table {
 
 	}
 :-moz-placeholder { /* Firefox 18- */
-	    color: #000;  
+	    color: #5dc51f;  
 	      opacity:1; 
 		  -webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;
@@ -541,14 +584,14 @@ table {
 
 	}
 	::-moz-placeholder {  /* Firefox 19+ */
-	   color: #000; 
+	   color: #5dc51f; 
 	   opacity:1; 
 	   -webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;
 		 font-family: 'gothambook';
 	}
 	:-ms-input-placeholder {  
-	   color: #000; 
+	   color: #5dc51f; 
 	      opacity:1; 
 		  -webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;

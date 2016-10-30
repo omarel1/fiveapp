@@ -42,36 +42,42 @@
 		<div class="loginbox">
 			<div class="closex">X</div>
 			<div class="loginblock">
-				<input type="text" class="contactfields" placeholder="email"/>
-				<input type="text" class="contactfields" placeholder="password"/>
-				<a href="#" class="btn">Sign in</a>
+				<input id="signinemail" name="signinemail" type="text" class="contactfields" placeholder="email"/>
+				<input id="signinpwd" name="signinpwd"  type="password" class="contactfields" placeholder="password"/>
+				<span id="signinerrormsg"></span>
+				<a id="signinbtn" href="javascript:;" class="btn">Sign in</a>
 			</div>
 
 			<div class="centertext"><a id="createaccountlink" href="javascript:;">Create an account</a></div>
-			
 			<div class="signupblock">
-			<input type="text" class="contactfields" placeholder="email"/>
-			<input type="text" class="contactfields" placeholder="password"/>
-			<input type="text" class="contactfields" placeholder="password"/>
-			<a href="#" class="btn">Sign up</a>
-			<div class="centertext"><a id="backtologin" href="javascript:;">Back to sign in</a></div>
+				<input id="signupemail" name="signupemail"  type="text" class="contactfields" placeholder="email"/>
+				<input id="signuppwd" name="signuppwd" type="password" class="contactfields" placeholder="password"/>
+				<input id="signuppwd2" name="signuppwd2" type="password" class="contactfields" placeholder="re-enter password"/>
+				<span id="signuperrormsg"></span>
+				<a id="signupbtn" href="javascript:;" class="btn">Sign up</a>
+				<div class="centertext"><a id="backtologin" href="javascript:;">Back to sign in</a></div>
 			</div>
 		</div>
 		<div class="overlay"></div>
-		<script>
-				// document.write(localStorage.login);
+
+	 <script src="js/jquery.min.js"></script>
+   <script src="js/wow.min.js"></script>
+   <script src="js/cordova.js"></script>
+
+   <script>
+				//If not logged in show login button
 				if (localStorage.login != "true") {
 					document.write("<div class='signupbar'><a href='#' class='signupbtn'>Sign up/Sign in</a></div>");
 				}
 			</script>
-   <script src="js/jquery.min.js"></script>
+
 	 <script type="text/javascript">
 			 // var url="http://localhost/phonegapdemo/actions/json.php";
 			 // var url="../php/json.php";
-			 var url="http://www.elbaga.net/fiveapp/php/json.php";
+			 var url_pullrecords ="http://www.elbaga.net/fiveapp/php/json.php";
 			 function getresult(url) {
 				 $.ajax({
-					 url: url,
+					 url: url_pullrecords,
 					 type: "GET",
 					 data:  {rowcount:$(".rowcount").val()},
 					 beforeSend: function(){
@@ -87,55 +93,16 @@
 					  error: function(){} 	        
 				 });
 			 	}
-			 	getresult(url);
-			  // $.getJSON(url,function(result){
-				 // $.each(result, function(i, field){
-					//  var cid=field.caseid;
-					//  var img=field.img;
-					//  $("#pagecontent").append("<div class='floatleft'><img src='" + domain + "img/" + img + ".jpg' /></div>");
-					//  });
-			  // });
+			 	getresult(url_pullrecords);
 
-				 $('#hamburger').click(function () {
-			     $('.navsidebar, .nav-icon span:nth-of-type(2)').toggleClass('on');
-			     $('header, .wrapper').toggleClass('on');
-				 });
-
-				 $('#createaccountlink, #backtologin').click(function () {
-			     $('.signupblock').fadeToggle(00);
-			     $('.loginblock').fadeToggle(00);
-				 });
-				 $('.closex').click(function () {
-			     $('.loginbox').toggleClass("on");
-			     $('.overlay').fadeOut();
-				 });
-				 $('.signupbtn').click(function () {
-			     $('.loginbox').toggleClass("on");
-			     $('.overlay').fadeIn();
-				 });
-		
-
-	// $(document).scroll(function(){
-	// 	var y = $(this).scrollTop();
- //     if (y > 150) {
-	// 		if($(".pagenum:last").val() <= $(".rowcount").val()) {
-	// 			var pagenum = parseInt($(".pagenum:last").val()) + 1;
-	// 			getresult(url + '?page=' + pagenum);
-	// 		}
-	// 	}
-	// });
-			// $(document).ready(function(){
-			// 	$(".floatleft:last").append('<div class="btnholder"><a id="continue" class="continue" href="javascript:;">get more</a></div>');
-			// });
 			$('#continue').click(function () {
 		     if($(".pagenum:last").val() <= $(".rowcount").val()) {
 					var pagenum = parseInt($(".pagenum:last").val()) + 1;
-					getresult(url + '?page=' + pagenum);
+					getresult(url_pullrecords + '?page=' + pagenum);
 				}
 			});
-
 		</script>	
-		<script src="js/wow.min.js"></script>
+		
     <script>
 	 	 wow = new WOW({
         boxClass:     'wow',      // default
@@ -146,6 +113,123 @@
       })
       wow.init();
 	  </script>
-	  <script src="js/cordova.js"></script>
+
+	  <script>
+			 $('#hamburger').click(function () {
+		     $('.navsidebar, .nav-icon span:nth-of-type(2)').toggleClass('on');
+		     $('header, .wrapper').toggleClass('on');
+			 });
+			 $('#createaccountlink, #backtologin').click(function () {
+		     $('.signupblock').fadeToggle(00);
+		     $('.loginblock').fadeToggle(00);
+			 });
+			 $('.closex').click(function () {
+		     $('.loginbox').toggleClass("on");
+		     $('.overlay').fadeOut();
+			 });
+			 $('.signupbtn').click(function () {
+		     $('.loginbox').toggleClass("on");
+		     $('.overlay').fadeIn();
+			 });
+		</script>
+
+		<script>
+			 
+			 // sign in action 
+		     $("#signinbtn").click(function(){
+					 var email=$("#signinemail").val();
+			     var password=$("#signinpwd").val();
+			     var dataString="email="+email+"&pwd="+password+"&signin=1&signup=0";
+			     var url_signin = "http://www.elbaga.net/fiveapp/php/loginsignup.php";
+			     // if($.trim(email).length>0 & $.trim(password).length>0) {
+				     $.ajax({
+				     type: "GET",
+				     url: url_signin,
+				     data: dataString,
+				     crossDomain: true,
+				     cache: false,
+				     beforeSend: function(){ 
+				     	$("#signinbtn").html('Connecting<span>.</span><span>.</span><span>.</span>');
+				   	  $('#signinbtn').css('opacity','0.6');},
+				     success: function(data){
+					     if(data=="success") {
+						     localStorage.login="true";
+						     localStorage.email=email;
+						     $('.loginbox').removeClass("on");
+		     				 $('.overlay,.signupbar').fadeOut();
+		     				 $('#signinbtn').css('opacity','1');
+						     // window.location.href = "index.html";
+					     }
+					     else {
+					     $('#signinerrormsg').html(data);
+					     $('#signinbtn').css('opacity','1');
+					     // alert(data);
+					     $("#signinbtn").html('Sign in');
+					     }
+				     }
+				     });
+			     // }
+			     return false;
+		     });
+
+
+
+
+		     var disabled = false;
+		     // signup in action 
+		     $("#signupbtn").click(function(){
+
+		      if ($('#signuppwd').val() != $('#signuppwd2').val()) {
+						$('#signuperrormsg').html('Your passwords don\'t match.');
+						return false;
+					} else { 
+						 var email=$("#signupemail").val();
+				     var password=$("#signuppwd").val();
+				     var dataString="email="+email+"&pwd="+password+"&signin=0&signup=1";
+				     var url_signup = "http://www.elbaga.net/fiveapp/php/loginsignup.php";
+				     // if($.trim(email).length>0 & $.trim(password).length>0) {
+					   
+					   	 disabled = true;
+					     $.ajax({
+					     type: "GET",
+					     url: url_signup,
+					     data: dataString,
+					     crossDomain: true,
+					     cache: false,
+					     beforeSend: function(){ 
+					     		$("#signupbtn").html('Connecting<span>.</span><span>.</span><span>.</span>');
+					     		$('#signupbtn').css('opacity','0.6');	
+					   			},
+					     success: function(data){
+						     if($.isNumeric( data )) {
+							     localStorage.login="true";
+							     localStorage.email=email;
+							     localStorage.userid=data;
+							     $('.loginbox').removeClass("on");
+			     				 $('.overlay, .signupbar').fadeOut();
+							     disabled = false;
+            				$('#signupbtn').css('opacity','1');
+            			// window.location.href = "index.html";
+						     }
+						     else {
+						     $('#signuperrormsg').html(data);
+						     $('#signupbtn').css('opacity','1');
+						     // alert(data);
+						     $("#signupbtn").html('Sign up');
+						     }
+					     }
+					     });
+				     // }
+				     return false;
+			     }
+		     });
+
+
+		   //clear login for debugging
+				 //localStorage.login="false";
+		     //localStorage.email="";
+		     //localStorage.userid="";
+		</script>
+	  
 	</body>
 </html>
