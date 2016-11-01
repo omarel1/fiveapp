@@ -106,12 +106,14 @@
 						 	$('.favit').click(function(){
 			     			var cid=$(this).data("id");
 			     			addfav(cid);
+			     			return false;
 			     		 });
 
 						 	//add to cart functon
 						 	$('.addmetocart').click(function(){
 			     			var cid=$(this).data("id");
 			     			addToCart(cid);
+			     			return false;
 			     		 });
 
 					 },
@@ -169,6 +171,7 @@
 						     $('#fav_' + cid).html('heart me');
 					     }
 					     });
+					     return false;
 					}
 
 					function addToCart(cid) {
@@ -190,6 +193,7 @@
 						     $('#addtocart_' + cid).html('add to cart');
 					     }
 					     });
+					     return false;
 					}
 
 

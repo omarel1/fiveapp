@@ -448,6 +448,7 @@ table {
   }
   .casebox {
   	position:relative;
+    margin-bottom: 10px;
   	/*border-radius: 10px;
   	height:310px;*/
   }
