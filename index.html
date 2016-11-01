@@ -74,12 +74,14 @@
       })
       wow.init();
 	  </script>
-   <script>
-				//If not logged in show login button
-				if (localStorage.login != "true") {
-					document.write("<div class='signupbar'><a href='#' class='signupbtn'>Sign up/Sign in</a></div>");
-				} 
-			</script> 
+    <script>
+			//If not logged in show login button
+			
+			if (localStorage.login != "true") {
+				localStorage.login == "false"
+				document.write("<div class='signupbar'><a href='#' class='signupbtn'>Sign up/Sign in</a></div>");
+			} 
+		</script> 
 
 	 <script type="text/javascript">
 			 // var url="http://localhost/phonegapdemo/actions/json.php";
@@ -89,7 +91,7 @@
 				 $.ajax({
 					 url: url_pullrecords,
 					 type: "GET",
-					 data:  {rowcount:$(".rowcount").val()},
+					 data:  {rowcount:$(".rowcount").val(),loggedIn:localStorage.login},
 					 beforeSend: function(){
 					 	$('#loadericon').fadeIn();
 					 },
@@ -99,6 +101,19 @@
 					 success: function(data){
 					 	// $("#pagecontent").append(data);
 					 	$(".btnholder").before(data);
+						 	
+						 	//add to favorite functon
+						 	$('.favit').click(function(){
+			     			var cid=$(this).data("id");
+			     			addfav(cid);
+			     		 });
+
+						 	//add to cart functon
+						 	$('.addmetocart').click(function(){
+			     			var cid=$(this).data("id");
+			     			addToCart(cid);
+			     		 });
+
 					 },
 					  error: function(){} 	        
 				 });
@@ -134,7 +149,52 @@
 		</script>
 
 		<script>
-			 
+			 		
+			 		function addfav(cid) {
+					   alert("This case was added to your favorites!");
+					   var cid=cid; 
+					   var uid=localStorage.userid; 
+				     var dataString="uid="+uid+"&cid="+cid+"&addtype=1";
+				     var url_favadd = "http://www.elbaga.net/fiveapp/php/fav_or_addtocart.php";
+					     $.ajax({
+					     type: "GET",
+					     url: url_favadd,
+					     data: dataString,
+					     crossDomain: true,
+					     cache: false,
+					     beforeSend: function(){ 
+					     		$('#fav_' + cid).html('adding<span>.</span><span>.</span><span>.</span>');
+					   			},
+					     success: function(data){
+						     $('#fav_' + cid).html('heart me');
+					     }
+					     });
+					}
+
+					function addToCart(cid) {
+					   alert("This case was added to your cart!");
+					   var cid=cid; 
+					   var uid=localStorage.userid; 
+				     var dataString="uid="+uid+"&cid="+cid+"&addtype=2";
+				     var url_favadd = "http://www.elbaga.net/fiveapp/php/fav_or_addtocart.php";
+					     $.ajax({
+					     type: "GET",
+					     url: url_favadd,
+					     data: dataString,
+					     crossDomain: true,
+					     cache: false,
+					     beforeSend: function(){ 
+					     		$('#addtocart_' + cid).html('adding<span>.</span><span>.</span><span>.</span>');
+					   			},
+					     success: function(data){
+						     $('#addtocart_' + cid).html('add to cart');
+					     }
+					     });
+					}
+
+
+
+
 			 // sign in action 
 		     $("#signinbtn").click(function(){
 					 var email=$("#signinemail").val();
@@ -152,12 +212,14 @@
 				     	$("#signinbtn").html('Connecting<span>.</span><span>.</span><span>.</span>');
 				   	  $('#signinbtn').css('opacity','0.6');},
 				     success: function(data){
-					     if(data=="success") {
+					     if($.isNumeric( data )) {
 						     localStorage.login="true";
 						     localStorage.email=email;
+						     localStorage.userid=data;
 						     $('.loginbox').removeClass("on");
 		     				 $('.overlay,.signupbar').fadeOut();
 		     				 $('#signinbtn').css('opacity','1');
+		     				 $('.heart').addClass("on");
 						     // window.location.href = "index.html";
 					     }
 					     else {
@@ -210,6 +272,7 @@
 			     				 $('.overlay, .signupbar').fadeOut();
 							     disabled = false;
             				$('#signupbtn').css('opacity','1');
+            				$('.heart').addClass("on");
             			// window.location.href = "index.html";
 						     }
 						     else {
@@ -227,10 +290,13 @@
 		     });
 
 
+
+
+
 		   //clear login for debugging
-				 //localStorage.login="false";
-		     //localStorage.email="";
-		     //localStorage.userid="";
+				 // localStorage.login="false";
+		   //   localStorage.email="";
+		   //   localStorage.userid="";
 		</script>
 	  
 	</body>
