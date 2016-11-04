@@ -9,19 +9,20 @@
     <!-- <link rel="stylesheet" href="http://www.elbaga.net/fiveapp/fiveapp/css/styles.css"> -->
 	</head>
 	<body>
-		<!-- <div id="loader"><img src="img/loader.gif"></div> -->
 		<div class="navsidebar">
 				<ul>
 					<li><a href="#">Sign in</li>
 				</ul>
 		</div>
 		<header>
-			<div class="floatleft">
-					<div id="hamburger" class="nav-icon">
+			<div class="floatleft favicon">
+				<div id="favcount"></div>
+				<img src="img/heart.png" alt="" class="heartme">
+					<!-- <div id="hamburger" class="nav-icon">
 						<span></span>
 						<span></span>
 						<span></span>
-					</div>
+					</div> -->
 			</div>
 			<div id="logo" class="centeralign floatleft">
 				<img src="img/logo-g.png" alt="">
@@ -36,9 +37,10 @@
 		<!--//load content here --> 
 		<div id="pagecontent" class="wrapper">
 			<div class="btnholder"><a id="continue" class="continue" href="javascript:;">get more</a></div>
-		</div>
+		</div><!--/end load content -->
 		
-		<div id="loadericon"><img src="img/loader.svg"></div>
+
+		<!--//login boxes -->
 		<div class="loginbox">
 			<div class="closex">X</div>
 			<div class="loginblock">
@@ -59,7 +61,12 @@
 				<div class="centertext"><a id="backtologin" href="javascript:;">Back to sign in</a></div>
 			</div>
 		</div>
+		
+		<div class="favbox"><div class="content"></div></div>
+		<div class="addednotify"><div class="msg">added</div></div>
+		<div id="loadericon"><img src="img/loader.svg"></div>
 		<div class="overlay"></div>	 
+
 
    <script src="js/jquery.min.js"></script>
    <script src="js/wow.min.js"></script>
@@ -148,12 +155,16 @@
 		     $('.loginbox').toggleClass("on");
 		     $('.overlay').fadeIn();
 			 });
+			 $('.favicon').click(function () {
+		     $('.favbox').toggleClass("on");
+		     $(".favbox .content").load('http://www.elbaga.net/fiveapp/php/fav_or_addtocart.php?uid=');
+			 });
 		</script>
 
 		<script>
-			 		
+			 		var animationEvent = 'webkitAnimationEnd oanimationend msAnimationEnd animationend';
+
 			 		function addfav(cid) {
-					   alert("This case was added to your favorites!");
 					   var cid=cid; 
 					   var uid=localStorage.userid; 
 				     var dataString="uid="+uid+"&cid="+cid+"&addtype=1";
@@ -168,14 +179,25 @@
 					     		$('#fav_' + cid).html('adding<span>.</span><span>.</span><span>.</span>');
 					   			},
 					     success: function(data){
-						     $('#fav_' + cid).html('heart me');
+						     $('#fav_' + cid).html('<img src="img/heart-already.png" />');
+						      $('.addednotify').toggleClass("on");
+							     setTimeout(function() {
+							        $('.addednotify').removeClass("on");
+							        //animate fav icon
+							        $('.heartme, #favcount').addClass('on');
+							         $('.heartme').one(animationEvent, function(event) {
+					                $('.heartme').removeClass('on');
+					              });
+							          //send data to cart
+							          $('#favcount').html(data);
+							    }, 600);
 					     }
 					     });
 					     return false;
 					}
 
+
 					function addToCart(cid) {
-					   alert("This case was added to your cart!");
 					   var cid=cid; 
 					   var uid=localStorage.userid; 
 				     var dataString="uid="+uid+"&cid="+cid+"&addtype=2";
@@ -190,7 +212,20 @@
 					     		$('#addtocart_' + cid).html('adding<span>.</span><span>.</span><span>.</span>');
 					   			},
 					     success: function(data){
-						     $('#addtocart_' + cid).html('add to cart');
+						     $('#addtocart_' + cid).html('<img src="img/addtocart-already.png" />');
+						     $('.addednotify').toggleClass("on");
+							     setTimeout(function() {
+							        $('.addednotify').removeClass("on");
+							         
+							         $('.cart, #cartcount').addClass('on');
+							         $('.cart').one(animationEvent, function(event) {
+					                $('.cart').removeClass('on');
+					              });
+							          //send data to cart
+							          $('#cartcount').html(data);
+
+							    }, 600);
+
 					     }
 					     });
 					     return false;
