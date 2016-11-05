@@ -383,6 +383,9 @@ table {
 		z-index:15;
 		display: none;
 	}
+	.overlay.on {
+		display: block;
+	}
 	.contactfields {
     border-top: 0px;
     margin:0 auto;
@@ -518,7 +521,7 @@ table {
   	left:0;
   	right:0;
   	margin:0 auto;
-  	background-color: rgba(40, 229, 44, 0.9);
+  	background-color: rgba(255,255,255, 0.9);
   	z-index:-1;
   	text-align: center;
   	top: 50%;
@@ -526,20 +529,31 @@ table {
     -webkit-transform: translateY(-50%);
     visibility: none;
     opacity:0;
+    overflow:scroll;
   }
   .favbox.on {
-  	width:80%;
-  	height:80%;
+  	width:90%;
+  	height:90%;
   	visibility: visible;
     opacity:1;
-    z-index:10;
+    z-index:20;
+  }
+  .favboxclose {
+  	position: absolute;
+  	top:0;
+  	right:0;
+  	color:#000;
+  	cursor:pointer;
   }
   .favbox .content {
-		position: relative;
-  	top: 50%;
-  	font-size:4vh;
-  	transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
+		padding:30px;
+  }
+  .favbox .casebox img.case {
+  	width:140px;
+  	height: auto;
+  }
+  .noscroll {
+  	overflow:hidden;
   }
 /* ----------END MOBILE  ---------- */
 
@@ -611,7 +625,8 @@ table {
 	a.btn,
 	.loginbox,
 	.heart .floatleft,
-	.heart .floatright {
+	.heart .floatright,
+	.favbox {
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;

@@ -62,7 +62,7 @@
 			</div>
 		</div>
 		
-		<div class="favbox"><div class="content"></div></div>
+		<div class="favbox"><div class="favboxclose">close</div><div class="content"></div></div>
 		<div class="addednotify"><div class="msg">added</div></div>
 		<div id="loadericon"><img src="img/loader.svg"></div>
 		<div class="overlay"></div>	 
@@ -83,7 +83,8 @@
 	  </script>
     <script>
 			//If not logged in show login button
-			
+			var uid;
+			uid = localStorage.userid; 
 			if (localStorage.login != "true") {
 				localStorage.login == "false"
 				document.write("<div class='signupbar'><a href='#' class='signupbtn'>Sign up/Sign in</a></div>");
@@ -91,6 +92,8 @@
 		</script> 
 
 	 <script type="text/javascript">
+			 
+			 // PULL RECORDS
 			 // var url="http://localhost/phonegapdemo/actions/json.php";
 			 // var url="../php/json.php";
 			 var url_pullrecords ="http://www.elbaga.net/fiveapp/php/json.php";
@@ -138,6 +141,8 @@
 		</script>	
 
 	  <script>
+
+	  		// CLICKS
 			 $('#hamburger').click(function () {
 		     $('.navsidebar, .nav-icon span:nth-of-type(2)').toggleClass('on');
 		     $('header, .wrapper').toggleClass('on');
@@ -155,18 +160,23 @@
 		     $('.loginbox').toggleClass("on");
 		     $('.overlay').fadeIn();
 			 });
-			 $('.favicon').click(function () {
+
+			 // SHOW FAVORITES
+			 $('.favicon,.favboxclose').click(function () {
 		     $('.favbox').toggleClass("on");
-		     $(".favbox .content").load('http://www.elbaga.net/fiveapp/php/fav_or_addtocart.php?uid=');
+		     $('.overlay').toggleClass("on");
+		     $(".favbox .content").load('http://www.elbaga.net/fiveapp/php/getfavs.php?uid=' + uid);
+		     $('body').toggleClass("noscroll");
 			 });
 		</script>
 
 		<script>
 			 		var animationEvent = 'webkitAnimationEnd oanimationend msAnimationEnd animationend';
 
+			 		// ADD TO FAVORITES
 			 		function addfav(cid) {
-					   var cid=cid; 
-					   var uid=localStorage.userid; 
+					   var cid=cid;
+			       //var uid=localStorage.userid; 					   
 				     var dataString="uid="+uid+"&cid="+cid+"&addtype=1";
 				     var url_favadd = "http://www.elbaga.net/fiveapp/php/fav_or_addtocart.php";
 					     $.ajax({
@@ -196,10 +206,10 @@
 					     return false;
 					}
 
-
+					// ADD TO CART
 					function addToCart(cid) {
 					   var cid=cid; 
-					   var uid=localStorage.userid; 
+					   //var uid=localStorage.userid; 
 				     var dataString="uid="+uid+"&cid="+cid+"&addtype=2";
 				     var url_favadd = "http://www.elbaga.net/fiveapp/php/fav_or_addtocart.php";
 					     $.ajax({
@@ -234,7 +244,7 @@
 
 
 
-			 // sign in action 
+			 	 // SIGN IN
 		     $("#signinbtn").click(function(){
 					 var email=$("#signinemail").val();
 			     var password=$("#signinpwd").val();
@@ -278,7 +288,8 @@
 
 
 		     var disabled = false;
-		     // signup in action 
+		     
+		     // SIGN UP
 		     $("#signupbtn").click(function(){
 
 		      if ($('#signuppwd').val() != $('#signuppwd2').val()) {
@@ -334,8 +345,8 @@
 
 		   //clear login for debugging
 				 // localStorage.login="false";
-		   //   localStorage.email="";
-		   //   localStorage.userid="";
+		   // 	 localStorage.email="";
+		   // 	 localStorage.userid="";
 		</script>
 	  
 	</body>
