@@ -11,7 +11,7 @@
 	<body>
 		<div class="navsidebar">
 				<ul>
-					<li><a href="#">Sign in</li>
+					<li><a href="javascript:;">Sign in</li>
 				</ul>
 		</div>
 		<header>
@@ -158,6 +158,7 @@
 			 $('.signupbtn').click(function () {
 		     $('.loginbox').toggleClass("on");
 		     $('.overlay').fadeIn();
+		     return false;
 			 });
 
 			 // OPEN FAVORITES
@@ -166,6 +167,7 @@
 		     $('.overlay').toggleClass("on");
 		     $(".favbox .content").load('http://www.elbaga.net/fiveapp/php/getfavs.php?uid=' + localStorage.userid);
 		     $('body').toggleClass("noscroll");
+		     return false;
 			 });
 
 			 // CLOSE FAVORITES box
@@ -173,6 +175,7 @@
 		     $('.favbox').removeClass("on");
 		     $('.overlay').removeClass("on");
 		     $('body').removeClass("noscroll");
+		     return false;
 			 });
 
 			 // OPEN CART ITEMS
@@ -181,6 +184,7 @@
 		     $('.overlay').toggleClass("on");
 		     $(".cartbox .content").load('http://www.elbaga.net/fiveapp/php/getcart.php?uid=' + localStorage.userid);
 		     $('body').toggleClass("noscroll");
+		     return false;
 			 });
 
 			 // CLOSE CART ITEMS box
@@ -188,6 +192,7 @@
 		     $('.cartbox').removeClass("on");
 		     $('.overlay').removeClass("on");
 		     $('body').removeClass("noscroll");
+		     return false;
 			 });
 
 
