@@ -27,7 +27,7 @@
 			<div id="logo" class="centeralign floatleft">
 				<img src="img/logo-g.png" alt="">
 			</div>
-			<div class="cart">
+			<div class="cart carticon">
 				<div id="cartcount"></div>
 				<img src="img/cart-g.png" alt="">
 			</div>
@@ -63,10 +63,11 @@
 		</div>
 		
 		<div class="favbox"><div class="favboxclose">close</div><div class="content"></div></div>
-		<div class="addednotify"><div class="msg">added</div></div>
+		<div class="cartbox"><div class="cartboxclose">close</div><div class="content"></div></div>
+		<div class="addednotify"><div class="msg">Thnx!</div></div>
 		<div id="loadericon"><img src="img/loader.svg"></div>
 		<div class="overlay"></div>	 
-
+		<div class="overlaybg"></div>	
 
    <script src="js/jquery.min.js"></script>
    <script src="js/wow.min.js"></script>
@@ -83,8 +84,6 @@
 	  </script>
     <script>
 			//If not logged in show login button
-			var uid;
-			uid = localStorage.userid; 
 			if (localStorage.login != "true") {
 				localStorage.login == "false"
 				document.write("<div class='signupbar'><a href='#' class='signupbtn'>Sign up/Sign in</a></div>");
@@ -161,22 +160,106 @@
 		     $('.overlay').fadeIn();
 			 });
 
-			 // SHOW FAVORITES
-			 $('.favicon,.favboxclose').click(function () {
+			 // OPEN FAVORITES
+			 $('.favicon').click(function () {
 		     $('.favbox').toggleClass("on");
 		     $('.overlay').toggleClass("on");
-		     $(".favbox .content").load('http://www.elbaga.net/fiveapp/php/getfavs.php?uid=' + uid);
+		     $(".favbox .content").load('http://www.elbaga.net/fiveapp/php/getfavs.php?uid=' + localStorage.userid);
 		     $('body').toggleClass("noscroll");
 			 });
+
+			 // CLOSE FAVORITES box
+			 $('.favboxclose').click(function () {
+		     $('.favbox').removeClass("on");
+		     $('.overlay').removeClass("on");
+		     $('body').removeClass("noscroll");
+			 });
+
+			 // OPEN CART ITEMS
+			 $('.carticon').click(function () {
+		     $('.cartbox').toggleClass("on");
+		     $('.overlay').toggleClass("on");
+		     $(".cartbox .content").load('http://www.elbaga.net/fiveapp/php/getcart.php?uid=' + localStorage.userid);
+		     $('body').toggleClass("noscroll");
+			 });
+
+			 // CLOSE CART ITEMS box
+			 $('.cartboxclose').click(function () {
+		     $('.cartbox').removeClass("on");
+		     $('.overlay').removeClass("on");
+		     $('body').removeClass("noscroll");
+			 });
+
+
 		</script>
 
 		<script>
 			 		var animationEvent = 'webkitAnimationEnd oanimationend msAnimationEnd animationend';
 
+
+			 		// DELETE FAVORITE FUNCTION
+			 		//the click is inside the getfavs id
+			 		function removefav(cid,type) {
+					   var cid=cid;
+					   var type=type;
+			       var uid=localStorage.userid; 					   
+				     var dataString="uid="+uid+"&cid="+cid+"&removetype="+type;
+				     var url_removefavadd = "http://www.elbaga.net/fiveapp/php/remove_fav_or_cart.php";
+					     $.ajax({
+					     type: "GET",
+					     url: url_removefavadd,
+					     data: dataString,
+					     crossDomain: true,
+					     cache: false,
+					     beforeSend: function(){ 
+					     		$('#favs_' + cid).html('removing<span>.</span><span>.</span><span>.</span>');
+					   			},
+					     success: function(data){
+						     $('#favs_' + cid).remove();
+						     var favcount;
+						     favcount = parseInt($('#favcount').html());
+						     favcount = favcount - 1;
+						     $('#favcount').html(favcount);
+					     }
+					     });
+					     return false;
+					}
+
+
+					// DELETE CART ITEM FUNCTION
+			 		//the click is inside the cartbox popup
+			 		function removecartitem(cid,type) {
+					   var cid=cid;
+					   var type=type;
+			       var uid=localStorage.userid; 					   
+				     var dataString="uid="+uid+"&cid="+cid+"&removetype="+type;
+				     var url_removefavadd = "http://www.elbaga.net/fiveapp/php/remove_fav_or_cart.php";
+					     $.ajax({
+					     type: "GET",
+					     url: url_removefavadd,
+					     data: dataString,
+					     crossDomain: true,
+					     cache: false,
+					     beforeSend: function(){ 
+					     		$('#carts_' + cid).html('removing<span>.</span><span>.</span><span>.</span>');
+					   			},
+					     success: function(data){
+						     $('#carts_' + cid).remove();
+						     var favcount;
+						     cartcount = parseInt($('#cartcount').html());
+						     cartcount = cartcount - 1;
+						     $('#cartcount').html(cartcount);
+					     }
+					     });
+					     return false;
+					}
+
+
+
 			 		// ADD TO FAVORITES
 			 		function addfav(cid) {
 					   var cid=cid;
-			       //var uid=localStorage.userid; 					   
+			       var uid=localStorage.userid; 					   
 				     var dataString="uid="+uid+"&cid="+cid+"&addtype=1";
 				     var url_favadd = "http://www.elbaga.net/fiveapp/php/fav_or_addtocart.php";
 					     $.ajax({
@@ -190,9 +273,9 @@
 					   			},
 					     success: function(data){
 						     $('#fav_' + cid).html('<img src="img/heart-already.png" />');
-						      $('.addednotify').toggleClass("on");
+						      $('.addednotify,.overlay').addClass("on");
 							     setTimeout(function() {
-							        $('.addednotify').removeClass("on");
+							        $('.addednotify,.overlay').removeClass("on");
 							        //animate fav icon
 							        $('.heartme, #favcount').addClass('on');
 							         $('.heartme').one(animationEvent, function(event) {
@@ -209,7 +292,7 @@
 					// ADD TO CART
 					function addToCart(cid) {
 					   var cid=cid; 
-					   //var uid=localStorage.userid; 
+					   var uid=localStorage.userid; 
 				     var dataString="uid="+uid+"&cid="+cid+"&addtype=2";
 				     var url_favadd = "http://www.elbaga.net/fiveapp/php/fav_or_addtocart.php";
 					     $.ajax({
@@ -222,10 +305,11 @@
 					     		$('#addtocart_' + cid).html('adding<span>.</span><span>.</span><span>.</span>');
 					   			},
 					     success: function(data){
+					     		//update on main page 
 						     $('#addtocart_' + cid).html('<img src="img/addtocart-already.png" />');
-						     $('.addednotify').toggleClass("on");
+						     $('.addednotify,.overlaybg').toggleClass("on");
 							     setTimeout(function() {
-							        $('.addednotify').removeClass("on");
+							        $('.addednotify,.overlaybg').removeClass("on");
 							         
 							         $('.cart, #cartcount').addClass('on');
 							         $('.cart').one(animationEvent, function(event) {
