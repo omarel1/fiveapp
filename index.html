@@ -164,7 +164,7 @@
 			 // OPEN FAVORITES
 			 $('.favicon').click(function () {
 		     $('.favbox').toggleClass("on");
-		     $('.overlay').toggleClass("on");
+		     $('.overlay').addClass("on");
 		     $(".favbox .content").load('http://www.elbaga.net/fiveapp/php/getfavs.php?uid=' + localStorage.userid);
 		     $('body').toggleClass("noscroll");
 		     return false;
@@ -181,7 +181,7 @@
 			 // OPEN CART ITEMS
 			 $('.carticon').click(function () {
 		     $('.cartbox').toggleClass("on");
-		     $('.overlay').toggleClass("on");
+		     $('.overlay').addClass("on");
 		     $(".cartbox .content").load('http://www.elbaga.net/fiveapp/php/getcart.php?uid=' + localStorage.userid);
 		     $('body').toggleClass("noscroll");
 		     return false;
@@ -278,9 +278,9 @@
 					   			},
 					     success: function(data){
 						     $('#fav_' + cid).html('<img src="img/heart-already.png" />');
-						      $('.addednotify,.overlay').addClass("on");
+						      $('.addednotify,.overlaybg').addClass("on");
 							     setTimeout(function() {
-							        $('.addednotify,.overlay').removeClass("on");
+							        $('.addednotify,.overlaybg').removeClass("on");
 							        //animate fav icon
 							        $('.heartme, #favcount').addClass('on');
 							         $('.heartme').one(animationEvent, function(event) {
