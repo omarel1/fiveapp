@@ -556,7 +556,7 @@ table {
     -webkit-transform: translateY(-50%);
     visibility: none;
     opacity:0;
-    font-size:15px;
+    font-size:14px;
 
   }
   .addednotify .msg {

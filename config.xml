@@ -51,19 +51,19 @@
 	
 		<!-- ios icons -->
 		<!-- iPhone 6 / 6+ -->
-		<icon src="icons/ios/icon180.png" platform="ios" width="180" height="180" />
+		<icon src="icons/ios/logo-hand.png" platform="ios" width="180" height="180" />
 		<!-- iPhone / iPod Touch  -->
-		<icon src="icons/ios/icon180.png" platform="ios" width="60" height="60" />
-		<icon src="icons/ios/icon180.png" platform="ios" width="120" height="120" />
+		<icon src="icons/ios/logo-hand.png" platform="ios" width="60" height="60" />
+		<icon src="icons/ios/logo-hand.png" platform="ios" width="120" height="120" />
 		<!-- iPad -->
-		<icon src="icons/ios/icon180.png" platform="ios" width="76" height="76" />
-		<icon src="icons/ios/icon180.png" platform="ios" width="152" height="152" />
+		<icon src="icons/ios/logo-hand.png" platform="ios" width="76" height="76" />
+		<icon src="icons/ios/logo-hand.png" platform="ios" width="152" height="152" />
 		<!-- Settings Icon -->
-		<icon src="icons/ios/icon180.png" platform="ios" width="29" height="29" />
-		<icon src="icons/ios/icon180.png" platform="ios" width="58" height="58" />
+		<icon src="icons/ios/logo-hand.png" platform="ios" width="29" height="29" />
+		<icon src="icons/ios/logo-hand.png" platform="ios" width="58" height="58" />
 		<!-- Spotlight Icon -->
-		<icon src="icons/ios/icon180.png" platform="ios" width="40" height="40" />
-		<icon src="icons/ios/icon180.png" platform="ios" width="80" height="80" />
+		<icon src="icons/ios/logo-hand.png" platform="ios" width="40" height="40" />
+		<icon src="icons/ios/logo-hand.png" platform="ios" width="80" height="80" />
 
 		<!-- ios splash 
 		<splash src="icons/ios/Default@2x.png" platform="ios" width="640" height="960" />
