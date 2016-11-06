@@ -49,7 +49,7 @@ table {
 		-webkit-touch-callout: none;
 		-webkit-user-select: none;
 		/*-webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/
-		background-color:#1C1B1B;
+		background-color:#fff;
 		}
 	header {
 		width:100%;
@@ -59,7 +59,7 @@ table {
 		left:0px;
 		bottom:0px;
     position: fixed;
-    z-index: 10;
+    z-index: 15;
 	}
 	footer {
 		position: fixed;
@@ -136,13 +136,11 @@ table {
 	}
 	header #logo {
 		position:relative;
-		margin:0 auto;
+		margin:5px auto 0px;
 	}
 	header #logo img {
-		height:auto;
-		/*width:60px;*/
-		width:21px;
-		margin-left: -7px;
+		height: auto;
+    width: 120px;
 	}
 	header .cart img {
 		height:auto;
@@ -226,7 +224,8 @@ table {
 	.wrapper {
 		width:100%;
 		left:0;
-		background-color: #1C1B1B;
+		/*background-color: #1C1B1B;*/
+		background-color: #fff;
 		height:85vh;
 		position: relative;
 	}
@@ -253,11 +252,12 @@ table {
 	}
 	#favcount,
 	#cartcount {
-    position: absolute;
-    padding: 0px;
+    position: absolute; 
+    text-align: center;
+    line-height: 10px;
     font-size: 12px;
     background-color: rgba(255, 35, 26, 1.0);
-    border-radius: 100%;
+    border-radius: 50%;
     color: #FFF;
     z-index: 100;
 	}
@@ -271,7 +271,9 @@ table {
 	}
 	#favcount.on,
 	#cartcount.on {
-    padding: 2px;
+		padding:2px;
+    width:10px;
+    height:10px;
 	}
 	.carticon {
 		cursor:pointer;
@@ -290,12 +292,36 @@ table {
 		margin-right:10px;
 	}
 	#pagecontent .casebox img.thecaseimg {
-		width:100%;
+		width:85%;
 		height:auto;
+    display: block;
+    margin:20px auto 0px;
+    border-radius:5px;
 	}
+	#pagecontent .floatholder {
+		text-align:center;
+		margin:0 auto;
+		display:block;
+		width:96%;
+	}
+	#pagecontent .floatleft.casebox {
+		float:left;
+		width:100%;
+		display:block;
+		border-radius:5px;
+	}
+	#pagecontent .floatleft.casebox:nth-child(odd) {
+		margin-right:0px;
+	}
+	.clearfloats {
+		clear:both;
+	}
+	/*#pagecontent .floatleft:nth-child(odd) {
+		width:50%;
+	}*/
 	#loadericon {
 		position: fixed;
-		background-color: rgba(255, 255, 255, 0.8);
+		background-color: rgba(255, 255, 255, 0.9);
     top: 20px;
     padding-top:100px;
     width: 100%;
@@ -328,9 +354,9 @@ table {
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 2px;
-    -webkit-box-shadow: 0 10px #383838;
-    -moz-box-shadow: 0 10px #383838;
-    box-shadow: 0 2px 2px 3px #383838;
+    -webkit-box-shadow: 0px 2px 3px 1px #383838;
+    -moz-box-shadow: 0px 2px 3px 1px #383838;
+    box-shadow: 0px 2px 3px 1px #383838;
 	}
 	a.continue:hover {
 		background-color: rgba(93, 197, 31, .9);
@@ -456,26 +482,50 @@ table {
   	position:absolute;
   	bottom:0px;
   	margin:0 auto;
-  	width:100%;
+  	left:0;
+  	right:0;
+  	width:84%;
+  	border-bottom-left-radius: 5px;
+  	border-bottom-right-radius: 5px;
   	display:none;
+  	z-index: 13;
+  	background-color: rgba(0, 0, 0, 0.1);
+  	border-bottom:1px solid #000;
+  	border-top:0px solid #000;
+  	border-left:0px solid #000;
+  	border-right:0px solid #000;
+  }
+  .favbox .heart,
+  .cartbox .heart {
+  	bottom:0px;
+  	width:100%;
+  	border-bottom-left-radius: 0px;
+  	border-bottom-right-radius: 0px;
+  	background-color: transparent;
+  	border-bottom:1px solid #000;
+  	border-top:0px solid #000;
+  	border-left:0px solid #000;
+  	border-right:0px solid #000;
+  	font-size:20px;
   }
   .heart .floatleft {
   	float:left;
-  	width:15%;
+  	width:20%;
   	text-align:center;
   	cursor:pointer;
-  	padding:10px;
+  	padding:5px;
   }
   .heart .floatright {
   	float:right;
-  	width:15%;
+  	width:20%;
   	text-align:center;
   	cursor:pointer;
-  	padding:10px;
+  	padding:5px;
+  	font-size:14px;
   }
    .heart .floatleft img,
    .heart .floatright img {
-  	width:28px;
+  	width:20px;
   	height: auto;
   }
   .heart.on {
@@ -484,7 +534,7 @@ table {
   .casebox {
   	position:relative;
     /*margin-bottom: 10px;*/
-    border-bottom: 15px solid #28e52c;
+    /*border-bottom: 15px solid #28e52c;*/
   	/*border-radius: 10px;
   	height:310px;*/
   }
@@ -497,7 +547,8 @@ table {
   	left:0;
   	right:0;
   	margin:0 auto;
-  	background-color: rgba(40, 229, 44, 0.9);
+  	/*background-color: rgba(40, 229, 44, 0.9);*/
+  	background-color: #fff;
   	z-index:-1;
   	text-align: center;
   	top: 50%;
@@ -505,6 +556,7 @@ table {
     -webkit-transform: translateY(-50%);
     visibility: none;
     opacity:0;
+    font-size:15px;
 
   }
   .addednotify .msg {
@@ -539,7 +591,7 @@ table {
   	background-color: rgba(255,255,255, 0.9);
   	z-index:-1;
   	text-align: center;
-  	top: 50%;
+  	top: 100%;
   	transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     visibility: none;
@@ -553,6 +605,7 @@ table {
   	visibility: visible;
     opacity:1;
     z-index:20;
+    top:50%;
   }
   .favboxclose,
   .cartboxclose {
@@ -667,7 +720,9 @@ table {
 	.wrapper,
 	.bgfill,
 	.addtocart,
-	.addednotify {
+	.addednotify,
+	.favbox,
+  .cartbox {
 		-o-transition: .2s;
 	  -ms-transition: .2s;
 	  -moz-transition: .2s;
@@ -675,8 +730,7 @@ table {
 	  transition: .2s;
 	}
 
-	.favbox,
-  .cartbox {
+	.x {
 		-o-transition: .5s;
 	  -ms-transition: .5s;
 	  -moz-transition: .5s;
