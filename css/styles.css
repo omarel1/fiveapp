@@ -556,13 +556,12 @@ table {
     -webkit-transform: translateY(-50%);
     visibility: none;
     opacity:0;
-    font-size:14px;
 
   }
   .addednotify .msg {
 		position: relative;
   	top: 50%;
-  	font-size:4vh;
+  	font-size:18px;
   	transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
   }
