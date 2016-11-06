@@ -9,11 +9,12 @@
     <!-- <link rel="stylesheet" href="http://www.elbaga.net/fiveapp/fiveapp/css/styles.css"> -->
 	</head>
 	<body>
-		<div class="navsidebar">
+	
+		<!-- <div class="navsidebar">
 				<ul>
 					<li><a href="javascript:;">Sign in</li>
 				</ul>
-		</div>
+		</div> -->
 		<header>
 			<div class="floatleft favicon">
 				<div id="favcount"></div>
@@ -62,10 +63,15 @@
 			</div>
 		</div>
 		
-		<div class="favbox"><div class="favboxclose">close</div><div class="content"></div></div>
-		<div class="cartbox"><div class="cartboxclose">close</div><div class="content"></div></div>
+		<div class="favbox"><div class="favboxclose"><img src="img/x.png"></div><div class="content"></div></div>
+		<div class="cartbox"><div class="cartboxclose"><img src="img/x.png"></div><div class="content"></div></div>
+		<!-- thank you popup after action -->
 		<div class="addednotify"><div class="msg">Thnx!</div></div>
+		<!-- load icon during pull requests -->
 		<div id="loadericon"><img src="img/loader.svg"></div>
+		<!-- cover window until all images load -->
+		<div class="loaderwrapper"></div>	
+		<!-- overlay when you click action -->
 		<div class="overlay"></div>	 
 		<div class="overlaybg"></div>	
 
@@ -163,9 +169,12 @@
 
 			 // OPEN FAVORITES
 			 $('.favicon').click(function () {
+		     $('#loadericon').fadeIn(100);
 		     $('.favbox').toggleClass("on");
 		     $('.overlay').addClass("on");
-		     $(".favbox .content").load('http://www.elbaga.net/fiveapp/php/getfavs.php?uid=' + localStorage.userid);
+		     $(".favbox .content").load('http://www.elbaga.net/fiveapp/php/getfavs.php?uid=' + localStorage.userid, function() {		 
+							  $('#loadericon').fadeOut();
+				 });
 		     $('body').toggleClass("noscroll");
 		     return false;
 			 });
@@ -180,9 +189,12 @@
 
 			 // OPEN CART ITEMS
 			 $('.carticon').click(function () {
+			 	 $('#loadericon').fadeIn();
 		     $('.cartbox').toggleClass("on");
 		     $('.overlay').addClass("on");
-		     $(".cartbox .content").load('http://www.elbaga.net/fiveapp/php/getcart.php?uid=' + localStorage.userid);
+		     $(".cartbox .content").load('http://www.elbaga.net/fiveapp/php/getcart.php?uid=' + localStorage.userid, function() {		 
+							  $('#loadericon').fadeOut();
+				 });
 		     $('body').toggleClass("noscroll");
 		     return false;
 			 });
@@ -217,9 +229,12 @@
 					     crossDomain: true,
 					     cache: false,
 					     beforeSend: function(){ 
+					     	$('#loadericon').fadeIn();
 					     		$('#favs_' + cid).html('removing<span>.</span><span>.</span><span>.</span>');
+
 					   			},
 					     success: function(data){
+						     $('#loadericon').fadeOut();
 						     $('#favs_' + cid).remove();
 						     var favcount;
 						     favcount = parseInt($('#favcount').html());
@@ -246,9 +261,11 @@
 					     crossDomain: true,
 					     cache: false,
 					     beforeSend: function(){ 
+					     		$('#loadericon').fadeIn();
 					     		$('#carts_' + cid).html('removing<span>.</span><span>.</span><span>.</span>');
 					   			},
 					     success: function(data){
+					     	 $('#loadericon').fadeOut();
 						     $('#carts_' + cid).remove();
 						     var favcount;
 						     cartcount = parseInt($('#cartcount').html());
@@ -428,7 +445,11 @@
 			     }
 		     });
 
-
+$(window).load(function(){
+   // PAGE IS FULLY LOADED  
+   // FADE OUT YOUR OVERLAYING DIV
+   $('.loaderwrapper').fadeOut();
+});
 
 
 
