@@ -595,7 +595,6 @@ table {
   	width:90%;
   	height:87%;
   	position: fixed;
-  	top:0;
   	bottom:0;
   	left:0;
   	right:0;
@@ -603,7 +602,7 @@ table {
   	background-color: rgba(255,255,255, 0.9);
   	z-index:20;
   	text-align: center;
-  	top: 100%;
+  	top: 150%;
   	transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     visibility: none;
