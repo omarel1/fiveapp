@@ -63,8 +63,17 @@
 			</div>
 		</div>
 		
-		<div class="favbox"><div class="favboxclose"><img src="img/x.png"></div><div class="content"></div></div>
-		<div class="cartbox"><div class="cartboxclose"><img src="img/x.png"></div><div class="content"></div></div>
+		<div class="favbox">
+			<div class="loaderInPopup"><img src="img/loader.svg"></div>
+			<div class="favboxclose"><img src="img/x.png"></div>
+			<div class="content"></div>
+		</div>
+
+		<div class="cartbox">
+			<div class="loaderInPopup"><img src="img/loader.svg"></div>
+			<div class="cartboxclose"><img src="img/x.png"></div>
+			<div class="content"></div>
+		</div>
 		<!-- thank you popup after action -->
 		<div class="addednotify"><div class="msg">Added!</div></div>
 		<!-- load icon during pull requests -->
@@ -104,6 +113,7 @@
 			 var url_pullrecords ="http://www.elbaga.net/fiveapp/php/json.php";
 			 function getresult(url_pullrecords) {
 				 $.ajax({
+				 	 context: this,
 					 url: url_pullrecords,
 					 type: "GET",
 					 data:  {rowcount:$(".rowcount").val(),loggedIn:localStorage.login},
@@ -116,20 +126,6 @@
 					 success: function(data){
 					 	// $("#pagecontent").append(data);
 					 	$(".btnholder").before(data);
-						 	
-						 	//add to favorite functon
-						 	$('.favit').click(function(){
-			     			var cid=$(this).data("id");
-			     			addfav(cid);
-			     			return false;
-			     		 });
-
-						 	//add to cart functon
-						 	$('.addmetocart').click(function(){
-			     			var cid=$(this).data("id");
-			     			addToCart(cid);
-			     			return false;
-			     		 });
 
 					 },
 					  error: function(){} 	        
@@ -146,6 +142,7 @@
 		</script>	
 
 	  <script>
+
 
 	  		// CLICKS
 			 $('#hamburger').click(function () {
@@ -167,45 +164,88 @@
 		     return false;
 			 });
 
-			 // OPEN FAVORITES
-			 $('.favicon').click(function () {
-		     $('#loadericon').fadeIn(100);
-		     $('.favbox').toggleClass("on");
-		     $('.overlay').addClass("on");
-		     $(".favbox .content").load('http://www.elbaga.net/fiveapp/php/getfavs.php?uid=' + localStorage.userid, function() {		 
-							  $('#loadericon').fadeOut();
+			  // ADD TO FAVORITE CLICK
+	  		$(document).on("click", '.casebox .favit', function(){
+				  var cid=$(this).data("id");
+				  addfav(cid); //execute function
+				  return false;
+				});
+
+	  		// ADD TO CART CLICK
+				$(document).on("click", '.casebox .addmetocart', function(){
+				  var cid=$(this).data("id");
+				  addToCart(cid); //execute function
+				  return false;
+				});
+
+				// REMOVE FAVORITE
+				$(document).on("click", '.favbox .remove', function(){
+				   var cid;
+			     cid = $(this).data("id");
+			     removefav(cid,1);
+			     $('#fav_' + cid).html('<img src="img/heart.png" />');
+				   return false;
+				});
+
+				// ADD TO CART CLICK FROM FAVORITE POPUP
+				$(document).on("click", '.favbox .addmetocart', function(){
+				   var cid;
+			     cid = $(this).data("id");
+			     $(this).html("in cart");
+			     addToCart(cid);
+				});
+
+				// REMOVE ITEM IN CART
+				$(document).on("click", '.cartbox .remove', function(){
+				   var cid;
+			     cid = $(this).data("id");
+			     removecartitem(cid,2);
+			     $('#addtocart_' + cid).html('<img src="img/addtocart.png" />');
+				   return false;
+				});
+
+
+
+
+			  // OPEN FAVORITES
+			  $('.favicon').click(function () {
+			     $('.favbox .loaderInPopup').fadeIn(100);
+			     $('.favbox').toggleClass("on");
+			     $('.overlay').addClass("on");
+			     $(".favbox .content").load('http://www.elbaga.net/fiveapp/php/getfavs.php?uid=' + localStorage.userid, function() {		 
+								  $('.favbox .loaderInPopup').fadeOut();
+					 });
+			     $('body').toggleClass("noscroll");
+			     return false;
+			  });
+
+				 // CLOSE FAVORITES box
+				 $('.favboxclose').click(function () {
+			     $('.favbox').removeClass("on");
+			     $('.overlay').removeClass("on");
+			     $('body').removeClass("noscroll");
+			     return false;
 				 });
-		     $('body').toggleClass("noscroll");
-		     return false;
-			 });
 
-			 // CLOSE FAVORITES box
-			 $('.favboxclose').click(function () {
-		     $('.favbox').removeClass("on");
-		     $('.overlay').removeClass("on");
-		     $('body').removeClass("noscroll");
-		     return false;
-			 });
-
-			 // OPEN CART ITEMS
-			 $('.carticon').click(function () {
-			 	 $('#loadericon').fadeIn();
-		     $('.cartbox').toggleClass("on");
-		     $('.overlay').addClass("on");
-		     $(".cartbox .content").load('http://www.elbaga.net/fiveapp/php/getcart.php?uid=' + localStorage.userid, function() {		 
-							  $('#loadericon').fadeOut();
+				 // OPEN CART ITEMS
+				 $('.carticon').click(function () {
+				 	 $('.cartbox .loaderInPopup').fadeIn();
+			     $('.cartbox').toggleClass("on");
+			     $('.overlay').addClass("on");
+			     $(".cartbox .content").load('http://www.elbaga.net/fiveapp/php/getcart.php?uid=' + localStorage.userid, function() {		 
+								  $('.cartbox .loaderInPopup').fadeOut();
+					 });
+			     $('body').toggleClass("noscroll");
+			     return false;
 				 });
-		     $('body').toggleClass("noscroll");
-		     return false;
-			 });
 
-			 // CLOSE CART ITEMS box
-			 $('.cartboxclose').click(function () {
-		     $('.cartbox').removeClass("on");
-		     $('.overlay').removeClass("on");
-		     $('body').removeClass("noscroll");
-		     return false;
-			 });
+				 // CLOSE CART ITEMS box
+				 $('.cartboxclose').click(function () {
+			     $('.cartbox').removeClass("on");
+			     $('.overlay').removeClass("on");
+			     $('body').removeClass("noscroll");
+			     return false;
+				 });
 
 
 		</script>
@@ -229,12 +269,12 @@
 					     crossDomain: true,
 					     cache: false,
 					     beforeSend: function(){ 
-					     	$('#loadericon').fadeIn();
+					     	$('.favbox .loaderInPopup').fadeIn();
 					     		$('#favs_' + cid).html('removing<span>.</span><span>.</span><span>.</span>');
 
 					   			},
 					     success: function(data){
-						     $('#loadericon').fadeOut();
+						     $('.favbox .loaderInPopup').fadeOut();
 						     $('#favs_' + cid).remove();
 						     var favcount;
 						     favcount = parseInt($('#favcount').html());
@@ -261,11 +301,11 @@
 					     crossDomain: true,
 					     cache: false,
 					     beforeSend: function(){ 
-					     		$('#loadericon').fadeIn();
+					     		$('.cartbox .loaderInPopup').fadeIn();
 					     		$('#carts_' + cid).html('removing<span>.</span><span>.</span><span>.</span>');
 					   			},
 					     success: function(data){
-					     	 $('#loadericon').fadeOut();
+					     	 $('.cartbox .loaderInPopup').fadeOut();
 						     $('#carts_' + cid).remove();
 						     var favcount;
 						     cartcount = parseInt($('#cartcount').html());
@@ -329,7 +369,7 @@
 					     success: function(data){
 					     		//update on main page 
 						     $('#addtocart_' + cid).html('<img src="img/addtocart-already.png" />');
-						     $('.addednotify,.overlaybg').toggleClass("on");
+						     $('.addednotify,.overlaybg').addClass("on");
 							     setTimeout(function() {
 							        $('.addednotify,.overlaybg').removeClass("on");
 							         
