@@ -6,7 +6,9 @@
 		<meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animate.css">
+   	
     <!-- <link rel="stylesheet" href="http://www.elbaga.net/fiveapp/fiveapp/css/styles.css"> -->
+
 	</head>
 	<body>
 	
@@ -25,8 +27,8 @@
 						<span></span>
 					</div> -->
 			</div>
-			<div id="logo" class="centeralign floatleft">
-				<img src="img/logofive.png">
+			<div id="logo" class="centeralign floatleft togglechoosephone">
+				<img src="img/logofive.png"><!-- <div class="lsvar"></div> -->
 			</div>
 			<div class="cart carticon">
 				<div id="cartcount"></div>
@@ -63,17 +65,49 @@
 			</div>
 		</div>
 		
+
+
 		<div class="favbox">
 			<div class="loaderInPopup"><img src="img/loader.svg"></div>
 			<div class="favboxclose"><img src="img/x.png"></div>
 			<div class="content"></div>
-		</div>
+		</div>><!--//favbox -->
 
-		<div class="cartbox">
+
+		<div class="cartbox ">
+			<div class="closebox"></div>
 			<div class="loaderInPopup"><img src="img/loader.svg"></div>
 			<div class="cartboxclose"><img src="img/x.png"></div>
 			<div class="content"></div>
+		</div><!--//cartbox -->
+
+
+		<div class="checkoutbox">
+			<div class="checkoutclose togglecheckout"><img src="img/x.png"></div>
+			<div class="content"></div>
+		</div><!--//checkoutbox -->
+
+
+		<!-- PAY BUTTONS -->
+		<a href="#" class="checkoutbtn togglecheckout">Checkout</a>
+		<!-- <a href="#" class="paybtn">Pay</a> -->
+
+
+
+		<div class="choosephonebox">
+			<div class="loaderInPopup"><img src="img/loader.svg"></div>
+			<!-- <div class="choosephoneboxclose"><img src="img/x.png"></div> -->
+			<div class="content">
+				<div class="phonechoice" data-id="1">iPhone 4</div>
+				<div class="phonechoice" data-id="2">iPhone 5</div>
+				<div class="phonechoice" data-id="3">iPhone 6</div>
+				<div class="phonechoice" data-id="4">iPhone 6 Plus</div>
+				<div class="phonechoice" data-id="5">iPhone 7</div>
+				<div class="phonechoice" data-id="6">iPhone 7 Plus</div>
+				<div class="phonechoice" data-id="7">iPhone SE</div>
+			</div>
 		</div>
+
 		<!-- thank you popup after action -->
 		<div class="addednotify"><div class="msg">Added!</div></div>
 		<!-- load icon during pull requests -->
@@ -84,7 +118,15 @@
 		<div class="overlay"></div>	 
 		<div class="overlaybg"></div>	
 
-   <script src="js/jquery.min.js"></script>
+	 <script src="js/jquery.min.js"></script>
+
+	 <!--// START LOAD STRIPE JS files -->
+	 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+   <!-- get your publish key -->
+   <script type="text/javascript">
+      Stripe.setPublishableKey('pk_test_ThllZepEDlqyvISu7TFyXRWE');
+   </script>
+   <!--// END LOAD STRIPE JS files -->
    <script src="js/wow.min.js"></script>
    <script src="js/cordova.js"></script>
 		<script>
@@ -103,20 +145,51 @@
 				localStorage.login == "false"
 				document.write("<div class='signupbar'><a href='#' class='signupbtn'>Sign up/Sign in</a></div>");
 			} 
+			if (!(localStorage.mastercaseid > "0")) {
+				localStorage.mastercaseid == "0";
+				$('.choosephonebox').toggleClass('on');
+				$('.overlay').addClass("on");
+				$('body').addClass("noscroll");
+			} 
+			$('.lsvar').append(localStorage.mastercaseid);
+
 		</script> 
 
 	 <script type="text/javascript">
 			 
+			 // CHOOSE PHONE
+			 	$(document).on("click", '.phonechoice', function(){
+				   var mcid=$(this).data("id");
+				   localStorage.mastercaseid = mcid;
+				   $('.choosephonebox').removeClass("on");
+			     $('.overlay').removeClass("on");
+			     $('body').removeClass("noscroll");
+			     location.reload();
+				  getresult(url_pullrecords); //execute function
+				  return false;
+				});
+
+				// CLOSE choose phone box
+				 $('.togglechoosephone').click(function () {
+			     $('.choosephonebox').toggleClass("on");
+			     $('.overlay').toggleClass("on");
+			     $('body').toggleClass("noscroll");
+			     return false;
+				 });
+
+
 			 // PULL RECORDS
 			 // var url="http://localhost/phonegapdemo/actions/json.php";
 			 // var url="../php/json.php";
-			 var url_pullrecords ="http://www.elbaga.net/fiveapp/php/json.php";
+			 var url_pullrecords = "http://www.elbaga.net/fiveapp/php/json.php";
 			 function getresult(url_pullrecords) {
-				 $.ajax({
+				 $.ajax
+				 ({
 				 	 context: this,
+				   crossDomain: true,
 					 url: url_pullrecords,
 					 type: "GET",
-					 data:  {rowcount:$(".rowcount").val(),loggedIn:localStorage.login},
+					 data:  {rowcount:$(".rowcount").val(),loggedIn:localStorage.login,mcid:localStorage.mastercaseid},
 					 beforeSend: function(){
 					 	$('#loadericon').fadeIn();
 					 },
@@ -164,6 +237,21 @@
 		     return false;
 			 });
 
+			 $('.togglecheckout').click(function () {
+		     $('.checkoutbox').toggleClass("on");
+		     $(".checkoutbox .content").load('https://www.elbaga.net/fiveapp/php/getpayform.php?uid=' + localStorage.userid);
+		     // $(".checkoutbox .content").load('http://localhost/phonecases/stripe/form.html');
+		     return false;
+			 });
+
+			 $('.checkoutclose').click(function () {
+		     return false;
+			 });
+			 	
+
+			 
+
+
 			  // ADD TO FAVORITE CLICK
 	  		$(document).on("click", '.casebox .favit', function(){
 				  var cid=$(this).data("id");
@@ -178,6 +266,17 @@
 				  return false;
 				});
 
+				// ADD TO CART CLICK FROM FAVORITE POPUP
+				// DONT NEED BECAUSE THE ABOVE addtocart is working for both regular and add to cart from favbox
+				// $(document).on("click", '.favbox .addmetocart', function(){
+				//    var cid;
+			 //     cid = $(this).data("id");
+			 //     $(this).html("in cart");
+			 //     addToCart(cid);
+			 //     return false;
+				// });
+
+				
 				// REMOVE FAVORITE
 				$(document).on("click", '.favbox .remove', function(){
 				   var cid;
@@ -187,13 +286,7 @@
 				   return false;
 				});
 
-				// ADD TO CART CLICK FROM FAVORITE POPUP
-				$(document).on("click", '.favbox .addmetocart', function(){
-				   var cid;
-			     cid = $(this).data("id");
-			     $(this).html("in cart");
-			     addToCart(cid);
-				});
+
 
 				// REMOVE ITEM IN CART
 				$(document).on("click", '.cartbox .remove', function(){
@@ -205,6 +298,7 @@
 				});
 
 
+				
 
 
 			  // OPEN FAVORITES
@@ -212,9 +306,10 @@
 			     $('.favbox .loaderInPopup').fadeIn(100);
 			     $('.favbox').toggleClass("on");
 			     $('.overlay').addClass("on");
-			     $(".favbox .content").load('http://www.elbaga.net/fiveapp/php/getfavs.php?uid=' + localStorage.userid, function() {		 
+			     $(".favbox .content").load('http://www.elbaga.net/fiveapp/php/getfavs.php?uid=' + localStorage.userid, 
+			     		function() {		 
 								  $('.favbox .loaderInPopup').fadeOut();
-					 });
+					 	});
 			     $('body').toggleClass("noscroll");
 			     return false;
 			  });
@@ -227,22 +322,26 @@
 			     return false;
 				 });
 
+				 //CLOSE CARTBOX
+				 $('.closebox').click(function() {
+				 		$('.favbox,.cartbox,.checkoutbtn, .overlay').removeClass("on");
+				 })
+
 				 // OPEN CART ITEMS
 				 $('.carticon').click(function () {
 				 	 $('.cartbox .loaderInPopup').fadeIn();
 			     $('.cartbox').toggleClass("on");
-			     $('.overlay').addClass("on");
+			     $('.overlay, a.checkoutbtn').addClass("on");
 			     $(".cartbox .content").load('http://www.elbaga.net/fiveapp/php/getcart.php?uid=' + localStorage.userid, function() {		 
 								  $('.cartbox .loaderInPopup').fadeOut();
-					 });
+					 		});
 			     $('body').toggleClass("noscroll");
 			     return false;
 				 });
 
 				 // CLOSE CART ITEMS box
 				 $('.cartboxclose').click(function () {
-			     $('.cartbox').removeClass("on");
-			     $('.overlay').removeClass("on");
+			     $('.overlay, a.checkoutbtn, .cartbox').removeClass("on");
 			     $('body').removeClass("noscroll");
 			     return false;
 				 });
@@ -499,6 +598,7 @@ $(window).load(function(){
 				 // localStorage.login="false";
 		   // 	 localStorage.email="";
 		   // 	 localStorage.userid="";
+		   // localStorage.mastercaseid="0"
 		</script>
 	  
 	</body>
