@@ -117,6 +117,7 @@
 		<!-- overlay when you click action -->
 		<div class="overlay"></div>	 
 		<div class="overlaybg"></div>	
+		<div class='signupbar'><a href="#" class="togglechoosephone">Select Phone</a> <a href='#' class='signupbtn'>Sign up/Sign in</a></div>
 
 	 <script src="js/jquery.min.js"></script>
 
@@ -143,7 +144,7 @@
 			//If not logged in show login button
 			if (localStorage.login != "true") {
 				localStorage.login == "false"
-				document.write("<div class='signupbar'><a href='#' class='signupbtn'>Sign up/Sign in</a></div>");
+				$('.signupbar').fadeIn();
 			} 
 			if (!(localStorage.mastercaseid > "0")) {
 				localStorage.mastercaseid == "0";
@@ -160,12 +161,13 @@
 			 // CHOOSE PHONE
 			 	$(document).on("click", '.phonechoice', function(){
 				   var mcid=$(this).data("id");
-				   localStorage.mastercaseid = mcid;
+				   // localStorage.mastercaseid = mcid;
+				   localStorage.setItem("mastercaseid", mcid);
 				   $('.choosephonebox').removeClass("on");
 			     $('.overlay').removeClass("on");
 			     $('body').removeClass("noscroll");
-			     location.reload();
-				  getresult(url_pullrecords); //execute function
+			     // location.reload();
+				  getresult(url_pullrecords,1); //execute function
 				  return false;
 				});
 
@@ -182,7 +184,8 @@
 			 // var url="http://localhost/phonegapdemo/actions/json.php";
 			 // var url="../php/json.php";
 			 var url_pullrecords = "http://www.elbaga.net/fiveapp/php/json.php";
-			 function getresult(url_pullrecords) {
+			 function getresult(url_pullrecords,phonechoice) {
+				 var phonechoice = phonechoice;
 				 $.ajax
 				 ({
 				 	 context: this,
@@ -192,6 +195,10 @@
 					 data:  {rowcount:$(".rowcount").val(),loggedIn:localStorage.login,mcid:localStorage.mastercaseid},
 					 beforeSend: function(){
 					 	$('#loadericon').fadeIn();
+					 		//if user selects phone type remove previous cases
+					 		if (phonechoice == 1) {
+					 			$('.casebox').remove();
+					 		}
 					 },
 					 complete: function(){
 					 	$('#loadericon').fadeOut();
@@ -204,7 +211,7 @@
 					  error: function(){} 	        
 				 });
 			 	}
-			 	getresult(url_pullrecords);
+			 	getresult(url_pullrecords,0);
 
 			$('#continue').click(function () {
 		     if($(".pagenum:last").val() <= $(".rowcount").val()) {
@@ -595,10 +602,10 @@ $(window).load(function(){
 
 
 		   //clear login for debugging
-				 // localStorage.login="false";
-		   // 	 localStorage.email="";
-		   // 	 localStorage.userid="";
-		   // localStorage.mastercaseid="0"
+				 localStorage.login="false";
+		   	 localStorage.email="";
+		   	 localStorage.userid="";
+		     localStorage.mastercaseid="0";
 		</script>
 	  
 	</body>

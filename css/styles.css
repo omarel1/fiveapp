@@ -397,8 +397,9 @@ table {
 		background-color: #1C1B1B;
 		padding:15px;
 		text-align: center;
-		z-index:1000;
+		z-index:19;
 		padding:15px 0px 15px 0px;
+		display: none;
 	}
 	.signupbar a {
 		color:#28e52c;
@@ -686,7 +687,7 @@ table {
   	background-color:#ccc !important;
   }
   .checkoutbox {
-  	position: absolute;
+  	position: fixed;
   	top:0;
   	left:100%;
   	width:100%;
@@ -694,6 +695,7 @@ table {
   	height:100%;
   	z-index:21;
   	overflow: scroll;
+
   }
   .checkoutbox.on {
   	left:0;
@@ -736,6 +738,14 @@ table {
 		font-size: 14px;
 		display: inline;
 		color:#B9B9B9;
+	}
+	.choosephonebox .content {
+		margin:90px auto;
+	}
+	.choosephonebox .content .phonechoice {
+		margin:30px auto;
+		cursor:pointer;
+		font-size:22px;
 	}
 
 /* ----------END MOBILE  ---------- */
