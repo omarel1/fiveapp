@@ -337,7 +337,7 @@ table {
     padding-top:20%;
     left:0px;
     right:0px;
-    width: 100%;
+    width: 93%;
     height: 100%;
 		text-align:center;
 		display:none;
@@ -682,6 +682,7 @@ table {
   	z-index:22;
   	text-align:center;
   	display:inline-block;
+  	    margin-top: 30px;
   }
   a.paybtn.grey {
   	background-color:#ccc !important;
@@ -712,6 +713,7 @@ table {
     margin:0px;
     padding-bottom:0px;
     margin-bottom: 3px !important;
+    text-transform: capitalize;
   }
   .checkoutbox .contactfields.exp {
     width:24px;
