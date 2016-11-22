@@ -631,7 +631,7 @@ table {
   .choosephoneboxclose,
   .checkoutclose {
   	position: absolute;
-  	top:4;
+  	top:30;
   	right:8;
   	color:#000;
   	cursor:pointer;
