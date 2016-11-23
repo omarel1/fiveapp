@@ -296,7 +296,11 @@ table {
 		height:auto;
     display: block;
     margin:20px auto 0px;
-    border-radius:5px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    border-top:1px solid rgba(0, 0, 0, 0.6);
+    border-left:1px solid rgba(0, 0, 0, 0.6);
+    border-right:1px solid rgba(0, 0, 0, 0.6);
 	}
 	#pagecontent .floatholder {
 		text-align:center;
@@ -354,12 +358,12 @@ table {
     color:#fff;
 	}
 	a.continue {
-		margin: 20px auto 30px auto;
+		margin: 20px 10px 30px 10px;
     text-align: center;
-    padding: 10px 40px 10px 40px;
+    padding: 14px 40px 14px 40px;
     border: solid 1px black;
-    display: inline-block;
-    font-size: 15px;
+    display: block;
+    font-size: 17px;
     text-decoration: none;
     color: #000;
     background-color: #28e52c;
@@ -385,6 +389,51 @@ table {
     -o-transform: translateY(5px);
     transform: translateY(5px);
 	}
+
+	 a.checkoutbtn {
+  	position: fixed;
+  	width:100%;
+  	bottom:0;
+  	left:0;
+  	right:0;
+  	padding:14px 0px;
+  	display: none;
+  	z-index:20;
+  	margin:10px auto;
+  	width:90%;
+  	font-size:17px;
+  	text-align:center;
+  	-webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 2px 3px 1px #383838;
+    -moz-box-shadow: 0px 2px 3px 1px #383838;
+    box-shadow: 0px 2px 3px 1px #383838;
+  }
+  a.checkoutbtn.on {
+  	display: block;
+  }
+	
+	a.paybtn {
+  	position: relative;
+  	width:100%;
+  	padding:14px 0px;
+  	z-index:22;
+  	font-size:17px;
+  	text-align:center;
+  	display:inline-block;
+  	margin-top: 30px;
+  	-webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 2px 3px 1px #383838;
+    -moz-box-shadow: 0px 2px 3px 1px #383838;
+    box-shadow: 0px 2px 3px 1px #383838;
+  }
+  a.paybtn.grey {
+  	background-color:#ccc !important;
+  }
+
 	.btnholder {
 		width: 100%; margin: 0 auto;position: relative;text-align: center;
 		padding:11px 0px 36px 0px;
@@ -494,24 +543,46 @@ table {
   	padding: 15px 0px;
   }
   .heart {
-  	position:absolute;
+  	position:relative;
   	bottom:0px;
   	margin:0 auto;
   	left:0;
   	right:0;
-  	width:84%;
+  	width:85%;
   	border-bottom-left-radius: 5px;
   	border-bottom-right-radius: 5px;
   	display:none;
   	z-index: 13;
-  	background-color: rgba(0, 0, 0, 0.1);
+  	background-color: rgba(0, 0, 0, 0.9);
   	border-bottom:1px solid #000;
-  	border-top:0px solid #000;
-  	border-left:0px solid #000;
-  	border-right:0px solid #000;
+  	border-top:1px solid rgba(40, 229, 44, 0.9);
+  	border-left:1px solid #000;
+  	border-right:1px solid #000;
   }
+  .casebox .cost {
+		position: absolute;
+		bottom: 65px;
+    right: 4%;
+    width: 45px;
+    font-size:18px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+    padding: 10px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-top:1px solid rgba(40, 229, 44, 0.9);
+  }
+  .casebox .cost.premium:before {
+		content:url('../img/premium.png');
+		margin-left:-6px;
+
+  }
+
   .favbox .heart,
   .cartbox .heart {
+  	position: absolute;
   	bottom:0px;
   	width:100%;
   	border-bottom-left-radius: 0px;
@@ -528,19 +599,19 @@ table {
   	width:20%;
   	text-align:center;
   	cursor:pointer;
-  	padding:5px;
+  	padding:10px;
   }
   .heart .floatright {
   	float:right;
   	width:20%;
   	text-align:center;
   	cursor:pointer;
-  	padding:5px;
+  	padding:10px;
   	font-size:14px;
   }
    .heart .floatleft img,
    .heart .floatright img {
-  	width:20px;
+  	width:27px;
   	height: auto;
   }
   .heart.on {
@@ -593,7 +664,8 @@ table {
   }
 	.favbox .content,
   .cartbox .content,
-  .checkoutbox .content {
+  .checkoutbox .content,
+  .updatecardbox .content {
 		padding:30px;
 		padding-bottom:80px;
   }
@@ -629,7 +701,8 @@ table {
   .favboxclose,
   .cartboxclose,
   .choosephoneboxclose,
-  .checkoutclose {
+  .checkoutclose,
+  .updatecardclose {
   	position: absolute;
   	top:30;
   	right:8;
@@ -661,33 +734,10 @@ table {
   .cartbox .casebox {
   	margin-bottom:15px;
   }
-  a.checkoutbtn {
-  	position: fixed;
-  	width:100%;
-  	bottom:0;
-  	left:0;
-  	right:0;
-  	padding:14px 0px;
-  	display: none;
-  	z-index:20;
-  	text-align:center;
-  }
-  a.checkoutbtn.on {
-  	display: block;
-  }
-  a.paybtn {
-  	position: relative;
-  	width:100%;
-  	padding:14px 0px;
-  	z-index:22;
-  	text-align:center;
-  	display:inline-block;
-  	    margin-top: 30px;
-  }
-  a.paybtn.grey {
-  	background-color:#ccc !important;
-  }
-  .checkoutbox {
+
+  
+  .checkoutbox,
+  .updatecardbox {
   	position: fixed;
   	top:0;
   	left:100%;
@@ -698,7 +748,8 @@ table {
   	overflow: scroll;
 
   }
-  .checkoutbox.on {
+  .checkoutbox.on,
+  .updatecardbox.on {
   	left:0;
   }
   .lsvar {
@@ -707,7 +758,8 @@ table {
     color: #fff;
     border: 1px solid red;
   }
-  .checkoutbox .contactfields {
+  .checkoutbox .contactfields,
+  .updatecardbox .contactfields {
     border-bottom: 1px solid #000 !important;
     color: #000;
     margin:0px;
@@ -715,39 +767,54 @@ table {
     margin-bottom: 3px !important;
     text-transform: capitalize;
   }
-  .checkoutbox .contactfields.exp {
+  .checkoutbox .contactfields.exp,
+  .updatecardbox .contactfields.exp {
     width:24px;
     display: inline;
   }
-  .checkoutbox .contactfields.short {
+  .checkoutbox .contactfields.short,
+  .updatecardbox  .contactfields.short {
     width:65px;
   }
-  .checkoutbox .contactfields.citystate {
+  .checkoutbox .contactfields.citystate,
+  .updatecardbox .contactfields.citystate {
     width:120px;
     display: inline;
     margin-right:10px;
   }
-  .checkoutbox .contactfields.inline {
+  .checkoutbox .contactfields.inline,
+  .updatecardbox  .contactfields.inline {
     display: inline !important;
   }
-	.checkoutbox .content h1 {
+	.checkoutbox .content h1,
+	.updatecardbox .content h1 {
 		font-size: 23px;
 		display: block;
 		margin-bottom:5px;
 	}
-	.checkoutbox .form span {
+	.checkoutbox .form span,
+	.updatecardbox .form span {
 		margin-left:10px;
 		font-size: 14px;
 		display: inline;
 		color:#B9B9B9;
 	}
 	.choosephonebox .content {
-		margin:90px auto;
+		margin:50px auto 90px;
 	}
 	.choosephonebox .content .phonechoice {
-		margin:30px auto;
+		padding:13px;
 		cursor:pointer;
-		font-size:22px;
+		font-size:16px;
+		background-color:#000;
+		color:#28e52c;
+	}
+	.openupdatecardbox {
+		margin-top:20px;
+		padding-top:7px;
+		display: inline-block;
+		border-top:1px solid #000;
+		font-size:15px;
 	}
 
 /* ----------END MOBILE  ---------- */
@@ -791,15 +858,18 @@ table {
 		text-align: right;
 	}
 	a.checkoutbtn,
-	a.paybtn  {
-		color:#fff;
+	a.paybtn,
+	a.openupdatecardbox  {
+		color:#000;
 	}
+
 	.centertext a {
 		color:#fff;
 	}
 	.navsidebar,
 	.navsidebar ul>li>a,
-	a.checkoutbtn {
+	a.checkoutbtn,
+	a.paybtn.on {
 		background-color: #28e52c;
 	}
 	a.paybtn {
@@ -814,12 +884,16 @@ table {
 	a.paybtn {
 		text-transform: uppercase;
 	}
+	a.openupdatecardbox {
+		text-transform: none;
+	}
 	.navsidebar ul>li>a,
 	.signupbar a,
 	.centertext a,
 	a.btn,
 	a.checkoutbtn,
-	a.paybtn {
+	a.paybtn,
+	a.openupdatecardbox {
 		text-decoration: none;
 	}
 	header,
@@ -856,7 +930,8 @@ table {
 
 	.cartbox,
 	.favbox,
-	.checkoutbox {
+	.checkoutbox,
+	.updatecardbox {
 		-o-transition: .5s;
 	  -ms-transition: .5s;
 	  -moz-transition: .5s;
@@ -920,18 +995,26 @@ table {
     }
 }
 
-.heart span, a.btn span {
+ .heart span, 
+ a.btn span,
+ a.paybtn span {
     animation-name: blink;
     animation-duration: 1.4s;
     animation-iteration-count: infinite;
     animation-fill-mode: both;
+    font-size:21px  !important;
+    color:#000 !important;
 }
 
-.heart span, a.btn span:nth-child(2) {
+.heart span, 
+a.btn span:nth-child(2),
+a.paybtn span:nth-child(2) {
     animation-delay: .2s;
 }
 
-.heart span, a.btn span:nth-child(3) {
+.heart span, 
+a.btn span:nth-child(3),
+a.paybtn span:nth-child(3) {
     animation-delay: .4s;
 }
 
