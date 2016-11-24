@@ -420,7 +420,7 @@ table {
     text-transform: uppercase;
   }
   .choosephonebox .content .phonechoice {
-    padding:13px;
+    padding:15px;
   }
 
   a.continue {
@@ -857,7 +857,7 @@ table {
 		color:#B9B9B9;
 	}
 	.choosephonebox .content {
-		margin:20px auto;
+		margin:50px auto;
     background-color:#28e52c; 
     position: relative;
 	}
