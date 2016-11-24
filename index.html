@@ -183,8 +183,7 @@
 			     $('.overlay').removeClass("on");
 			     $('body').removeClass("noscroll");
 			     $('.casebox').remove();
-			     // location.reload();
-				  getresult(url_pullrecords,1); //execute function
+				  getresult(url_pullrecords,1,0); //execute function
 				  return false;
 				});
 
@@ -221,7 +220,7 @@
 			 // PULL RECORDS
 			 // var url="http://localhost/phonegapdemo/actions/json.php";
 			 // var url="../php/json.php";
-			 var url_pullrecords = "http://www.elbaga.net/fiveapp/php/json.php";
+			 var url_pullrecords = "https://www.elbaga.net/fiveapp/php/json.php";
 			 function getresult(url_pullrecords,phonechoice,buttonpress) {
 				 var phonechoice = phonechoice;
 				 var buttonpress = buttonpress;
@@ -237,14 +236,14 @@
 					 		//check if first time loading or get more was clicked show different loader
 					 		if (buttonpress == 0) {
 					 			$('#loadericon').fadeIn();
-					 			} else {
+					 		} else {
 					 			$("#pagecontent .content").after('<div class="loadericon"><img src="img/loader.svg"></div>');
 					 		}
 					 		//if user selects phone type remove previous cases
 					 		//not needed here. doing action when user selects phone
-					 		// if (phonechoice == 1) {
-					 		// 	$('.casebox').remove();
-					 		// }
+					 		if (phonechoice == 1) {
+					 			$('.casebox').remove();
+					 		}
 					 },
 					 complete: function(){
 					 	$("#loadericon,.loadericon").fadeOut();
@@ -255,10 +254,12 @@
 					 	// $(".btnholder").before(data);
 
 					 },
-					  error: function(){} 	        
+					  error: function(){
+					  	$("#pagecontent .content").html('something went wrong.');
+					  } 	        
 				 });
 			 	}
-			 	getresult(url_pullrecords,0,0);
+			 	getresult(url_pullrecords,1,0);
 
 			$('#continue').click(function () {
 		     if($(".pagenum:last").val() <= $(".rowcount").val()) {
