@@ -299,6 +299,10 @@ table {
 		padding-top:30px;
 		height: 100vh;
 	}
+  #pagecontent .content {
+    position: relative;
+    display: block;
+  }
 	header .floatleft {
 		width:100%;
 		float:none;
