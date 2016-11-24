@@ -27,10 +27,13 @@
 						<span></span>
 					</div> -->
 			</div>
-			<div id="logo" class="centeralign floatleft togglechoosephone">
+			<div class="floatleft togglechoosephone">
+				<img src="img/phone.png" alt="">
+			</div>
+			<div id="logo" class="centeralign">
 				<img src="img/logofive.png"><!-- <div class="lsvar"></div> -->
 			</div>
-			<div class="cart carticon">
+			<div class="floatright cart carticon">
 				<div id="cartcount"></div>
 				<img src="img/cart-g.png">
 			</div>
@@ -39,7 +42,8 @@
 
 		<!--//load content here --> 
 		<div id="pagecontent" class="wrapper">
-			<div class="btnholder"><a id="continue" class="continue" href="javascript:;">get more</a></div>
+		<div class="content"></div>
+			<div class="btnholder"><a id="continue" class="continue" href="javascript:;">Get More</a></div>
 		</div><!--/end load content -->
 		
 
@@ -51,17 +55,17 @@
 				<input id="signinemail" name="signinemail" type="text" class="contactfields" placeholder="email" value="monaya@gmail.com" />
 				<input id="signinpwd" name="signinpwd"  type="password" class="contactfields" placeholder="password" value="050678" />
 				<span id="signinerrormsg" class="loginerror"></span>
-				<a id="signinbtn" href="javascript:;" class="btn">Sign in</a>
+				<a id="signinbtn" href="javascript:;" class="btn">Sign In</a>
 			</div>
 
-			<div class="centertext"><a id="createaccountlink" href="javascript:;">Create an account</a></div>
+			<div class="centertext"><a id="createaccountlink" href="javascript:;">Create an Account</a></div>
 			<div class="signupblock">
 				<input id="signupemail" name="signupemail"  type="text" class="contactfields" placeholder="email"/>
 				<input id="signuppwd" name="signuppwd" type="password" class="contactfields" placeholder="password"/>
 				<input id="signuppwd2" name="signuppwd2" type="password" class="contactfields" placeholder="re-enter password"/>
 				<span id="signuperrormsg" class="loginerror"></span>
-				<a id="signupbtn" href="javascript:;" class="btn">Sign up</a>
-				<div class="centertext"><a id="backtologin" href="javascript:;">Back to sign in</a></div>
+				<a id="signupbtn" href="javascript:;" class="btn">Sign Up</a>
+				<div class="centertext"><a id="backtologin" href="javascript:;">Back to Sign In</a></div>
 			</div>
 		</div>
 		
@@ -105,7 +109,7 @@
 			<div class="loaderInPopup"><img src="img/loader.svg"></div>
 			<!-- <div class="choosephoneboxclose"><img src="img/x.png"></div> -->
 			<div class="content">
-				<h1>Choose Your Phone:</h1><br />
+				<h1>Choose Phone:</h1><br />
 				<div class="phonechoice" data-id="1">iPhone 4</div>
 				<div class="phonechoice" data-id="2">iPhone 5</div>
 				<div class="phonechoice" data-id="3">iPhone 6</div>
@@ -125,7 +129,10 @@
 		<!-- overlay when you click action -->
 		<div class="overlay"></div>	 
 		<div class="overlaybg"></div>	
-		<div class='signupbar'><a href="#" class="togglechoosephone">Select Phone</a> | <a href='#' class='signupbtn'>Sign up/Sign in</a></div>
+		<div class='signupbar'>
+			<div class="floatleft btn togglechoosephone"><a href="#"><img src="img/phone-black.png" alt=""></a></div>
+			<div class="floatright btn signupbtn"><a href='#'>Sign Up/In to Buy</a></div>
+		</div>
 
 	 <script src="js/jquery.min.js"></script>
 
@@ -175,8 +182,9 @@
 				   $('.choosephonebox').removeClass("on");
 			     $('.overlay').removeClass("on");
 			     $('body').removeClass("noscroll");
+			     $('.casebox').remove();
 			     // location.reload();
-				  getresult(url_pullrecords,1); //execute function
+				  getresult(url_pullrecords,1,0); //execute function
 				  return false;
 				});
 
@@ -214,8 +222,9 @@
 			 // var url="http://localhost/phonegapdemo/actions/json.php";
 			 // var url="../php/json.php";
 			 var url_pullrecords = "http://www.elbaga.net/fiveapp/php/json.php";
-			 function getresult(url_pullrecords,phonechoice) {
+			 function getresult(url_pullrecords,phonechoice,buttonpress) {
 				 var phonechoice = phonechoice;
+				 var buttonpress = buttonpress;
 				 $.ajax
 				 ({
 				 	 context: this,
@@ -224,24 +233,32 @@
 					 type: "GET",
 					 data:  {rowcount:$(".rowcount").val(),loggedIn:localStorage.login,mcid:localStorage.mastercaseid},
 					 beforeSend: function(){
-					 	$('#loadericon').fadeIn();
-					 		//if user selects phone type remove previous cases
-					 		if (phonechoice == 1) {
-					 			$('.casebox').remove();
+					 	// $("#pagecontent .content").after('<div class="loadericon"><img src="img/loader.svg"></div>');
+					 		//check if first time loading or get more was clicked show different loader
+					 		if (buttonpress == 0) {
+					 			$('#loadericon').fadeIn();
+					 			} else {
+					 			$("#pagecontent .content").after('<div class="loadericon"><img src="img/loader.svg"></div>');
 					 		}
+					 		//if user selects phone type remove previous cases
+					 		//not needed here. doing action when user selects phone
+					 		// if (phonechoice == 1) {
+					 		// 	$('.casebox').remove();
+					 		// }
 					 },
 					 complete: function(){
-					 	$('#loadericon').fadeOut();
+					 	$("#loadericon,.loadericon").fadeOut();
 					 },
 					 success: function(data){
-					 	// $("#pagecontent").append(data);
-					 	$(".btnholder").before(data);
+					 	$("#loadericon,.loadericon").fadeOut();
+					 	$("#pagecontent .content").append(data);
+					 	// $(".btnholder").before(data);
 
 					 },
 					  error: function(){} 	        
 				 });
 			 	}
-			 	getresult(url_pullrecords,0);
+			 	getresult(url_pullrecords,0,0);
 
 			$('#continue').click(function () {
 		     if($(".pagenum:last").val() <= $(".rowcount").val()) {

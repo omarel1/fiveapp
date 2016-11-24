@@ -131,21 +131,7 @@ table {
 	.swiper-slide img.carticon {
 
 	}
-	header.on {
-		left:56%;
-	}
-	header #logo {
-		position:relative;
-		margin:5px auto 0px;
-	}
-	header #logo img {
-		height: auto;
-    width: 120px;
-	}
-	header .cart img {
-		height:auto;
-		width:30px;
-	}
+	
 	header .floatleft:nth-of-type(1)  {
 		float: left;
 		width: 15%;
@@ -153,13 +139,44 @@ table {
 	}
 	header .floatleft:nth-of-type(2) {
 		float: left;
-		width: 68%;
+		width: 15%;
 	}
-	header .cart {
+  header .floatleft:nth-of-type(3)  {
+    float: left;
+    width: 50%;
+    text-align: center;
+  }
+  header .floatright  {
+    float: right;
+    width: 15%;
+    text-align: right;
+  }
+  header #logo {
+    position: absolute;
+    margin:0 auto;
+    left:0;
+    right:0;
+    top:10px;
+    width:110px;
+  }
+  header.on {
+    left:56%;
+  }
+
+  header #logo img {
+    height: auto;
+    width: 110px;
+  }
+  header .cart img {
+    height:auto;
+    width:30px;
+  }
+
+	/*header .cart {
 		position: absolute;
 		top: 7px;
     right: 10px;
-	}
+	}*/
 	.clearfloats {
 		clear:both;
 	}
@@ -334,6 +351,14 @@ table {
 		display:none;
 		z-index:1000;
 	}
+
+  .loadericon {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    padding-bottom:30px;
+    text-align:center;
+    z-index:1000;
+  }
 	.loaderInPopup {
 		position: fixed;
 		background-color: rgba(255, 255, 255, 0.9);
@@ -357,13 +382,53 @@ table {
     background-color: rgba(0, 0, 0, 0.9);
     color:#fff;
 	}
-	a.continue {
-		margin: 20px 10px 30px 10px;
+	
+	.signupbar {
+		position: fixed;
+		bottom:0;
+		width:100%;
+		margin: 0 auto;
+		background-color: #1C1B1B;
+		text-align: center;
+		z-index:19;
+		display: none;
+	}
+  .signupbar .btn {
+    color:#000;
+    background-color: #28e52c;
+    margin-top:4px;
+    margin-bottom:4px;
+    padding:15px 0px 15px 0px;
+  }
+  .signupbar .floatleft {
+    float:left;
+    width:30%;
+  }
+  .signupbar .floatleft img {
+    height:19px;
+  }
+  .signupbar .floatright {
+    float:right;
+    width:69%;
+  }
+
+  .signupbar a,
+  a.continue,
+  .choosephonebox .content .phonechoice {
+    color:#000;
+    font-size:19px;
+    text-transform: uppercase;
+  }
+  .choosephonebox .content .phonechoice {
+    padding:13px;
+  }
+
+  a.continue {
+    margin: 20px 10px 30px 10px;
     text-align: center;
     padding: 14px 40px 14px 40px;
     border: solid 1px black;
     display: block;
-    font-size: 17px;
     text-decoration: none;
     color: #000;
     background-color: #28e52c;
@@ -374,12 +439,10 @@ table {
     -webkit-box-shadow: 0px 2px 3px 1px #383838;
     -moz-box-shadow: 0px 2px 3px 1px #383838;
     box-shadow: 0px 2px 3px 1px #383838;
-	}
-	a.continue:hover {
-		background-color: rgba(93, 197, 31, .9);
-	}
-	a.continue:active {
-    background-color: rgba(93, 197, 31, .9);
+  }
+  a.continue:hover {
+  }
+  a.continue:active {
     -webkit-box-shadow: 0 5px #383838;
     -moz-box-shadow: 0 5px #383838;
     box-shadow: 0 5px #383838;
@@ -388,22 +451,22 @@ table {
     -ms-transform: translateY(5px);
     -o-transform: translateY(5px);
     transform: translateY(5px);
-	}
+  }
 
-	 a.checkoutbtn {
-  	position: fixed;
-  	width:100%;
-  	bottom:0;
-  	left:0;
-  	right:0;
-  	padding:14px 0px;
-  	display: none;
-  	z-index:20;
-  	margin:10px auto;
-  	width:90%;
-  	font-size:17px;
-  	text-align:center;
-  	-webkit-border-radius: 15px;
+   a.checkoutbtn {
+    position: fixed;
+    width:100%;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:14px 0px;
+    display: none;
+    z-index:20;
+    margin:10px auto;
+    width:90%;
+    font-size:17px;
+    text-align:center;
+    -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 2px;
     -webkit-box-shadow: 0px 2px 3px 1px #383838;
@@ -411,19 +474,19 @@ table {
     box-shadow: 0px 2px 3px 1px #383838;
   }
   a.checkoutbtn.on {
-  	display: block;
+    display: block;
   }
-	
-	a.paybtn {
-  	position: relative;
-  	width:100%;
-  	padding:14px 0px;
-  	z-index:22;
-  	font-size:17px;
-  	text-align:center;
-  	display:inline-block;
-  	margin-top: 30px;
-  	-webkit-border-radius: 15px;
+  
+  a.paybtn {
+    position: relative;
+    width:100%;
+    padding:14px 0px;
+    z-index:22;
+    font-size:17px;
+    text-align:center;
+    display:inline-block;
+    margin-top: 30px;
+    -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 2px;
     -webkit-box-shadow: 0px 2px 3px 1px #383838;
@@ -431,29 +494,19 @@ table {
     box-shadow: 0px 2px 3px 1px #383838;
   }
   a.paybtn.grey {
-  	background-color:#ccc !important;
+    background-color:#ccc !important;
   }
 
-	.btnholder {
-		width: 100%; margin: 0 auto;position: relative;text-align: center;
-		padding:11px 0px 36px 0px;
-	}
-	.signupbar {
-		position: fixed;
-		bottom:0;
-		width:100%;
-		margin: 0 auto;
-		background-color: #1C1B1B;
-		padding:15px;
-		text-align: center;
-		z-index:19;
-		padding:15px 0px 15px 0px;
-		display: none;
-	}
-	.signupbar a {
-		color:#28e52c;
-		letter-spacing:-1px;
-	}
+  .btnholder {
+    width: 100%; 
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    margin-bottom:90px;
+  }
+
+
+
 	.loginbox {
 		width:90%;
 		border:1px solid #28e52c;
@@ -690,6 +743,9 @@ table {
     opacity:0;*/
     overflow:scroll;
   }
+  .choosephonebox {
+    background-color: #28e52c;
+  }
   .favbox.on,
   .cartbox.on,
   .choosephonebox.on {
@@ -708,6 +764,7 @@ table {
   	right:8;
   	color:#000;
   	cursor:pointer;
+        z-index: 10;
   }
   .closebox {
   	cursor:pointer;
@@ -800,15 +857,11 @@ table {
 		color:#B9B9B9;
 	}
 	.choosephonebox .content {
-		margin:50px auto 90px;
+		margin:20px auto;
+    background-color:#28e52c; 
+    position: relative;
 	}
-	.choosephonebox .content .phonechoice {
-		padding:13px;
-		cursor:pointer;
-		font-size:16px;
-		background-color:#000;
-		color:#28e52c;
-	}
+	
 	.openupdatecardbox {
 		margin-top:20px;
 		padding-top:7px;
@@ -907,7 +960,10 @@ table {
 	.heart .floatright,
 	.favbox,
 	.cartbox,
-	.loaderInPopup {
+	.loaderInPopup,
+  .signupbar,
+  .signupbar .floatright,
+  .signupbar .floatleft {
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
