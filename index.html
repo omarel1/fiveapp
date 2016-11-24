@@ -231,12 +231,12 @@
 					 type: "GET",
 					 data:  {rowcount:$(".rowcount").val(),loggedIn:localStorage.login,mcid:localStorage.mastercaseid},
 					 beforeSend: function(){
-					 	// $("#pagecontent .content").after('<div class="loadericon"><img src="img/loader.svg"></div>');
 					 		//check if first time loading or get more was clicked show different loader
 					 		if (buttonpress == 0) {
 					 			$('#loadericon').fadeIn();
 					 		} else {
-					 			$("#pagecontent .content").after('<div class="loadericon"><img src="img/loader.svg"></div>');
+					 			// $("#pagecontent .content").after('<div class="loadericon"><img src="img/loader.svg"></div>');
+					 			$(".btnholder").before('<div class="loadericon"><img src="img/loader.svg"></div>');
 					 		}
 					 		//if user selects phone type remove previous cases
 					 		//not needed here. doing action when user selects phone
@@ -249,12 +249,12 @@
 					 },
 					 success: function(data){
 					 	$("#loadericon,.loadericon").fadeOut();
-					 	$("#pagecontent .content").append(data);
-					 	// $(".btnholder").before(data);
+					 	// $("#pagecontent .content").append(data);
+					 	$(".btnholder").before(data);
 
 					 },
 					  error: function(){
-					  	$("#pagecontent .content").html('something went wrong.');
+					  	// $("#pagecontent .content").html('something went wrong.');
 					  } 	        
 				 });
 			 	}
