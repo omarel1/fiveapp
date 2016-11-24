@@ -175,9 +175,9 @@
 			 
 
 			 // CHOOSE PHONE
-			 	$(document).on("click", '.phonechoice, .choosephoneboxclose', function(){
+			 $('.phonechoice, .choosephoneboxclose').click(function () {
+			 	// $(document).on("click", '.phonechoice, .choosephoneboxclose', function(){
 				   var mcid=$(this).data("id");
-				   // localStorage.mastercaseid = mcid;
 				   localStorage.setItem("mastercaseid", mcid);
 				   $('.choosephonebox').removeClass("on");
 			     $('.overlay').removeClass("on");
