@@ -6,21 +6,14 @@
 		<meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animate.css">
-   	
-    <!-- <link rel="stylesheet" href="http://www.elbaga.net/fiveapp/fiveapp/css/styles.css"> -->
-
 	</head>
 	<body>
-	
-		<!-- <div class="navsidebar">
-				<ul>
-					<li><a href="javascript:;">Sign in</li>
-				</ul>
-		</div> -->
+		<div class="top">
+		</div>
 		<header>
 			<div class="floatleft favicon">
 				<div id="favcount"></div>
-				<img src="img/heart.png" class="heartme">
+				<img src="img/heart1.png" class="heartme">
 					<!-- <div id="hamburger" class="nav-icon">
 						<span></span>
 						<span></span>
@@ -28,14 +21,14 @@
 					</div> -->
 			</div>
 			<div class="floatleft togglechoosephone">
-				<img src="img/phone.png" alt="">
+				<img src="img/phone1.png" alt="">
 			</div>
 			<div id="logo" class="centeralign">
 				<img src="img/logofive.png"><!-- <div class="lsvar"></div> -->
 			</div>
 			<div class="floatright cart carticon">
 				<div id="cartcount"></div>
-				<img src="img/cart-g.png">
+				<img src="img/cart-g1.png">
 			</div>
 			<div class="clearfloats"></div>
 		</header>
@@ -56,17 +49,32 @@
 				<input id="signinpwd" name="signinpwd"  type="password" class="contactfields" placeholder="password" value="050678" />
 				<span id="signinerrormsg" class="loginerror"></span>
 				<a id="signinbtn" href="javascript:;" class="btn">Sign In</a>
+				<div class="centertext"><a id="createaccountlink" href="javascript:;">Create an Account</a></div>
+				<div class="centertext"><a id="forgotpwdlink" href="javascript:;">Forgot Password</a></div>
+				
 			</div>
 
-			<div class="centertext"><a id="createaccountlink" href="javascript:;">Create an Account</a></div>
+			
 			<div class="signupblock">
+				<div class="centertext">Create an Account</div>
 				<input id="signupemail" name="signupemail"  type="text" class="contactfields" placeholder="email"/>
 				<input id="signuppwd" name="signuppwd" type="password" class="contactfields" placeholder="password"/>
 				<input id="signuppwd2" name="signuppwd2" type="password" class="contactfields" placeholder="re-enter password"/>
 				<span id="signuperrormsg" class="loginerror"></span>
 				<a id="signupbtn" href="javascript:;" class="btn">Sign Up</a>
-				<div class="centertext"><a id="backtologin" href="javascript:;">Back to Sign In</a></div>
+				<div class="centertext"><a class="backtologin" href="javascript:;">Back to Sign In</a></div>
 			</div>
+
+			
+			<div class="forgotpwdblock">
+				<div class="centertext">Forgot Password</div>
+				<input id="forgotpwdemail" name="forgotpwdemail"  type="text" class="contactfields" placeholder="email"/>
+				<span id="forgotpwdblockrrormsg" class="loginerror"></span>
+				<a id="forgotpwdbtn" href="javascript:;" class="btn">Send</a>
+				<div class="centertext"><a class="backtologin" href="javascript:;">Back to Sign In</a></div>
+			</div>
+
+
 		</div>
 		
 
@@ -93,7 +101,7 @@
 		</div><!--//checkoutbox -->
 
 		<div class="updatecardbox">
-			<!-- <div class="loaderInPopup"><img src="img/loader.svg"></div> -->
+			<div class="loaderInPopup"><img src="img/loader.svg"></div>
 			<div class="updatecardclose"><img src="img/x.png"></div>
 			<div class="content"></div>
 		</div><!--//checkoutbox -->
@@ -171,12 +179,12 @@
 			 // CHOOSE PHONE
 			 $(document).on("click", '.phonechoice', function(){
 			 // $('.phonechoice, .choosephoneboxclose').click(function () {
+				   $('.casebox').remove();
 				   var mcid=$(this).data("id");
 				   localStorage.setItem("mastercaseid", mcid);
 				   $('.choosephonebox').removeClass("on");
 			     $('.overlay').removeClass("on");
 			     $('body').removeClass("noscroll");
-			     $('.casebox').remove();
 				  getresult(url_pullrecords,1,0); //execute function
 				  return false;
 				});
@@ -201,7 +209,10 @@
 				 // OPEN UPDATE CARD BOX
 				 $(document).on("click", '.openupdatecardbox', function(){
 			     $('.updatecardbox').toggleClass("on");
-			     $(".updatecardbox .content").load('https://www.elbaga.net/fiveapp/php/getupdatecardform.php?uid=' + localStorage.userid);
+			     $('.updatecardbox .loaderInPopup').fadeIn(0);
+			     $(".updatecardbox .content").load('https://www.elbaga.net/fiveapp/php/getupdatecardform.php?uid=' + localStorage.userid, function () {
+			     			$('.updatecardbox .loaderInPopup').fadeOut();
+			     		});
 			     return false;
 				 });
 
@@ -213,7 +224,7 @@
 
 
 			 // PULL RECORDS
-			 // var url="http://localhost/phonegapdemo/actions/json.php";
+			 // var url="https://localhost/phonegapdemo/actions/json.php";
 			 // var url="../php/json.php";
 			 var url_pullrecords = "https://www.elbaga.net/fiveapp/php/json.php";
 			 function getresult(url_pullrecords,phonechoice,buttonpress) {
@@ -272,10 +283,21 @@
 		     $('.navsidebar, .nav-icon span:nth-of-type(2)').toggleClass('on');
 		     $('header, .wrapper').toggleClass('on');
 			 });
-			 $('#createaccountlink, #backtologin').click(function () {
+			 $('#createaccountlink').click(function () {
 		     $('.signupblock').fadeToggle(00);
 		     $('.loginblock').fadeToggle(00);
 		     $('.loginerror').toggleClass("on");
+			 });
+			 $('.backtologin').click(function () {
+		     $('.signupblock').fadeOut(00);
+		     $('.forgotpwdblock').fadeOut(00);
+		     $('.loginblock').fadeToggle(00);
+		     $('.loginerror').toggleClass("on");
+			 });
+			 $('#forgotpwdlink').click(function () {
+		     $('.signupblock').fadeOut(00);
+		     $('.loginblock').fadeOut(00);
+		     $('.forgotpwdblock').fadeIn();
 			 });
 			 $('.closex').click(function () {
 		     $('.loginbox').toggleClass("on");
@@ -290,7 +312,7 @@
 			 $('.togglecheckout').click(function () {
 		     $('.checkoutbox').toggleClass("on");
 		     $(".checkoutbox .content").load('https://www.elbaga.net/fiveapp/php/getpayform.php?uid=' + localStorage.userid);
-		     // $(".checkoutbox .content").load('http://localhost/phonecases/stripe/form.html');
+		     // $(".checkoutbox .content").load('https://localhost/phonecases/stripe/form.html');
 		     return false;
 			 });
 
@@ -333,7 +355,7 @@
 			     cid = $(this).data("id");
 			     ctid = $(this).data("index");
 			     removefav(cid,1);
-			     $('#fav_' + ctid).html('<img src="img/heart.png" />');
+			     $('#fav_' + ctid).html('<img src="img/heart1.png" />');
 				   return false;
 				});
 
@@ -345,7 +367,7 @@
 			     cid = $(this).data("id");
 			     ctid = $(this).data("index");
 			     removecartitem(cid,2);
-			     $('#addtocart_' + ctid).html('<img src="img/addtocart.png" />');
+			     $('#addtocart_' + ctid).html('<img src="img/addtocart1.png" />');
 				   return false;
 				});
 
@@ -358,7 +380,7 @@
 			     $('.favbox .loaderInPopup').fadeIn(100);
 			     $('.favbox').toggleClass("on");
 			     $('.overlay').addClass("on");
-			     $(".favbox .content").load('http://www.elbaga.net/fiveapp/php/getfavs.php?uid=' + localStorage.userid, 
+			     $(".favbox .content").load('https://www.elbaga.net/fiveapp/php/getfavs.php?uid=' + localStorage.userid, 
 			     		function() {		 
 								  $('.favbox .loaderInPopup').fadeOut();
 					 	});
@@ -384,7 +406,7 @@
 				 	 $('.cartbox .loaderInPopup').fadeIn();
 			     $('.cartbox').toggleClass("on");
 			     $('.overlay, a.checkoutbtn').addClass("on");
-			     $(".cartbox .content").load('http://www.elbaga.net/fiveapp/php/getcart.php?uid=' + localStorage.userid, function() {		 
+			     $(".cartbox .content").load('https://www.elbaga.net/fiveapp/php/getcart.php?uid=' + localStorage.userid, function() {		 
 								  $('.cartbox .loaderInPopup').fadeOut();
 					 		});
 			     $('body').toggleClass("noscroll");
@@ -404,7 +426,7 @@
 				  // $('.checkoutbox').removeClass("on");
 				   $('.overlay, a.checkoutbtn, .cartbox,.checkoutbox').removeClass("on");
 				   $('body').removeClass("noscroll");
-				  // $(".cartbox .content").load('http://www.elbaga.net/fiveapp/php/getcart.php?uid=' + localStorage.userid);
+				  // $(".cartbox .content").load('https://www.elbaga.net/fiveapp/php/getcart.php?uid=' + localStorage.userid);
 				  return false;
 				});
 
@@ -426,7 +448,7 @@
 					   var type=type;
 			       var uid=localStorage.userid; 					   
 				     var dataString="uid="+uid+"&cid="+cid+"&removetype="+type;
-				     var url_removefavadd = "http://www.elbaga.net/fiveapp/php/remove_fav_or_cart.php";
+				     var url_removefavadd = "https://www.elbaga.net/fiveapp/php/remove_fav_or_cart.php";
 					     $.ajax({
 					     type: "GET",
 					     url: url_removefavadd,
@@ -458,7 +480,7 @@
 					   var type=type;
 			       var uid=localStorage.userid; 					   
 				     var dataString="uid="+uid+"&cid="+cid+"&removetype="+type;
-				     var url_removefavadd = "http://www.elbaga.net/fiveapp/php/remove_fav_or_cart.php";
+				     var url_removefavadd = "https://www.elbaga.net/fiveapp/php/remove_fav_or_cart.php";
 					     $.ajax({
 					     type: "GET",
 					     url: url_removefavadd,
@@ -488,7 +510,7 @@
 					   var cid=cid;
 			       var uid=localStorage.userid; 					   
 				     var dataString="uid="+uid+"&cid="+cid+"&addtype=1";
-				     var url_favadd = "http://www.elbaga.net/fiveapp/php/fav_or_addtocart.php";
+				     var url_favadd = "https://www.elbaga.net/fiveapp/php/fav_or_addtocart.php";
 					     $.ajax({
 					     type: "GET",
 					     url: url_favadd,
@@ -521,7 +543,7 @@
 					   var cid=cid; 
 					   var uid=localStorage.userid; 
 				     var dataString="uid="+uid+"&cid="+cid+"&addtype=2";
-				     var url_favadd = "http://www.elbaga.net/fiveapp/php/fav_or_addtocart.php";
+				     var url_favadd = "https://www.elbaga.net/fiveapp/php/fav_or_addtocart.php";
 					     $.ajax({
 					     type: "GET",
 					     url: url_favadd,
@@ -560,7 +582,7 @@
 					 var email=$("#signinemail").val();
 			     var password=$("#signinpwd").val();
 			     var dataString="email="+email+"&pwd="+password+"&signin=1&signup=0";
-			     var url_signin = "http://www.elbaga.net/fiveapp/php/loginsignup.php";
+			     var url_signin = "https://www.elbaga.net/fiveapp/php/loginsignup.php";
 			     // if($.trim(email).length>0 & $.trim(password).length>0) {
 				     $.ajax({
 				     type: "GET",
@@ -611,7 +633,7 @@
 						 var email=$("#signupemail").val();
 				     var password=$("#signuppwd").val();
 				     var dataString="email="+email+"&pwd="+password+"&signin=0&signup=1";
-				     var url_signup = "http://www.elbaga.net/fiveapp/php/loginsignup.php";
+				     var url_signup = "https://www.elbaga.net/fiveapp/php/loginsignup.php";
 				     // if($.trim(email).length>0 & $.trim(password).length>0) {
 					   
 					   	 disabled = true;
@@ -652,6 +674,45 @@
 			     }
 		     });
 
+
+		     // FORGOT PWD
+		     $("#forgotpwdbtn").click(function(){
+					 var email=$("#forgotpwdemail").val();
+			     var dataString="email="+email+"&code=Xu48flkj";
+			     var url_forgotpwd = "https://www.elbaga.net/fiveapp/php/forgotpwd.php";
+			     // if($.trim(email).length>0 & $.trim(password).length>0) {
+				     $.ajax({
+				     type: "GET",
+				     url: url_forgotpwd,
+				     data: dataString,
+				     crossDomain: true,
+				     cache: false,
+				     beforeSend: function(){ 
+				     	$("#forgotpwdbtn").html('Connecting<span>.</span><span>.</span><span>.</span>');
+				   	  $('#forgotpwdbtn').css('opacity','0.6');},
+				     success: function(data){
+					     if($.isNumeric( data )) {
+					     	 // not found
+						     $('#forgotpwdblockrrormsg').html("We did not locate this email.");
+						     $('#forgotpwdbtn').css('opacity','1');
+						     $('.loginerror').addClass("on");
+						     $("#forgotpwdbtn").html('Send');
+						    }
+						    else {
+						    	//success
+		     				 $('#forgotpwdblockrrormsg').html("We sent a link to this email to reset password.");
+		     				 $('#forgotpwdbtn').css('opacity','1');
+						     $("#forgotpwdbtn").html('Send');
+						     }
+					     	}
+				     });
+			     // }
+			     return false;
+		     });
+
+
+
+
 $(window).load(function(){
    // PAGE IS FULLY LOADED  
    // FADE OUT YOUR OVERLAYING DIV
@@ -660,11 +721,11 @@ $(window).load(function(){
 
 
 
-		   //clear login for debugging
-				 localStorage.login="false";
-		   	 localStorage.email="";
-		   	 localStorage.userid="";
-		     localStorage.mastercaseid="0";
+		  //clear login for debugging
+			// localStorage.login="false";
+			// localStorage.email="";
+			// localStorage.userid="";
+			// localStorage.mastercaseid="0";
 		</script>
 	  
 	</body>

@@ -150,13 +150,15 @@ table {
     float: right;
     width: 15%;
     text-align: right;
+    margin-top: 4px;
+    margin-right: 4px;
   }
   header #logo {
     position: absolute;
     margin:0 auto;
     left:0;
     right:0;
-    top:10px;
+    top:13px;
     width:110px;
   }
   header.on {
@@ -196,8 +198,6 @@ table {
 	header .nav-icon span {
     width: 100%;
     height: 3px;
-    /*background: rgb(93, 197, 31);*/
-    background: #28e52c;
     position: absolute;
 	}
 	header .nav-icon {
@@ -400,7 +400,6 @@ table {
 	}
   .signupbar .btn {
     color:#000;
-    background-color: #28e52c;
     margin-top:4px;
     margin-bottom:4px;
     padding:15px 0px 15px 0px;
@@ -425,10 +424,7 @@ table {
     text-transform: uppercase;
     cursor:pointer;
   }
-  .choosephonebox .content .phonechoice {
-    padding:15px;
-  }
-
+  
   a.continue {
     margin: 20px 10px 30px 10px;
     text-align: center;
@@ -437,7 +433,6 @@ table {
     display: block;
     text-decoration: none;
     color: #000;
-    background-color: #28e52c;
     border: none;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -470,7 +465,6 @@ table {
     z-index:20;
     margin:10px auto;
     width:90%;
-    font-size:17px;
     text-align:center;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -488,7 +482,6 @@ table {
     width:100%;
     padding:14px 0px;
     z-index:22;
-    font-size:17px;
     text-align:center;
     display:inline-block;
     margin-top: 30px;
@@ -512,11 +505,10 @@ table {
   }
 
 
-
 	.loginbox {
 		width:90%;
-		border:1px solid #28e52c;
-		color:#28e52c;
+		border:1px solid #66FFC9;
+		color:#66FFC9;
 		right:0;
 		left:0;
 		position: fixed;
@@ -553,13 +545,13 @@ table {
     border-left: 0px;
     border-right: 0px;
     background: transparent;
-    border-bottom: 1px solid #28e52c !important;
+    border-bottom: 1px solid #66FFC9 !important;
     letter-spacing: 1px;
     display: block;
     padding: 10px 0px 5px !important;
     margin-bottom: 8px !important;
     width: 80%;
-    color: #28e52c;
+    color: #66FFC9;
     outline: none;
     font-size: 15px;
     font-weight: 300;
@@ -567,10 +559,10 @@ table {
     padding-bottom: 3px !important;
   }
   
+
   a.btn {
   	border:2px solid #000;
   	color:#000;
-  	background-color: #28e52c;
   	padding:10px 30px;
   	width:80%;
   	display: inline-block;
@@ -590,13 +582,15 @@ table {
   	text-align: center;
   	padding:14px 0px;
   }
-  .signupblock {
+  .signupblock,
+  .forgotpwdblock {
   	display:none;
   }
   .loginerror {
   	width:80%;
   	margin:0 auto;
     display: block;
+    color: #66FFC9;
   }
   .loginerror.on {
   	padding: 15px 0px;
@@ -612,9 +606,9 @@ table {
   	border-bottom-right-radius: 5px;
   	display:none;
   	z-index: 13;
-  	background-color: rgba(0, 0, 0, 0.9);
+  	background-color: #DF8FC9;
   	border-bottom:1px solid #000;
-  	border-top:1px solid rgba(40, 229, 44, 0.9);
+  	border-top:1px solid #66FFC9;
   	border-left:1px solid #000;
   	border-right:1px solid #000;
   }
@@ -622,8 +616,8 @@ table {
 		position: absolute;
 		bottom: 65px;
     right: 4%;
-    width: 45px;
-    font-size:18px;
+    width: 50px;
+    font-size:24px;
     color: #fff;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 10;
@@ -631,7 +625,7 @@ table {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
-    border-top:1px solid rgba(40, 229, 44, 0.9);
+    border-top:1px solid #66FFC9;
   }
   .casebox .cost.premium:before {
 		content:url('../img/premium.png');
@@ -679,7 +673,7 @@ table {
   .casebox {
   	position:relative;
     /*margin-bottom: 10px;*/
-    /*border-bottom: 15px solid #28e52c;*/
+    /*border-bottom: 15px solid #66FFC9;*/
   	/*border-radius: 10px;
   	height:310px;*/
   }
@@ -692,7 +686,6 @@ table {
   	left:0;
   	right:0;
   	margin:0 auto;
-  	/*background-color: rgba(40, 229, 44, 0.9);*/
   	background-color: #fff;
   	z-index:-1;
   	text-align: center;
@@ -725,8 +718,7 @@ table {
   .cartbox .content,
   .checkoutbox .content,
   .updatecardbox .content {
-		padding:30px;
-		padding-bottom:80px;
+		padding:40px 19px 80px 20px;
   }
   .favbox,
   .cartbox,
@@ -750,7 +742,7 @@ table {
     overflow:scroll;
   }
   .choosephonebox {
-    background-color: #28e52c;
+    background-color: #CAB;
   }
   .favbox.on,
   .cartbox.on,
@@ -766,7 +758,7 @@ table {
   .checkoutclose,
   .updatecardclose {
   	position: absolute;
-  	top:30;
+  	top:35;
   	right:8;
   	color:#000;
   	cursor:pointer;
@@ -864,7 +856,6 @@ table {
 	}
 	.choosephonebox .content {
 		margin:50px auto;
-    background-color:#28e52c; 
     position: relative;
 	}
 	
@@ -875,6 +866,38 @@ table {
 		border-top:1px solid #000;
 		font-size:15px;
 	}
+  .choosephonebox .content h1 {
+    font-size:23px;
+  }
+
+  .choosephonebox .content .phonechoice {
+    padding:15px;
+    width:200px;
+    margin:0 auto;
+    border: 1px solid black;
+    margin-top:8px;
+  }
+  .top {
+    position: fixed;
+    top:0;
+    height:28px;
+    width:100%;
+    background-color: #DF8FC9;
+    z-index:30;
+  }
+  a.continue,
+  a.paybtn,
+  a.checkoutbtn {
+    font-size:16px;
+  }
+  .cardonfile {
+    padding-top:10px;
+    font-size:13px;
+  }
+  .errorcomeback {
+    padding-top:20px;
+    color:#B53491;
+  }
 
 /* ----------END MOBILE  ---------- */
 
@@ -908,6 +931,23 @@ table {
 		-webkit-font-smoothing: antialiased;
 	  -moz-osx-font-smoothing: grayscale;
 	}
+  .choosephonebox .content .phonechoice,
+  .cost,
+  .signupbar a,
+  a.continue,
+  a.paybtn,
+  a.checkoutbtn,
+  a.btn {
+    font-family: 'dommed';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .choosephonebox .content h1 {
+    font-family: 'dombold';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
 /* ---------- GLOBAL VARS  ---------- */
 	header .centeralign {
@@ -928,11 +968,15 @@ table {
 	.navsidebar,
 	.navsidebar ul>li>a,
 	a.checkoutbtn,
-	a.paybtn.on {
-		background-color: #28e52c;
+	a.paybtn.on,
+  .signupbar .btn,
+  header .nav-icon span,
+  a.continue,
+  a.btn {
+		background-color: #DF8FC9;
 	}
 	a.paybtn {
-		background-color: #FF5733;
+		background-color: #DF8FC9;
 	}
 
 	header  {
@@ -1085,7 +1129,7 @@ a.paybtn span:nth-child(3) {
 }
 
 ::-webkit-input-placeholder {
-	   color: #28e52c;
+	   color: #66FFC9;
 	    opacity:1; 
 		-webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;
@@ -1093,7 +1137,7 @@ a.paybtn span:nth-child(3) {
 
 	}
 :-moz-placeholder { /* Firefox 18- */
-	    color: #28e52c;  
+	    color: #66FFC9;  
 	      opacity:1; 
 		  -webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;
@@ -1101,14 +1145,14 @@ a.paybtn span:nth-child(3) {
 
 	}
 	::-moz-placeholder {  /* Firefox 19+ */
-	   color: #28e52c; 
+	   color: #66FFC9; 
 	   opacity:1; 
 	   -webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;
 		 font-family: 'gothambook';
 	}
 	:-ms-input-placeholder {  
-	   color: #28e52c; 
+	   color: #66FFC9; 
 	      opacity:1; 
 		  -webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;
