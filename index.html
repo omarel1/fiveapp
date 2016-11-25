@@ -107,17 +107,8 @@
 
 		<div class="choosephonebox">
 			<div class="loaderInPopup"><img src="img/loader.svg"></div>
-			<div class="choosephoneboxclose" data-id="5"><img src="img/x.png"></div>
-			<div class="content">
-				<h1>Choose Phone:</h1><br />
-				<div class="phonechoice" data-id="1">iPhone 4</div>
-				<div class="phonechoice" data-id="2">iPhone 5</div>
-				<div class="phonechoice" data-id="3">iPhone 6</div>
-				<div class="phonechoice" data-id="4">iPhone 6 Plus</div>
-				<div class="phonechoice" data-id="5">iPhone 7</div>
-				<div class="phonechoice" data-id="6">iPhone 7 Plus</div>
-				<div class="phonechoice" data-id="7">iPhone SE</div>
-			</div>
+			<!-- <div class="choosephoneboxclose" data-id="5"><img src="img/x.png"></div> -->
+			<div class="content"></div>
 		</div>
 
 		<!-- thank you popup after action -->
@@ -161,13 +152,16 @@
 				localStorage.login == "false"
 				$('.signupbar').fadeIn();
 			} 
+	
 			if (!(localStorage.mastercaseid > "0")) {
-				localStorage.mastercaseid == "0";
+				// localStorage.mastercaseid == "0";
+				localStorage.setItem("mastercaseid", 0);
 				$('.choosephonebox').toggleClass('on');
+				$(".choosephonebox .content").load('https://www.elbaga.net/fiveapp/php/get_mastercases.php');
 				$('.overlay').addClass("on");
 				$('body').addClass("noscroll");
 			} 
-			$('.lsvar').append(localStorage.mastercaseid);
+			// $('.lsvar').append(localStorage.mastercaseid);
 
 		</script> 
 
@@ -175,7 +169,8 @@
 			 
 
 			 // CHOOSE PHONE
-			 $('.phonechoice, .choosephoneboxclose').click(function () {
+			 $(document).on("click", '.phonechoice', function(){
+			 // $('.phonechoice, .choosephoneboxclose').click(function () {
 				   var mcid=$(this).data("id");
 				   localStorage.setItem("mastercaseid", mcid);
 				   $('.choosephonebox').removeClass("on");
@@ -189,6 +184,7 @@
 				// OPEN PHONE BOX
 				 $('.togglechoosephone').click(function () {
 			     $('.choosephonebox').toggleClass("on");
+			     $(".choosephonebox .content").load('https://www.elbaga.net/fiveapp/php/get_mastercases.php');
 			     $('.overlay').toggleClass("on");
 			     $('body').toggleClass("noscroll");
 			     return false;
@@ -665,10 +661,10 @@ $(window).load(function(){
 
 
 		   //clear login for debugging
-				 // localStorage.login="false";
-		   // 	 localStorage.email="";
-		   // 	 localStorage.userid="";
-		   //   localStorage.mastercaseid="0";
+				 localStorage.login="false";
+		   	 localStorage.email="";
+		   	 localStorage.userid="";
+		     localStorage.mastercaseid="0";
 		</script>
 	  
 	</body>
