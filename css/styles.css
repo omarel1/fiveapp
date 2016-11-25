@@ -173,6 +173,10 @@ table {
     height:auto;
     width:30px;
   }
+  header img.cart {
+    height:auto;
+    width:30px;
+  }
 
 	/*header .cart {
 		position: absolute;
@@ -283,8 +287,9 @@ table {
     top: 5px;
 	}
 	#cartcount {
-    right: -2px;
-    top: -3px;
+    right: 12px;
+    top: 3px;
+
 	}
 	#favcount.on,
 	#cartcount.on {
@@ -895,8 +900,10 @@ table {
     font-size:13px;
   }
   .errorcomeback {
-    padding-top:20px;
     color:#B53491;
+  }
+  .errorcomeback.on {
+    padding-top:20px;
   }
 
 /* ----------END MOBILE  ---------- */
@@ -937,7 +944,12 @@ table {
   a.continue,
   a.paybtn,
   a.checkoutbtn,
-  a.btn {
+  a.btn,
+  .checkoutbox .content h1,
+  .updatecardbox .content h1,
+  .heart .floatright,
+  .favbox .content h1, 
+  .cartbox .content h1 {
     font-family: 'dommed';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -1108,7 +1120,7 @@ table {
     animation-duration: 1.4s;
     animation-iteration-count: infinite;
     animation-fill-mode: both;
-    font-size:21px  !important;
+    font-size: 21px !important;
     color:#000 !important;
 }
 
