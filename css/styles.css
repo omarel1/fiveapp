@@ -323,10 +323,10 @@ table {
     margin:20px auto 0px;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
-    border-top:1px solid rgba(0, 0, 0, 0.6);
-    border-left:1px solid rgba(0, 0, 0, 0.6);
-    border-right:1px solid rgba(0, 0, 0, 0.6);
-    border-bottom:1px solid rgba(0, 0, 0, 0.6);
+    border-top:1px solid #2B4141;
+    border-left:1px solid #2B4141;
+    border-right:1px solid #2B4141;
+    border-bottom:1px solid #2B4141;
 	}
 	#pagecontent .floatholder {
 		text-align:center;
@@ -479,7 +479,7 @@ table {
     opacity:0;
     z-index:-1;
     width:90%;
-    margin: 5px auto 2px;
+    margin: 5px auto 7px;
     display: block;
     max-width:500px;
     text-align:center;
@@ -642,7 +642,7 @@ table {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
-    border-top:1px solid #66FFC9;
+    border-top:2px solid #34E4EA;
   }
   .casebox .cost.premium:before {
 		content:url('../img/premium.png');
@@ -660,8 +660,8 @@ table {
   	background-color: transparent;
   	border-bottom:1px solid #000;
   	border-top:0px solid #000;
-  	border-left:0px solid #000;
-  	border-right:0px solid #000;
+  	border-left:1px solid #000;
+  	border-right:1px solid #000;
   	font-size:20px;
   }
   .heart .floatleft {
@@ -677,7 +677,7 @@ table {
   	text-align:center;
   	cursor:pointer;
   	padding:10px;
-  	font-size:14px;
+  	font-size:16px;
   }
    .heart .floatleft img,
    .heart .floatright img {
@@ -959,6 +959,10 @@ table {
   .errorcomeback.on {
     padding-top:20px;
   }
+  .casetype {
+    padding-bottom:5px;
+    padding-top:4px;
+  }
 
 /* ----------END MOBILE  ---------- */
 
@@ -1051,10 +1055,9 @@ table {
 		background-color: #8AB9B5;
 	}
   .heart {
-    border-bottom:1px solid #000;
-    border-top:1px solid #8AB9B5;
-    border-left:1px solid #000;
-    border-right:1px solid #000;
+    border-bottom:1px solid #2B4141;
+    border-left:1px solid #2B4141;
+    border-right:1px solid #2B4141;
   }
   .heart,
   header,
