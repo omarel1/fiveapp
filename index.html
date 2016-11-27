@@ -13,7 +13,7 @@
 		<header>
 			<div class="floatleft favicon">
 				<div id="favcount"></div>
-				<img src="img/heart1.png" class="heartme">
+				<img src="img/heart2.png" class="heartme">
 					<!-- <div id="hamburger" class="nav-icon">
 						<span></span>
 						<span></span>
@@ -21,22 +21,24 @@
 					</div> -->
 			</div>
 			<div class="floatleft togglechoosephone">
-				<img src="img/phone1.png" alt="">
+				<img src="img/phone2.png" alt="">
 			</div>
 			<div id="logo" class="centeralign">
 				<img src="img/logofive.png"><!-- <div class="lsvar"></div> -->
 			</div>
 			<div class="floatright carticon">
 				<div id="cartcount"></div>
-				<img src="img/cart-g1.png" class="cart">
+				<img src="img/cart-g2.png" class="cart">
 			</div>
 			<div class="clearfloats"></div>
 		</header>
 
 		<!--//load content here --> 
 		<div id="pagecontent" class="wrapper">
-		<div class="content"></div>
-			<div class="btnholder"><a id="continue" class="continue" href="javascript:;">Get More</a></div>
+			<div class="holdmaincases">
+				<div class="content"></div>
+				<div class="btnholder"><a id="continue" class="continue" href="javascript:;">Get More</a></div>
+			</div>
 		</div><!--/end load content -->
 		
 
@@ -88,14 +90,14 @@
 
 		<div class="cartbox ">
 			<div class="closebox"></div>
-			<div class="loaderInPopup"><img src="img/loader.svg"></div>
+			<!-- <div class="loaderInPopup"><img src="img/loader.svg"></div> -->
 			<div class="cartboxclose"><img src="img/x.png"></div>
 			<div class="content"></div>
 		</div><!--//cartbox -->
 
 
 		<div class="checkoutbox">
-		<!-- <div class="loaderInPopup"><img src="img/loader.svg"></div> -->
+		<div class="loaderInPopup"><img src="img/loader.svg"></div>
 			<div class="checkoutclose"><img src="img/x.png"></div>
 			<div class="content"></div>
 		</div><!--//checkoutbox -->
@@ -166,7 +168,7 @@
 				localStorage.setItem("mastercaseid", 0);
 				$('.choosephonebox').toggleClass('on');
 				$(".choosephonebox .content").load('https://www.elbaga.net/fiveapp/php/get_mastercases.php');
-				$('.overlay').addClass("on");
+				// $('.overlay').addClass("on");
 				$('body').addClass("noscroll");
 			} 
 			// $('.lsvar').append(localStorage.mastercaseid);
@@ -185,6 +187,7 @@
 				   $('.choosephonebox').removeClass("on");
 			     $('.overlay').removeClass("on");
 			     $('body').removeClass("noscroll");
+			     $('.holdmaincases').removeClass("off");
 				  getresult(url_pullrecords,1,0); //execute function
 				  return false;
 				});
@@ -192,8 +195,9 @@
 				// OPEN PHONE BOX
 				 $('.togglechoosephone').click(function () {
 			     $('.choosephonebox').toggleClass("on");
+			     $('.holdmaincases').addClass("off");
 			     $(".choosephonebox .content").load('https://www.elbaga.net/fiveapp/php/get_mastercases.php');
-			     $('.overlay').toggleClass("on");
+			     // $('.overlay').toggleClass("on");
 			     $('body').toggleClass("noscroll");
 			     return false;
 				 });
@@ -201,10 +205,26 @@
 				 // CLOSE PHONE BOX
 				 $('.choosephoneboxclose').click(function () {
 			     $('.choosephonebox').removeClass("on");
+			     $('.holdmaincases').removeClass("off");
 			     $('.overlay').removeClass("on");
 			     $('body').removeClass("noscroll");
 			     return false;
 				 });
+
+				 // OPEN CHECKOUT BOX
+				 $(document).on("click", '.togglecheckout', function(){
+				 // $('.togglecheckout').click(function () {
+			 	 $('.cartbox').removeClass("on");
+			 	 // $('.checkoutbox .loaderInPopup').fadeIn(0);
+			 	 $('.checkoutbox .content .loaderinsidebox').fadeIn(0);
+		     $('.checkoutbox').toggleClass("on");
+		     $(".checkoutbox .content").load('https://www.elbaga.net/fiveapp/php/getpayform.php?uid=' + localStorage.userid, function () {
+			     			// $('.checkoutbox .loaderInPopup').fadeOut();
+			     			$('.checkoutbox .content .loaderinsidebox').fadeOut(0);
+			     		});
+		     		return false;
+			 		});
+
 
 				 // OPEN UPDATE CARD BOX
 				 $(document).on("click", '.openupdatecardbox', function(){
@@ -309,12 +329,7 @@
 		     return false;
 			 });
 
-			 $('.togglecheckout').click(function () {
-		     $('.checkoutbox').toggleClass("on");
-		     $(".checkoutbox .content").load('https://www.elbaga.net/fiveapp/php/getpayform.php?uid=' + localStorage.userid);
-		     // $(".checkoutbox .content").load('https://localhost/phonecases/stripe/form.html');
-		     return false;
-			 });
+
 
 			 
 
@@ -355,7 +370,7 @@
 			     cid = $(this).data("id");
 			     ctid = $(this).data("index");
 			     removefav(cid,1);
-			     $('#fav_' + ctid).html('<img src="img/heart1.png" />');
+			     $('#fav_' + ctid).html('<img src="img/heart2.png" />');
 				   return false;
 				});
 
@@ -377,12 +392,15 @@
 
 			  // OPEN FAVORITES
 			  $('.favicon').click(function () {
-			     $('.favbox .loaderInPopup').fadeIn(100);
+			     // $('.favbox .loaderInPopup').fadeIn(100);
+			     $('.favbox .content .loaderinsidebox').fadeIn(0);
 			     $('.favbox').toggleClass("on");
-			     $('.overlay').addClass("on");
+			     $('.holdmaincases').toggleClass("off");
+			     // $('.overlay').addClass("on");
 			     $(".favbox .content").load('https://www.elbaga.net/fiveapp/php/getfavs.php?uid=' + localStorage.userid, 
 			     		function() {		 
-								  $('.favbox .loaderInPopup').fadeOut();
+								  // $('.favbox .loaderInPopup').fadeOut();
+								  $('.favbox .content .loaderinsidebox').fadeOut();
 					 	});
 			     $('body').toggleClass("noscroll");
 			     return false;
@@ -390,6 +408,7 @@
 
 				 // CLOSE FAVORITES box
 				 $('.favboxclose').click(function () {
+			     $('.holdmaincases').removeClass("off");
 			     $('.favbox').removeClass("on");
 			     $('.overlay').removeClass("on");
 			     $('body').removeClass("noscroll");
@@ -399,22 +418,27 @@
 				 //CLOSE CARTBOX
 				 $('.closebox').click(function() {
 				 		$('.favbox,.cartbox,.checkoutbtn, .overlay').removeClass("on");
+				 		$('.holdmaincases').removeClass("off");
 				 })
 
 				 // OPEN CART ITEMS
 				 $('.carticon').click(function () {
-				 	 $('.cartbox .loaderInPopup').fadeIn();
+				 	 // $('.cartbox .loaderInPopup').fadeIn();
+				 	 $('.cartbox .content .loaderinsidebox').fadeIn();
+				 	 $('.holdmaincases').toggleClass("off");
 			     $('.cartbox').toggleClass("on");
-			     $('.overlay, a.checkoutbtn').addClass("on");
+			     $('a.checkoutbtn').addClass("on");
 			     $(".cartbox .content").load('https://www.elbaga.net/fiveapp/php/getcart.php?uid=' + localStorage.userid, function() {		 
 								  $('.cartbox .loaderInPopup').fadeOut();
+								  $('.cartbox .content .loaderinsidebox').fadeOut();
 					 		});
 			     $('body').toggleClass("noscroll");
-			     return false;
-				 });
+			     	return false;
+				  });
 
 				 // CLOSE CART ITEMS box
 				 $('.cartboxclose').click(function () {
+				 		$('.holdmaincases').removeClass("off");
 			     $('.overlay, a.checkoutbtn, .cartbox').removeClass("on");
 			     $('body').removeClass("noscroll");
 			     return false;
@@ -424,6 +448,7 @@
 				 // CLOSE CHECKOUT AND CART BOX
 	  		$(document).on("click", '.checkoutclose', function(){
 				  // $('.checkoutbox').removeClass("on");
+				   $('.holdmaincases').removeClass("off");
 				   $('.overlay, a.checkoutbtn, .cartbox,.checkoutbox').removeClass("on");
 				   $('body').removeClass("noscroll");
 				  // $(".cartbox .content").load('https://www.elbaga.net/fiveapp/php/getcart.php?uid=' + localStorage.userid);
