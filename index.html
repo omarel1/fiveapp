@@ -131,7 +131,7 @@
 		<div class="overlay"></div>	 
 		<div class="overlaybg"></div>	
 		<div class='signupbar'>
-			<div class="floatleft btn togglechoosephone"><a href="#"><img src="img/phone-black.png" alt=""></a></div>
+			<div class="floatleft btn togglechoosephone"><a href="#"><img src="img/phone2.png" alt=""></a></div>
 			<div class="floatright btn signupbtn"><a href='#'>Sign Up/In to Buy</a></div>
 		</div>
 
@@ -167,7 +167,7 @@
 				// localStorage.mastercaseid == "0";
 				localStorage.setItem("mastercaseid", 0);
 				$('.choosephonebox').toggleClass('on');
-				$(".choosephonebox .content").load('https://www.elbaga.net/fiveapp/php/get_mastercases.php');
+				$(".choosephonebox .content").load('https://www.elbaga.net/fiveapp/php/get_mastercases.php?mcid=' + localStorage.mastercaseid);
 				// $('.overlay').addClass("on");
 				$('body').addClass("noscroll");
 			} 
@@ -196,14 +196,15 @@
 				 $('.togglechoosephone').click(function () {
 			     $('.choosephonebox').toggleClass("on");
 			     $('.holdmaincases').addClass("off");
-			     $(".choosephonebox .content").load('https://www.elbaga.net/fiveapp/php/get_mastercases.php');
+			     $(".choosephonebox .content").load('https://www.elbaga.net/fiveapp/php/get_mastercases.php?mcid=' + localStorage.mastercaseid);
 			     // $('.overlay').toggleClass("on");
 			     $('body').toggleClass("noscroll");
 			     return false;
 				 });
 
 				 // CLOSE PHONE BOX
-				 $('.choosephoneboxclose').click(function () {
+				 $(document).on("click", '.choosephoneboxclose', function(){
+				 // $('.choosephoneboxclose').click(function () {
 			     $('.choosephonebox').removeClass("on");
 			     $('.holdmaincases').removeClass("off");
 			     $('.overlay').removeClass("on");
@@ -306,13 +307,13 @@
 			 $('#createaccountlink').click(function () {
 		     $('.signupblock').fadeToggle(00);
 		     $('.loginblock').fadeToggle(00);
-		     $('.loginerror').toggleClass("on");
+		     $('.loginerror').removeClass("on");
 			 });
 			 $('.backtologin').click(function () {
 		     $('.signupblock').fadeOut(00);
 		     $('.forgotpwdblock').fadeOut(00);
 		     $('.loginblock').fadeToggle(00);
-		     $('.loginerror').toggleClass("on");
+		     $('.loginerror').removeClass("on");
 			 });
 			 $('#forgotpwdlink').click(function () {
 		     $('.signupblock').fadeOut(00);
@@ -382,7 +383,7 @@
 			     cid = $(this).data("id");
 			     ctid = $(this).data("index");
 			     removecartitem(cid,2);
-			     $('#addtocart_' + ctid).html('<img src="img/addtocart1.png" />');
+			     $('#addtocart_' + ctid).html('<img src="img/addtocart3.png" />');
 				   return false;
 				});
 
@@ -747,10 +748,10 @@ $(window).load(function(){
 
 
 		  //clear login for debugging
-			// localStorage.login="false";
-			// localStorage.email="";
-			// localStorage.userid="";
-			// localStorage.mastercaseid="0";
+			localStorage.login="false";
+			localStorage.email="";
+			localStorage.userid="";
+			localStorage.mastercaseid="0";
 		</script>
 	  
 	</body>

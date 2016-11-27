@@ -41,6 +41,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 /* ---------- END CSS RESET ---------- */
 
 
@@ -48,7 +49,7 @@ table {
 	body {
 		-webkit-touch-callout: none;
 		-webkit-user-select: none;
-		/*-webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 		background-color:#fff;
 		}
 	header {
@@ -409,27 +410,27 @@ table {
 		bottom:0;
 		width:100%;
 		margin: 0 auto;
-		background-color: #1C1B1B;
 		text-align: center;
 		z-index:19;
 		display: none;
 	}
   .signupbar .btn {
     color:#2B4141;
-    margin-top:4px;
-    margin-bottom:4px;
-    padding:15px 0px 15px 0px;
+    margin-top:2px;
+    margin-bottom:2px;
+    padding: 8px 0px 8px 0px;
   }
   .signupbar .floatleft {
     float:left;
     width:30%;
   }
   .signupbar .floatleft img {
-    height:19px;
+    height:30px;
   }
   .signupbar .floatright {
     float:right;
     width:69%;
+    padding: 14px 0px 13px 0px;
   }
 
   .signupbar a,
@@ -530,8 +531,6 @@ table {
 
 	.loginbox {
 		width:90%;
-		border:1px solid #66FFC9;
-		color:#66FFC9;
 		right:0;
 		left:0;
 		position: fixed;
@@ -539,7 +538,6 @@ table {
 		top: 100%;
   	margin:0 auto;
   	text-align:center;
-  	background-color:#000;
   	z-index:20;
   	display: block;
 	}
@@ -550,17 +548,22 @@ table {
 	}
 	.overlay,
 	.overlaybg {
-		background-color: rgba(0, 0, 0, 0.8);
+		background-color: rgba(43, 65, 65, 0.94);
 		position:fixed;
 		top:0;
 		width:100%;
 		height:100vh;
-		z-index:15;
-		display: none;
+		z-index:-1;
+    visibility: hidden;
+    opacity:0;
+		/*display: none;*/
 	}
 	.overlay.on,
 	.overlaybg.on {
-		display: block;
+		/*display: block;*/
+    visibility: visible;
+    opacity:1;
+    z-index:15;
 	}
 	.contactfields {
     border-top: 0px;
@@ -568,13 +571,11 @@ table {
     border-left: 0px;
     border-right: 0px;
     background: transparent;
-    border-bottom: 1px solid #66FFC9 !important;
     letter-spacing: 1px;
     display: block;
     padding: 10px 0px 5px !important;
     margin-bottom: 8px !important;
     width: 80%;
-    color: #66FFC9;
     outline: none;
     font-size: 15px;
     font-weight: 300;
@@ -585,8 +586,6 @@ table {
   
 
   a.btn {
-  	border:2px solid #000;
-  	color:#000;
   	padding:10px 30px;
   	width:80%;
   	display: inline-block;
@@ -614,7 +613,6 @@ table {
   	width:80%;
   	margin:0 auto;
     display: block;
-    color: #66FFC9;
   }
   .loginerror.on {
   	padding: 15px 0px;
@@ -824,7 +822,6 @@ table {
   
   .favboxclose,
   .cartboxclose,
-  .choosephoneboxclose,
   .checkoutclose,
   .updatecardclose {
   	position: absolute;
@@ -832,6 +829,14 @@ table {
   	right:8;
   	color:#000;
   	cursor:pointer;
+        z-index: 10;
+  }
+  .choosephoneboxclose {
+    position: absolute;
+    top:0;
+    right:8;
+    color:#000;
+    cursor:pointer;
         z-index: 10;
   }
   .closebox {
@@ -935,8 +940,13 @@ table {
     padding:15px;
     width:200px;
     margin:0 auto;
-    border: 1px solid black;
+    border: 1px solid #2B4141;
     margin-top:8px;
+  }
+  .choosephonebox .content .phonechoice.on {
+    background-color:#2B4141;
+    border: 1px solid #2B4141;
+    color:#8AB9B5;
   }
   .top {
     position: fixed;
@@ -1050,12 +1060,17 @@ table {
 	a.paybtn,
   a.continue,
   a.btn,
-  a.paybtn.on,
-  .signupbar .btn  {
+  a.paybtn.on  {
 		color:#2B4141;
     background-color:#34E4EA;
 	}
 
+  .signupbar .btn  {
+    color:#2B4141;
+    background-color:#34E4EA;
+  }
+  
+  
 	.centertext a {
 		color:#fff;
 	}
@@ -1066,6 +1081,24 @@ table {
   header .nav-icon span {
 		background-color: #8AB9B5;
 	}
+  .signupbar,
+  .loginbox {
+    background-color: #2B4141;
+  }
+  .signupbar,
+  .loginbox {
+    border:1px solid #8AB9B5;
+    color:#8AB9B5;
+  }
+  .signupbar,
+  a.btn {
+    border:1px solid #2B4141;
+    color:#2B4141;
+  }
+  .contactfields {
+    border-bottom: 1px solid #34E4EA !important;
+    color: #34E4EA;
+  }
   .heart {
     border-bottom:1px solid #2B4141;
     border-left:1px solid #2B4141;
@@ -1083,6 +1116,9 @@ table {
   .cartbox .content h1,
   .choosephonebox .content h1 {
     color:#2B4141;
+  }
+  .loginerror {
+    color:#34E4EA;
   }
 	
 	a.continue,
@@ -1145,7 +1181,8 @@ table {
   .holdmaincases,
   a.checkoutbtn,
   .checkoutbtn,
-  a.checkoutbtn.on  {
+  a.checkoutbtn.on,
+  .loginbox  {
 		-o-transition: .4s;
 	  -ms-transition: .4s;
 	  -moz-transition: .4s;
@@ -1158,7 +1195,7 @@ table {
     -webkit-transition-delay: .3s; /* Safari */
     transition-delay: .3s;
   }
-	.loginbox {
+	.x {
 		-o-transition: .1s;
 	  -ms-transition: .1s;
 	  -moz-transition: .1s;
@@ -1249,6 +1286,7 @@ a.paybtn span:nth-child(3) {
 	    -moz-osx-font-smoothing: grayscale;
 		font-family: 'gothambook';
     text-align:center;
+    text-transform: capitalize;
 
 	}
 :-moz-placeholder { /* Firefox 18- */
@@ -1258,6 +1296,7 @@ a.paybtn span:nth-child(3) {
 	    -moz-osx-font-smoothing: grayscale;
 		 font-family: 'gothambook';
      text-align:center;
+     text-transform: capitalize;
 
 	}
 	::-moz-placeholder {  /* Firefox 19+ */
@@ -1267,6 +1306,7 @@ a.paybtn span:nth-child(3) {
 	    -moz-osx-font-smoothing: grayscale;
 		 font-family: 'gothambook';
      text-align:center;
+     text-transform: capitalize;
 	}
 	:-ms-input-placeholder {  
 	   color: #A2A2A2; 
@@ -1275,6 +1315,7 @@ a.paybtn span:nth-child(3) {
 	    -moz-osx-font-smoothing: grayscale;
 		 font-family: 'gothambook';
      text-align:center;
+     text-transform: capitalize;
 	 
 	}
 
