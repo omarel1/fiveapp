@@ -363,7 +363,9 @@ table {
   .loaderinsidebox {
     position: fixed;
     background-color: rgba(255, 255, 255, 0.9);
-    top: 20px;
+    top: 80px;
+    left: 0;
+    right: 0;
     padding-top:100px;
     width: 100%;
     height: 100%;
@@ -677,7 +679,7 @@ table {
   	text-align:center;
   	cursor:pointer;
   	padding:10px;
-  	font-size:16px;
+  	font-size:14px;
   }
    .heart .floatleft img,
    .heart .floatright img {
@@ -738,7 +740,7 @@ table {
 		padding:40px 19px 80px 20px;
   }
   
-  #pagecontent .content,
+  /*#pagecontent .content,*/
   .favbox .content,
   .cartbox .content,
   .checkoutbox .content,
@@ -750,6 +752,9 @@ table {
   .holdmaincases {
     width:100%;
     margin:0 auto;
+  }
+  .holdmaincases.off {
+    width:80%;
   }
   .updatecardbox {
     position: fixed;
@@ -816,9 +821,7 @@ table {
     height:100%;
   }
   
-  .holdmaincases.off {
-    width:80%;
-  }
+  
   .favboxclose,
   .cartboxclose,
   .choosephoneboxclose,
@@ -970,6 +973,15 @@ table {
 
 /* ----------START TABLET  ---------- */
 	@media (min-width: 768px) {
+    .holdmaincases {
+      width:500px;
+      max-width:500px;
+      margin:0 auto;
+    }
+    .holdmaincases.off {
+       width:400px;
+       max-width:400px;
+    }
 		.navsidebar.on {
 			width:40%;
 		}
