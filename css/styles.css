@@ -307,6 +307,8 @@ table {
   #pagecontent .content {
     position: relative;
     display: block;
+    width:100%;
+    margin:0 auto;
   }
 	header .floatleft {
 		width:100%;
@@ -758,6 +760,9 @@ table {
   .holdmaincases.off {
     /*width:80%;*/
   }
+  #pagecontent .content.off {
+    width:80%;
+  }
   .updatecardbox {
     position: fixed;
     top:0;
@@ -1187,6 +1192,7 @@ table {
 	.updatecardbox,
   .choosephonebox,
   .holdmaincases,
+  #pagecontent .content,
   .loginbox,
   a.checkoutbtn  {
 		-o-transition: .4s;

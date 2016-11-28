@@ -197,7 +197,7 @@
 				 $('.togglechoosephone').click(function () {
 				 	 $('header').fadeOut(10);
 			     $('.choosephonebox').toggleClass("on");
-			     $('.holdmaincases').addClass("off");
+			     $('.holdmaincases, #pagecontent .content').addClass("off");
 			     $(".choosephonebox .content").load('https://www.elbaga.net/fiveapp/php/get_mastercases.php?mcid=' + localStorage.mastercaseid);
 			     // $('.overlay').toggleClass("on");
 			     $('body').toggleClass("noscroll");
@@ -209,7 +209,7 @@
 				 // $('.choosephoneboxclose').click(function () {
 			     $('header').fadeIn(100);
 			     $('.choosephonebox').removeClass("on");
-			     $('.holdmaincases').removeClass("off");
+			     $('.holdmaincases, #pagecontent .content').removeClass("off");
 			     $('.overlay').removeClass("on");
 			     $('body').removeClass("noscroll");
 			     return false;
