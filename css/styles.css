@@ -809,7 +809,7 @@ table {
     overflow:scroll;
     visibility: hidden;
     opacity:0;
-    z-index:-1;
+    z-index:20;
   }
   
   .favbox.on,
