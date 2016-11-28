@@ -443,9 +443,9 @@ table {
   }
   
   a.continue {
-    margin: 20px 10px 30px 10px;
+    /*margin: 20px 10px 30px 10px;
+    padding: 14px 40px 14px 40px;*/
     text-align: center;
-    padding: 14px 40px 14px 40px;
     border: solid 1px black;
     display: block;
     text-decoration: none;
@@ -525,8 +525,8 @@ table {
     margin: 0 auto;
     position: relative;
     text-align: center;
-    /*padding-bottom:70px;
-    width: 90%;*/
+    padding-bottom:70px;
+    width: 90%;
   }
 
 
