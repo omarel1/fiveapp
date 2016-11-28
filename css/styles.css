@@ -246,7 +246,7 @@ table {
 	.wrapper {
 		width:100%;
 		left:0;
-		/*background-color: #1C1B1B;*/
+		z-index: 10;
 		background-color: #fff;
 		height:85vh;
 		position: relative;
@@ -301,8 +301,8 @@ table {
 		cursor:pointer;
 	}
 	#pagecontent.wrapper {
-		/*padding-top:30px;
-		height: 100vh;*/
+		padding-top:30px;
+		height: 100vh;
 	}
   #pagecontent .content {
     position: relative;
@@ -333,7 +333,7 @@ table {
 		text-align:center;
 		margin:0 auto;
 		display:block;
-		width:96%;
+		/*width:96%;*/
 	}
 	#pagecontent .floatleft.casebox {
 		float:left;
