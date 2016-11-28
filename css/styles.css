@@ -411,7 +411,7 @@ table {
 		width:100%;
 		margin: 0 auto;
 		text-align: center;
-		z-index:19;
+		z-index:15;
 		display: none;
 	}
   .signupbar .btn {
@@ -471,16 +471,16 @@ table {
     transform: translateY(5px);
   }
 
-   a.checkoutbtn {
+  a.checkoutbtn {
     position: fixed;
-    bottom:0;
+    bottom:-50px;
     left:0;
     right:0;
     padding:14px 0px;
     /* display:none;*/
     visibility: hidden;
     opacity:0;
-    z-index:-1;
+    z-index:21;
     width:90%;
     margin: 5px auto 7px;
     display: block;
@@ -499,6 +499,7 @@ table {
     opacity:1;
     z-index:21;
     width:90%;
+    bottom: 0;
   }
   
   a.paybtn {
@@ -563,7 +564,7 @@ table {
 		/*display: block;*/
     visibility: visible;
     opacity:1;
-    z-index:15;
+    z-index:17;
 	}
 	.contactfields {
     border-top: 0px;
@@ -590,6 +591,8 @@ table {
   	width:80%;
   	display: inline-block;
   	margin:10px auto;
+    font-size: 16px;
+    text-transform: uppercase;
   }
   .signup {
   	display:none;
@@ -749,6 +752,7 @@ table {
   }
   .holdmaincases {
     width:100%;
+    z-index:14;
     margin:0 auto;
   }
   .holdmaincases.off {
@@ -881,7 +885,7 @@ table {
   .checkoutbox .contactfields,
   .updatecardbox .contactfields {
     border-bottom: 1px solid #000 !important;
-    color: #000;
+    color: #2B4141;
     margin:0 auto;
     padding-bottom:0px;
     margin-bottom: 3px !important;
@@ -1081,14 +1085,18 @@ table {
   header .nav-icon span {
 		background-color: #8AB9B5;
 	}
-  .signupbar,
-  .loginbox {
+  .signupbar {
     background-color: #2B4141;
   }
+  .loginbox {
+    background-color: #2B4141;
+    border:1px solid #34E4EA;
+  }
+  
   .signupbar,
   .loginbox {
-    border:1px solid #8AB9B5;
-    color:#8AB9B5;
+    border:1px solid #2B4141;
+    color:#34E4EA;
   }
   .signupbar,
   a.btn {
@@ -1179,10 +1187,8 @@ table {
 	.updatecardbox,
   .choosephonebox,
   .holdmaincases,
-  a.checkoutbtn,
-  .checkoutbtn,
-  a.checkoutbtn.on,
-  .loginbox  {
+  .loginbox,
+  a.checkoutbtn  {
 		-o-transition: .4s;
 	  -ms-transition: .4s;
 	  -moz-transition: .4s;
@@ -1191,6 +1197,9 @@ table {
     -webkit-transition-timing-function: ease-in-out; /* Safari and Chrome */
     transition-timing-function: ease-in-out;
 	}
+
+ 
+
   .x  {
     -webkit-transition-delay: .3s; /* Safari */
     transition-delay: .3s;
