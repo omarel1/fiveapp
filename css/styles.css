@@ -803,13 +803,13 @@ table {
   	margin:0 auto;
   	background-color: rgba(255,255,255, 1);
   	text-align: center;
-		top: 50%;  	
+		/*top: 50%;  	
 		transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);*/
     overflow:scroll;
     visibility: hidden;
     opacity:0;
-    z-index:20;
+    z-index:-1;
   }
   
   .favbox.on,
