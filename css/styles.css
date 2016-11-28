@@ -284,7 +284,7 @@ table {
     z-index: 100;
 	}
 	#favcount {
-    left: 10px;
+    left: 25px;
     top: 5px;
 	}
 	#cartcount {
@@ -301,14 +301,12 @@ table {
 		cursor:pointer;
 	}
 	#pagecontent.wrapper {
-		padding-top:30px;
-		height: 100vh;
+		/*padding-top:30px;
+		height: 100vh;*/
 	}
   #pagecontent .content {
     position: relative;
     display: block;
-    width:100%;
-    margin:0 auto;
   }
 	header .floatleft {
 		width:100%;
@@ -758,9 +756,6 @@ table {
     margin:0 auto;
   }
   .holdmaincases.off {
-    /*width:80%;*/
-  }
-  #pagecontent .content.off {
     width:80%;
   }
   .updatecardbox {
@@ -1192,7 +1187,6 @@ table {
 	.updatecardbox,
   .choosephonebox,
   .holdmaincases,
-  #pagecontent .content,
   .loginbox,
   a.checkoutbtn  {
 		-o-transition: .4s;
