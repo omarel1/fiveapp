@@ -757,6 +757,9 @@ table {
   }
   .holdmaincases.off {
     width:80%;
+    top: 50%;   
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
   }
   .updatecardbox {
     position: fixed;
