@@ -195,9 +195,9 @@
 
 				// OPEN PHONE BOX
 				 $('.togglechoosephone').click(function () {
-				 	 $('header').fadeOut(10);
+				 	 // $('header').fadeOut(10);
 			     $('.choosephonebox').toggleClass("on");
-			     $('.holdmaincases').addClass("off");
+			     $('.holdmaincases').toggleClass("off");
 			     $(".choosephonebox .content").load('https://www.elbaga.net/fiveapp/php/get_mastercases.php?mcid=' + localStorage.mastercaseid);
 			     // $('.overlay').toggleClass("on");
 			     $('body').toggleClass("noscroll");
