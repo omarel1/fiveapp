@@ -254,13 +254,18 @@
 			 function getresult(url_pullrecords,phonechoice,buttonpress) {
 				 var phonechoice = phonechoice;
 				 var buttonpress = buttonpress;
+				 //start back at first record if phone choice is re-selected or it's the first time opening
+				 var lastrowvalue = $(".lastrow:last").data("id");
+				 if (phonechoice == 1 || lastrowvalue === null) {
+		 				var lastrowvalue = 0;
+					}
 				 $.ajax
 				 ({
 				 	 context: this,
 				   crossDomain: true,
 					 url: url_pullrecords,
 					 type: "GET",
-					 data:  {rowcount:$(".rowcount").val(),loggedIn:localStorage.login,mcid:localStorage.mastercaseid},
+					 data:  {loggedIn:localStorage.login,mcid:localStorage.mastercaseid,lastrow:lastrowvalue},
 					 beforeSend: function(){
 					 		//check if first time loading or get more was clicked show different loader
 					 		if (buttonpress == 0) {
@@ -291,11 +296,13 @@
 			 	}
 			 	getresult(url_pullrecords,1,0);
 
-			$('#continue').click(function () {
-		     if($(".pagenum:last").val() <= $(".rowcount").val()) {
-					var pagenum = parseInt($(".pagenum:last").val()) + 1;
-					getresult(url_pullrecords + '?page=' + pagenum);
-				}
+			$('#continue').click(function () {	
+				getresult(url_pullrecords);
+		  	// this check doesn't seem to work. Also doesn't seem to make sense because the rowcount can always be less than the page number	
+		  // 	if($(".pagenum:last").val() <= $(".total-page").val()) {
+				// 	var pagenum = parseInt($(".pagenum:last").val()) + 1;
+				// 	getresult(url_pullrecords + '?page=' + pagenum);
+				// } 
 			});
 		</script>	
 
