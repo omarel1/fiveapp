@@ -829,7 +829,7 @@ table {
   .cartbox .content,
   .checkoutbox .content,
   .updatecardbox .content {
-		padding:40px 19px 80px 20px;
+		padding:52px 19px 80px 20px;
   }
   
   /*#pagecontent .content,*/
@@ -921,7 +921,7 @@ table {
   .checkoutclose,
   .updatecardclose {
   	position: absolute;
-  	top:35;
+  	top:41px;
   	right:8;
   	color:#000;
   	cursor:pointer;
@@ -929,7 +929,7 @@ table {
   }
   .choosephoneboxclose {
     position: absolute;
-    top:0;
+    top:-5px;
     right:8;
     color:#000;
     cursor:pointer;
