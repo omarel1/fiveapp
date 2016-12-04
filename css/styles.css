@@ -341,15 +341,15 @@ table {
 	#favcount.on,
 	#cartcount.on {
 		padding:2px;
-    width:10px;
-    height:10px;
+    width:13px;
+    height:12px;
 	}
 	.carticon {
 		cursor:pointer;
 	}
 	#pagecontent.wrapper {
 		padding-top:30px;
-		height: 100vh;
+		/*height: 100vh;*/
 	}
   #pagecontent .content {
     position: relative;
@@ -565,7 +565,7 @@ table {
     width: 90%;
   }
 
-
+  
 	.loginbox {
 		width:90%;
 		right:0;
@@ -575,7 +575,7 @@ table {
 		top: 100%;
   	margin:0 auto;
   	text-align:center;
-  	z-index:20;
+  	z-index:24;
   	display: block;
 	}
 	.loginbox.on {
@@ -600,7 +600,7 @@ table {
 		/*display: block;*/
     visibility: visible;
     opacity:1;
-    z-index:17;
+    z-index:21;
 	}
 	.contactfields {
     border-top: 0px;
@@ -619,6 +619,11 @@ table {
     border-radius: 0;
     text-align: center;
     padding-bottom: 3px !important;
+  }
+  .loginblock .contactfields,
+  .signupblock .contactfields,
+  .forgotpwdblock .contactfields {
+    font-size:24px !important;
   }
   
 
@@ -828,8 +833,9 @@ table {
 	.favbox .content,
   .cartbox .content,
   .checkoutbox .content,
-  .updatecardbox .content {
-		padding:52px 19px 80px 20px;
+  .updatecardbox .content,
+  .supportbox .content {
+		padding:60px 19px 80px 20px;
   }
   
   /*#pagecontent .content,*/
@@ -837,7 +843,8 @@ table {
   .cartbox .content,
   .checkoutbox .content,
   .updatecardbox .content,
-  .btnholder {
+  .btnholder,
+  .supportbox .content {
     max-width:500px;
     margin:0 auto;
   }
@@ -884,7 +891,8 @@ table {
   .favbox,
   .cartbox,
   .choosephonebox,
-  .checkoutbox {
+  .checkoutbox,
+  .supportbox {
   	width:80%;
   	height:80%;
   	position: fixed;
@@ -903,10 +911,19 @@ table {
     opacity:0;
     z-index:-1;
   }
+  .supportbox .content {
+    visibility: hidden;
+    opacity:0;
+  }
+  .supportbox.on .content {
+    visibility: visible;
+    opacity:1;
+  }
   
   .favbox.on,
   .cartbox.on,
-  .choosephonebox.on {
+  .choosephonebox.on,
+  .supportbox.on {
   	visibility: visible;
     opacity:1;
     z-index:20;
@@ -921,16 +938,16 @@ table {
   .checkoutclose,
   .updatecardclose {
   	position: absolute;
-  	top:41px;
-  	right:8;
+  	top:45px;
+  	right:0;
   	color:#000;
   	cursor:pointer;
         z-index: 10;
   }
   .choosephoneboxclose {
     position: absolute;
-    top:-5px;
-    right:8;
+    top:-1px;
+    right:2px;
     color:#000;
     cursor:pointer;
         z-index: 10;
@@ -1084,6 +1101,40 @@ table {
     width:50px;
     height:auto;
   }
+  .menu {
+    position: absolute;
+    top:23px;
+    right:10px;
+  }
+  .menu img {
+    width:17px;
+    height: auto;
+  }
+
+  .supportbox.on {
+    z-index:25;
+  }
+  .supportbox h1 {
+    font-size:19px;
+    margin-bottom: 10px;
+    margin-top:10px;
+  }
+  .supportbox .block {
+    margin-bottom: 20px;
+    line-height: 120%;
+  }
+  .supportbox {
+    text-align:left !important;
+  }
+  .securityimg {
+    display: block;
+    margin-top:25px;
+  }
+  .securityimg img {
+    display:inline;
+    width:24px;
+    height: auto;
+  }
 
 /* ----------END MOBILE  ---------- */
 
@@ -1121,6 +1172,11 @@ table {
 		-webkit-font-smoothing: antialiased;
 	  -moz-osx-font-smoothing: grayscale;
 	}
+  .supportbox h1 {
+    font-family: 'gothammed';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 	.x {
 		font-family: 'gothaml';
 		-webkit-font-smoothing: antialiased;
@@ -1160,7 +1216,9 @@ table {
 	}
   
   
-  a.openupdatecardbox  {
+  a.openupdatecardbox,
+  .supportbox,
+  .supportbox a  {
     color:#2B4141;
   }
   
@@ -1304,7 +1362,9 @@ table {
 	.updatecardbox,
   .choosephonebox,
   .holdmaincases,
-  a.checkoutbtn  {
+  a.checkoutbtn,
+  .supportbox,
+  .supportbox .content {
 		-o-transition: .4s;
 	  -ms-transition: .4s;
 	  -moz-transition: .4s;
@@ -1326,7 +1386,7 @@ table {
 
  
 
-  .x  {
+  .supportbox .content  {
     -webkit-transition-delay: .3s; /* Safari */
     transition-delay: .3s;
   }
@@ -1389,7 +1449,8 @@ table {
 
  .heart span, 
  a.btn span,
- a.paybtn span {
+ a.paybtn span,
+ .removing span {
     animation-name: blink;
     animation-duration: 1.4s;
     animation-iteration-count: infinite;
@@ -1400,13 +1461,15 @@ table {
 
 .heart span, 
 a.btn span:nth-child(2),
-a.paybtn span:nth-child(2) {
+a.paybtn span:nth-child(2),
+.removing span:nth-child(2) {
     animation-delay: .2s;
 }
 
 .heart span, 
 a.btn span:nth-child(3),
-a.paybtn span:nth-child(3) {
+a.paybtn span:nth-child(3),
+.removing span:nth-child(3) {
     animation-delay: .4s;
 }
 

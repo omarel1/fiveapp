@@ -9,6 +9,7 @@
 	</head>
 	<body>
 		<div class="top">
+			<div class="menu togglesupportbox"><img src="img/icons/info.png" alt=""></div>
 			<img src="img/icons/logo-g.png">
 		</div>
 		<!-- <header>
@@ -122,6 +123,30 @@
 
 		</div>
 		
+		<div class="supportbox">
+			<div class="content">
+				
+				<div class="block">
+					<h1>100% Guaranteed or your money back!</h1>
+					<p>If you are not satisfied for any reason please return your purchase to us within 7 days.</p>
+				</div>
+				<div class="block">
+					<h1>Shipping</h1>
+					<p>Our mission is to get you the highest quality products at the most affordable prices. To do this we  ship products to you straight from the factories and this is why shipping may not be as swift.</p>
+				</div>
+				<div class="block">
+					<h1>Security</h1>
+					<p>Your credit card information is transmitted securely and encrypted using SSL technology, and NEVER stored on our servers, even when you use our pay with a previously used credit card feature.</p>
+				</div>
+				<div class="block">
+					<h1>Support</h1>
+					<p>To contact support for questions or refunds, email: <a href="mailto:apps@elbaga.bet">apps@elbaga.net</a></p>
+				</div>
+				<div class="block">
+					<p class="togglesupportbox">Close</p>
+				</div>
+			</div>
+		</div><!--//supportbox -->
 
 
 		<div class="favbox">
@@ -131,7 +156,7 @@
 		</div><!--//favbox -->
 
 
-		<div class="cartbox ">
+		<div class="cartbox">
 			<div class="closebox"></div>
 			<div class="loaderInPopup"><img src="img/loader.svg"></div>
 			<div class="cartboxclose"><img src="img/x.png"></div>
@@ -343,6 +368,9 @@
 				// 	getresult(url_pullrecords + '?page=' + pagenum);
 				// } 
 			});
+
+
+			
 		</script>	
 
 	  <script>
@@ -378,6 +406,11 @@
 		     $('.overlay').toggleClass("on");
 		     return false;
 			 });
+			 $('.togglesupportbox').click(function () {
+		     $('.supportbox').toggleClass("on");
+		     // $('.overlay').toggleClass("on");
+		     return false;
+			 });
 
 			 
 
@@ -410,7 +443,8 @@
 				$(document).on("click", '.favbox .casebox .addmetocart', function(){
 				   var cid;
 			     cid = $(this).data("id");
-			     $(this).html("in cart");
+			     // $(this).html("in cart");
+			     $(this).html('<img src="img/icons/add-to-cart-already.png" />');
 			     addToCart(cid);
 			     return false;
 				});
@@ -542,7 +576,7 @@
 					     cache: false,
 					     beforeSend: function(){ 
 					     	$('.favbox .loaderInPopup').fadeIn();
-					     		$('#favs_' + cid).html('removing<span>.</span><span>.</span><span>.</span>');
+					     		$('#favs_' + cid).html('<div class="removing">removing<span>.</span><span>.</span><span>.</span></div>');
 
 					   			},
 					     success: function(data){
@@ -574,7 +608,7 @@
 					     cache: false,
 					     beforeSend: function(){ 
 					     		$('.cartbox .loaderInPopup').fadeIn();
-					     		$('#carts_' + cid).html('removing<span>.</span><span>.</span><span>.</span>');
+					     		$('#carts_' + cid).html('<div class="removing">removing<span>.</span><span>.</span><span>.</span></div>');
 					   			},
 					     success: function(data){
 					     	 $('.cartbox .loaderInPopup').fadeOut();
