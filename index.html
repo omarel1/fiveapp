@@ -9,35 +9,78 @@
 	</head>
 	<body>
 		<div class="top">
+			<img src="img/icons/logo-g.png">
 		</div>
-		<header>
+		<!-- <header>
 			<div class="floatleft favicon">
 				<div id="favcount"></div>
 				<img src="img/heart2.png" class="heartme">
-					<!-- <div id="hamburger" class="nav-icon">
-						<span></span>
-						<span></span>
-						<span></span>
-					</div> -->
 			</div>
 			<div class="floatleft togglechoosephone">
 				<img src="img/phone2.png" alt="">
 			</div>
 			<div id="logo" class="centeralign">
-				<img src="img/logofive.png"><!-- <div class="lsvar"></div> -->
+				<img src="icons/ios/icon-small.png">
 			</div>
 			<div class="floatright carticon">
 				<div id="cartcount"></div>
 				<img src="img/cart-g2.png" class="cart">
 			</div>
 			<div class="clearfloats"></div>
+		</header> -->
+		
+		<header>
+			<div class="floatleft">
+				<img src="img/icons/user.png" class="signout"><br />
+				Sign Out
+			</div>
+			<div class="floatleft favicon">
+				<div id="favcount"></div>
+				<img src="img/icons/hearts.png" class="heartme"><br />
+				Favorites
+			</div>
+			<div id="logo" class="floatleft">
+				<img src="img/icons/logo-w.png">
+			</div>
+			<div class="floatleft carticon">
+				<div id="cartcount"></div>
+				<img src="img/icons/shopping-bag.png" class="cart"><br />
+				Bag
+			</div>
+			<div class="floatleft togglechoosephone">
+				<img src="img/icons/shake-phone.png"><br />
+				Phone
+			</div>
+			<div class="clearfloats"></div>
 		</header>
+
+
+		<div class="signupbar">
+			<div class="floatleft">
+			&nbsp;
+			</div>
+			<div class="floatleft signupbtn">
+				<img src="img/icons/user.png"><br />
+				Sign up/in
+			</div>
+			<div id="logo" class="floatleft">
+				<img src="img/icons/logo-w.png">
+			</div>
+			<div class="floatleft togglechoosephone">
+				<img src="img/icons/shake-phone.png"><br />
+				Phone
+			</div>
+			<div class="floatleft togglechoosephone">
+				&nbsp;
+			</div>
+			<div class="clearfloats"></div>		
+		</div>
 
 		<!--//load content here --> 
 		<div id="pagecontent" class="wrapper">
 			<div class="holdmaincases">
 				<div class="content"></div>
-				<div class="btnholder"><a id="continue" class="continue" href="javascript:;">Get More</a></div>
+				<div class="btnholder"><a id="continue" class="continue" href="javascript:;"><img src="img/icons/more.png"><br />Get More</a></div>
 			</div>
 		</div><!--/end load content -->
 		
@@ -90,7 +133,7 @@
 
 		<div class="cartbox ">
 			<div class="closebox"></div>
-			<!-- <div class="loaderInPopup"><img src="img/loader.svg"></div> -->
+			<div class="loaderInPopup"><img src="img/loader.svg"></div>
 			<div class="cartboxclose"><img src="img/x.png"></div>
 			<div class="content"></div>
 		</div><!--//cartbox -->
@@ -130,10 +173,6 @@
 		<!-- overlay when you click action -->
 		<div class="overlay"></div>	 
 		<div class="overlaybg"></div>	
-		<div class='signupbar'>
-			<div class="floatleft btn togglechoosephone"><a href="#"><img src="img/phone2.png" alt=""></a></div>
-			<div class="floatright btn signupbtn"><a href='#'>Sign Up/In to Buy</a></div>
-		</div>
 
 	 <script src="js/jquery.min.js"></script>
 
@@ -340,6 +379,8 @@
 		     return false;
 			 });
 
+			 
+
 
 
 			 
@@ -393,7 +434,7 @@
 			     cid = $(this).data("id");
 			     ctid = $(this).data("index");
 			     removecartitem(cid,2);
-			     $('#addtocart_' + ctid).html('<img src="img/addtocart3.png" />');
+			     $('#addtocart_' + ctid).html('<img src="img/icons/add-to-cart.png" />');
 				   return false;
 				});
 
@@ -599,7 +640,7 @@
 					   			},
 					     success: function(data){
 					     		//update on main page 
-						     $('#addtocart_' + cid).html('<img src="img/addtocart-already.png" />');
+						     $('#addtocart_' + cid).html('<img src="img/icons/add-to-cart-already.png" />');
 						     $('.addednotify,.overlaybg').addClass("on");
 							     setTimeout(function() {
 							        $('.addednotify,.overlaybg').removeClass("on");
@@ -619,7 +660,15 @@
 					}
 
 
-
+				//SIGN OUT
+				$('.signout').click(function () {
+					localStorage.login="false";
+			    $('.overlay').removeClass("on");
+			    $('.signupbar').fadeIn();
+					// $('#signinbtn').css('opacity','1');
+					$('.heart,.casebox .casetitle,.casebox .cost,.casebox .tag').removeClass("on");
+			     return false;
+				});
 
 			 	 // SIGN IN
 		     $("#signinbtn").click(function(){
@@ -646,7 +695,7 @@
 						     $('.overlay').removeClass("on");
 		     				 $('.signupbar').fadeOut();
 		     				 $('#signinbtn').css('opacity','1');
-		     				 $('.heart,.casebox .casetitle,.casebox .cost').addClass("on");
+		     				 $('.heart,.casebox .casetitle,.casebox .cost,.casebox .tag').addClass("on");
 						     // window.location.href = "index.html";
 					     }
 					     else {
@@ -701,7 +750,7 @@
 			     				 $('.signupbar').fadeOut();
 							     disabled = false;
             				$('#signupbtn').css('opacity','1');
-            				$('.heart,.casebox .casetitle,.casebox .cost').addClass("on");
+            				$('.heart,.casebox .casetitle,.casebox .cost,.casebox .tag').addClass("on");
             			// window.location.href = "index.html";
 						     }
 						     else {

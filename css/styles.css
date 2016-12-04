@@ -54,14 +54,21 @@ table {
 		}
 	header {
 		width:100%;
-		padding:6px;
-    padding-top: 5px;
-    padding-bottom: 1px;
+    padding: 10px 0px;
 		left:0px;
 		bottom:0px;
     position: fixed;
     z-index: 15;
 	}
+  .signupbar {
+    position: fixed;
+    bottom:0;
+    padding: 10px 0px;
+    width:100%;
+    text-align: center;
+    z-index:16;
+    display: none;
+  }
 	footer {
 		position: fixed;
 		background-color:rgba(255, 255, 255, 1);
@@ -133,7 +140,7 @@ table {
 
 	}
 	
-	header .floatleft:nth-of-type(1)  {
+	/*header .floatleft:nth-of-type(1)  {
 		float: left;
 		width: 15%;
 		text-align: left;
@@ -161,14 +168,50 @@ table {
     right:0;
     top:13px;
     width:110px;
+  }*/
+  /*header .floatleft:nth-child(odd) {
+    margin-right:10px;
   }
+  header .floatleft {
+    width:100%;
+    float:none;
+    margin-top: 3px;
+    padding-bottom: 6px;
+  }*/
+
+  header .floatleft,
+  .signupbar .floatleft {
+    float:left;
+    width:20%;
+    text-align: center;
+    font-size:11px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-block;
+    height: 100%;
+    position: relative;
+  }
+  header .floatleft img,
+  .signupbar .floatleft img {
+    width:30px;
+    height:auto;
+    vertical-align: middle;
+    margin-bottom: 7px
+  }
+  header #logo img,
+  .signupbar #logo img {
+    margin-top:9px;
+  }
+
+  
+  
   header.on {
     left:56%;
   }
 
   header #logo img {
-    height: auto;
-    width: 110px;
+    /*height: auto;
+    width: 22px;*/
   }
   header .cart img {
     height:auto;
@@ -276,20 +319,24 @@ table {
 	#cartcount {
     position: absolute; 
     text-align: center;
-    line-height: 10px;
-    font-size: 12px;
+    line-height: 11px;
+    font-size: 11px;
     background-color: rgba(255, 35, 26, 1.0);
     border-radius: 50%;
     color: #FFF;
     z-index: 100;
 	}
+  .remove img {
+    width:20px !important;
+    height:auto;
+  }
 	#favcount {
-    left: 25px;
-    top: 5px;
+    right: 17px;
+    top: 0px;
 	}
 	#cartcount {
-    right: 8px;
-    top: 7px;
+    right: 17px;
+    top: 0px;
 	}
 	#favcount.on,
 	#cartcount.on {
@@ -308,15 +355,7 @@ table {
     position: relative;
     display: block;
   }
-	header .floatleft {
-		width:100%;
-		float:none;
-		margin-top: 3px;
-    padding-bottom: 6px;
-	}
-	header .floatleft:nth-child(odd) {
-		margin-right:10px;
-	}
+	
 	#pagecontent .casebox img.thecaseimg {
 		width:85%;
 		height:auto;
@@ -352,7 +391,6 @@ table {
 	}*/
 	#loadericon {
 		position: fixed;
-		background-color: rgba(255, 255, 255, 0.9);
     top: 20px;
     padding-top:100px;
     width: 100%;
@@ -363,7 +401,6 @@ table {
 	}
   .loaderinsidebox {
     position: fixed;
-    background-color: rgba(255, 255, 255, 0.9);
     top: 80px;
     left: 0;
     right: 0;
@@ -375,11 +412,15 @@ table {
   }
 
   .loadericon {
-    background-color: rgba(255, 255, 255, 0.9);
     width: 100%;
     padding-bottom:30px;
     text-align:center;
     z-index:1000;
+  }
+  .loadericon,
+  .loaderinsidebox,
+  .loadericon {
+    background-color: #2d2d2d;
   }
 	.loaderInPopup {
 		position: fixed;
@@ -405,16 +446,8 @@ table {
     color:#fff;
 	}
 	
-	.signupbar {
-		position: fixed;
-		bottom:0;
-		width:100%;
-		margin: 0 auto;
-		text-align: center;
-		z-index:15;
-		display: none;
-	}
-  .signupbar .btn {
+	
+  /*.signupbar .btn {
     color:#2B4141;
     margin-top:2px;
     margin-bottom:2px;
@@ -431,8 +464,11 @@ table {
     float:right;
     width:69%;
     padding: 14px 0px 13px 0px;
+  }*/
+  
+  .continue img {
+    vertical-align: middle;
   }
-
   .signupbar a,
   a.continue,
   .choosephonebox .content .phonechoice {
@@ -476,7 +512,7 @@ table {
     bottom:-50px;
     left:0;
     right:0;
-    padding:14px 0px;
+    padding:22px 0px;
     /* display:none;*/
     visibility: hidden;
     opacity:0;
@@ -505,7 +541,7 @@ table {
   a.paybtn {
     position: relative;
     width:100%;
-    padding:14px 0px;
+    padding:22px 0px;
     z-index:22;
     text-align:center;
     display:inline-block;
@@ -614,7 +650,16 @@ table {
   	display:none;
   }
   .pushpricedown {
+    bottom:15px !important;
+  }
+  .pushtagdown {
+    bottom:55px !important;
+  }
+  .pushpricedown.on {
     bottom:59px !important;
+  }
+  .pushtagdown.on {
+    bottom:97px !important;
   }
   .loginerror {
   	width:80%;
@@ -637,14 +682,17 @@ table {
   	z-index: 13;
   }
   .casebox .casetitle.on {
-    bottom: 55px;
+    bottom: 56px;
   }
   .casebox .cost.on {
-    bottom: 85px;
+    bottom: 82px;
+  }
+  .casebox .tag.on {
+    bottom: 122px;
   }
   .casebox .casetitle {
     position: absolute;
-    bottom:20px;
+    bottom:18px;
     left: 4%;
     font-size:12px;
     color: #fff;
@@ -658,10 +706,10 @@ table {
   }
   .casebox .cost {
 		position: absolute;
-		bottom:50px;
+		bottom:42px;
     left: 4%;
-    width: 50px;
     font-size:19px;
+    width:55px;
     color: #fff;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 10;
@@ -675,6 +723,22 @@ table {
 		content:url('../img/premium.png');
 		margin-left:-6px;
 
+  }
+  .casebox .tag {
+    position: absolute;
+    bottom:80px;
+    left: 4%;
+    font-size:19px;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+    padding: 10px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-top:2px solid #34E4EA;
+  }
+  .casebox .tag img {
+    width:29px;
   }
 
   .favbox .heart,
@@ -706,9 +770,12 @@ table {
   	padding:10px;
   	font-size:14px;
   }
-   .heart .floatleft img,
-   .heart .floatright img {
-  	width:27px;
+  .heart .floatleft img  {
+    width:30px;
+    height: auto;
+  }
+  .heart .floatright img {
+  	width:32px;
   	height: auto;
   }
   .heart.on {
@@ -982,14 +1049,22 @@ table {
     top:0;
     height:24px;
     width:100%;
+    text-align: center;
     /*background-color: #DF8FC9;*/
-    background-color: #2EC4B6;
+    background-color: #7dedf1;
     z-index:30;
+    padding-top:20px;
   }
-  a.continue,
+  .top img {
+    width:20px;
+    height: auto;
+  }
   a.paybtn,
   a.checkoutbtn {
     font-size:16px;
+  }
+  a.continue {
+    font-size:11px;
   }
   .cardonfile {
     padding-top:10px;
@@ -1060,7 +1135,8 @@ table {
   .favbox .content h1, 
   .cartbox .content h1,
   .choosephonebox .content h1 {
-    font-family: 'dommed';
+    /*font-family: 'dommed';*/
+    font-family: 'gothambook';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -1105,14 +1181,28 @@ table {
 	}
 
   /* BARS  */
+  html, body,
+  #pagecontent.wrapper {
+    background-color: #2d2d2d;
+    /*background-color: #4a4a4a;
+    background-color: #2d2d2d;
+    background-color: #2B4141; */
+  }
+  
+  .choosephonebox {
+    background-color: #34E4EA;
+  }
+
+  .heart,
+  header,
+  .signupbar {
+    background-color: #34E4EA;
+  }
 	.navsidebar,
 	.navsidebar ul>li>a,
   header .nav-icon span {
 		background-color: #8AB9B5;
 	}
-  .signupbar {
-    background-color: #2B4141;
-  }
   .loginbox {
     background-color: #2B4141;
     border:1px solid #34E4EA;
@@ -1137,11 +1227,7 @@ table {
     border-left:1px solid #2B4141;
     border-right:1px solid #2B4141;
   }
-  .heart,
-  header,
-  .choosephonebox {
-    background-color: #8AB9B5;
-  }
+  
   
   /* LABELS H1 */
   html,body,
@@ -1150,8 +1236,9 @@ table {
   .choosephonebox .content h1 {
     color:#2B4141;
   }
-  .loginerror {
-    color:#34E4EA;
+  .loginerror,
+  .casebox {
+    color:#8AB9B5;
   }
 	
 	a.continue,

@@ -10,9 +10,9 @@
       Quickreads Media LLC
   </author>
 	<content src="index.html"/>
-<platform name="ios" />
-<platform name="android" />
-<platform name="winphone" />
+	<platform name="ios" />
+	<platform name="android" />
+	<platform name="winphone" />
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="default"/>
   <preference name="target-device" value="universal"/>
@@ -95,7 +95,6 @@
 
 
   <feature name="StatusBar"><param name="ios-package" value="CDVStatusBar" onload="true" /></feature>
-		  
 	<plugin name="cordova-plugin-whitelist" source="npm" />
 	<allow-navigation href="http://elbaga.net" />
 	<allow-navigation href="https://elbaga.net" />
