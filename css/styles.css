@@ -1135,6 +1135,12 @@ table {
     width:24px;
     height: auto;
   }
+  .shippingcost {
+    text-align: right;
+    margin-right: 5px;
+    font-size:13px;
+    color:#8AB9B5;
+  }
 
 /* ----------END MOBILE  ---------- */
 
