@@ -1108,8 +1108,7 @@ table {
     top:23px;
     right:10px;
     width:30px;
-    height:30px;
-    border:1px solid red;
+    height:27px;
     z-index:99999;
   }
   .menu img {
@@ -1399,8 +1398,8 @@ table {
  
 
   .supportbox .content  {
-    -webkit-transition-delay: .3s; /* Safari */
-    transition-delay: .3s;
+    -webkit-transition-delay: .4s; /* Safari */
+    transition-delay: .4s;
   }
 	.x {
 		-o-transition: .1s;
