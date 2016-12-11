@@ -42,7 +42,7 @@
 				<img src="img/icons/hearts.png" class="heartme"><br />
 				Favorites
 			</div>
-			<div id="logo" class="floatleft togglesupportbox">
+			<div id="logo" class="floatleft">
 				<img src="img/icons/logo-w.png">
 			</div>
 			<div class="floatleft carticon">
@@ -224,6 +224,14 @@
 
 	 <script type="text/javascript">
 			 
+		 	 // OPEN SUPPORT INFO
+		 	 // $(document).on("click", '.togglesupportbox', function(){
+		 	 	$('.togglesupportbox').click(function () {
+		      $('.supportbox').toggleClass("on");
+		      $(".supportbox .content").load('https://www.elbaga.net/fiveapp/php/info.php', function () {
+		 	      $('.supportbox .content .loaderinsidebox').fadeOut(0);
+		 	     });
+		 	 });
 
 			 // OPEN PHONE BOX
 			 $(document).on("click", '.phonechoice', function(){
@@ -390,16 +398,7 @@
 		     return false;
 			 });
 			 
-			 // OPEN SUPPORT INFO
-			 $(document).on("click", '.togglesupportbox', function(){
-			 	// $('.togglesupportbox').click(function () {
-			 		alert("hello");
-		     $('.supportbox').toggleClass("on");
-		     $(".supportbox .content").load('https://www.elbaga.net/fiveapp/php/info.php', function () {
-			      $('.supportbox .content .loaderinsidebox').fadeOut(0);
-			     });
-		     return false;
-			 });
+
 
 			  // ADD TO FAVORITE CLICK
 	  		$(document).on("click", '.casebox .favit', function(){
