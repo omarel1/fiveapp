@@ -1107,6 +1107,10 @@ table {
     position: absolute;
     top:23px;
     right:10px;
+    width:30px;
+    height:30px;
+    border:1px solid red;
+    z-index:99999;
   }
   .menu img {
     width:17px;

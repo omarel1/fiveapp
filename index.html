@@ -9,7 +9,9 @@
 	</head>
 	<body>
 		<div class="top">
-			<div class="menu togglesupportbox"><img src="img/icons/info.png" alt=""></div>
+			<div class="menu togglesupportbox">
+				<img src="img/icons/info.png">
+			</div>
 			<img src="img/icons/logo-g.png">
 		</div>
 		<!-- <header>
@@ -388,27 +390,16 @@
 		     return false;
 			 });
 			 
+			 // OPEN SUPPORT INFO
 			 $(document).on("click", '.togglesupportbox', function(){
 			 	// $('.togglesupportbox').click(function () {
+			 		alert("hello");
 		     $('.supportbox').toggleClass("on");
-		    $(".supportbox .content").load('https://www.elbaga.net/fiveapp/php/info.php', function () {
-			    $('.supportbox .content .loaderinsidebox').fadeOut(0);
+		     $(".supportbox .content").load('https://www.elbaga.net/fiveapp/php/info.php', function () {
+			      $('.supportbox .content .loaderinsidebox').fadeOut(0);
 			     });
+		     return false;
 			 });
-
-
-
-
-			 
-
-
-
-			 
-
-			 	
-
-			 
-
 
 			  // ADD TO FAVORITE CLICK
 	  		$(document).on("click", '.casebox .favit', function(){
