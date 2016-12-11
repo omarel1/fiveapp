@@ -124,28 +124,7 @@
 		</div>
 		
 		<div class="supportbox">
-			<div class="content">
-				
-				<div class="block">
-					<h1>100% Guaranteed or your money back!</h1>
-					<p>If you are not satisfied for any reason please return your purchase to us within 7 days.</p>
-				</div>
-				<div class="block">
-					<h1>Just $1 Shipping</h1>
-					<p>Only $1 for shipping no matter how many items and anywhere in the US. Our mission is to get you the highest quality products at the most affordable prices. To do this we  ship products to you straight from the factories and this is why shipping may not be as swift.</p>
-				</div>
-				<div class="block">
-					<h1>Impeccable Security</h1>
-					<p>Your credit card information is transmitted securely and encrypted using SSL technology, and NEVER stored on our servers, even when you use our pay with a previously used credit card feature.</p>
-				</div>
-				<div class="block">
-					<h1>24/7 Support</h1>
-					<p>To contact support for questions or refunds, email: <a href="mailto:apps@elbaga.bet">apps@elbaga.net</a></p>
-				</div>
-				<div class="block">
-					<p class="togglesupportbox">Close</p>
-				</div>
-			</div>
+			<div class="content"></div>
 		</div><!--//supportbox -->
 
 
@@ -205,7 +184,9 @@
 	 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
    <!-- get your publish key -->
    <script type="text/javascript">
-      Stripe.setPublishableKey('pk_test_ThllZepEDlqyvISu7TFyXRWE');
+      Stripe.setPublishableKey('pk_test_ThllZepEDlqyvISu7TFyXRWE'); // test
+       // Stripe.setPublishableKey('pk_live_rPUtbnsLQOwQMJSbd21btutG'); // live
+      
    </script>
    <!--// END LOAD STRIPE JS files -->
    <script src="js/wow.min.js"></script>
@@ -406,11 +387,17 @@
 		     $('.overlay').toggleClass("on");
 		     return false;
 			 });
-			 $('.togglesupportbox').click(function () {
+			 
+			 $(document).on("click", '.togglesupportbox', function(){
+			 	// $('.togglesupportbox').click(function () {
 		     $('.supportbox').toggleClass("on");
-		     // $('.overlay').toggleClass("on");
-		     return false;
+		    $(".supportbox .content").load('https://www.elbaga.net/fiveapp/php/info.php', function () {
+			    $('.supportbox .content .loaderinsidebox').fadeOut(0);
+			     });
 			 });
+
+
+
 
 			 
 
