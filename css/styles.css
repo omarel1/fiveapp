@@ -698,7 +698,7 @@ table {
     bottom: 122px;
   }
   .casebox .casetitle {
-    position: absolute;
+    /*position: absolute;*/
     bottom:18px;
     left: 4%;
     font-size:12px;
@@ -1319,6 +1319,9 @@ table {
 	a.paybtn {
 		text-transform: uppercase;
 	}
+  .casebox .casetitle {
+    text-transform: capitalize;
+  }
 	a.openupdatecardbox {
 		text-transform: none;
 	}
