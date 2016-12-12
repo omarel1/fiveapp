@@ -3,7 +3,7 @@
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "com.elbaga.fiveapp"
     versionCode = "10"
-    version     = "3.7.1" >
+    version     = "1.0" >
   <name>Five Spot</name>
   <description>Five Spot</description>
   <author href="https://elbaga.net" email="oelbaga@gmail.com">
