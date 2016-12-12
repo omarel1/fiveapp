@@ -4,8 +4,8 @@
     id          = "com.elbaga.fiveapp"
     versionCode = "10"
     version     = "3.7.1" >
-  <name>FiveSpot</name>
-  <description>FiveSpot</description>
+  <name>Five Spot</name>
+  <description>Five Spot</description>
   <author href="https://elbaga.net" email="oelbaga@gmail.com">
       Quickreads Media LLC
   </author>
